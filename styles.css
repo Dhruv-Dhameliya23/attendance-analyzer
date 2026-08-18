@@ -126,6 +126,16 @@ a {
   flex-shrink: 0;
 }
 
+.brand-icon-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+  border: 1.5px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
 .brand-title {
   font-size: 19px;
   font-weight: 850;
@@ -437,14 +447,31 @@ a {
   background: #f8fafc;
   border: 2px dashed #cbd5e1;
   border-radius: var(--radius-lg);
-  padding: 36px 24px;
-  margin: 24px 0;
+  padding: 36px 20px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
+  min-height: 180px;
   position: relative;
+}
+
+/* Arrow Callout */
+.support-arrow-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #4338ca;
+  margin-bottom: 16px;
+  animation: bounceArrow 1.5s infinite;
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 /* Scale up Razorpay button for high visibility */
@@ -453,15 +480,90 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
-  transform: scale(1.18);
+  transform: scale(1.35);
   transform-origin: center;
+  margin: 10px 0;
+}
+
+/* Razorpay Skeleton & Loading Animation */
+.razorpay-loading-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.razorpay-skeleton {
+  width: 100%;
+  max-width: 340px;
+  height: 56px;
+  background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .razorpay-loading-text {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 12px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #cbd5e1;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spinLoader 0.75s linear infinite;
+}
+
+@keyframes spinLoader {
+  to { transform: rotate(360deg); }
+}
+
+.charity-pledge-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-top: 20px;
+  font-size: 14.5px;
+  color: #15803d;
+  line-height: 1.6;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dev-support-msg-box {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-top: 14px;
+  font-size: 14px;
+  color: #3730a3;
+  line-height: 1.6;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 /* ==========================================================================
