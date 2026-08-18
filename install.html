@@ -12,10 +12,10 @@
 
   <!-- Mobile Top Bar -->
   <header class="mobile-topbar">
-    <div style="display: flex; align-items: center; gap: 10px;">
+    <a href="index.html" class="mobile-brand-link">
       <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img" style="width: 32px; height: 32px; border-radius: 8px;">
-      <span class="brand-title" style="font-size: 17px;">Attendance Analyzer</span>
-    </div>
+      <span class="brand-title" style="font-size: 17px; font-weight: 800;">Attendance Analyzer</span>
+    </a>
     <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -257,7 +257,26 @@
           const emailTo = 'dhruvdhameliya23@gmail.com';
           const subject = 'I wanna join beta';
           
-          const bodyText = `Hyy Dhruv,\n\n${name} here from ${university}.\nMy Email: ${email}\n\nI wanna join beta for so and so reason: ${reason}.\n\nStudent Details:\nClass: ${className}\nDepartment: ${department}\nCampus: ${campus}\n\nThank you for considering!`;
+          const bodyText = `Hi Dhruv,
+
+My name is ${name}, and I am a student at ${university}. I’m writing to express my interest in joining the beta program because ${reason}.
+
+Here are my student details:
+
+* **Name:** ${name}
+* **Email:** ${email}
+* **University:** ${university}
+* **Class / Section:** ${className}
+* **Department:** ${department}
+* **Campus Location:** ${campus}
+
+I would be excited to participate in the beta and contribute my feedback and experience.
+
+Thank you for considering my request!
+
+Best regards,
+${name}
+${email}`;
 
           const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
           
