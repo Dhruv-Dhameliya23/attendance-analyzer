@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Beta & Install — Attendance Analyzer</title>
+  <meta name="description" content="Attendance Analyzer is currently under active development. Apply to join our student beta program for early access.">
+  <link rel="stylesheet" href="styles.css?v=3.2.5">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=3.2.5">
+</head>
+<body>
+
+  <!-- Mobile Top Bar -->
+  <header class="mobile-topbar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img" style="width: 32px; height: 32px; border-radius: 8px;">
+      <span class="brand-title" style="font-size: 17px;">Attendance Analyzer</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div>
+      <a href="index.html" class="sidebar-brand">
+        <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img">
+        <div class="brand-title">Attendance Analyzer</div>
+      </a>
+
+      <!-- Left Navigation Menu Items -->
+      <ul class="sidebar-menu">
+        <li>
+          <a href="index.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="policy.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Privacy Policy
+          </a>
+        </li>
+        <li>
+          <a href="payment.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            Support / Donate
+          </a>
+        </li>
+        <li>
+          <a href="advertise.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Advertise
+          </a>
+        </li>
+        <li>
+          <a href="install.html" class="active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            Join Beta
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="sidebar-bottom">
+      <a href="install.html" class="btn-sidebar-install active" style="background: linear-gradient(135deg, #3730a3 0%, #1e1b4b 100%);">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="21.17" y1="8" x2="12" y2="8"></line>
+          <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+          <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+        </svg>
+        <span>Join Beta / Install</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="content-container">
+      
+      <div class="beta-card">
+        
+        <!-- Status Pill -->
+        <div class="beta-badge">
+          <span class="badge-dot"></span>
+          <span>Under Active Development & Store Review</span>
+        </div>
+
+        <h1 class="beta-title">Extension In Development</h1>
+        
+        <p class="beta-desc">
+          Attendance Analyzer is currently undergoing store review for its public launch. We are inviting select students to join our <strong>Early Beta Testing Program</strong> to get immediate access, provide feedback, and help us test new portal features.
+        </p>
+
+        <!-- Interactive Beta Application Form -->
+        <div class="beta-form-container">
+          <h2 class="beta-form-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Join Early Beta Program
+          </h2>
+          <p class="beta-form-subtitle">
+            Fill in your details below to generate and send your official beta tester application email.
+          </p>
+
+          <form id="beta-app-form">
+            <div class="beta-grid-2">
+              <div class="beta-field">
+                <label for="beta-name">Your Full Name <span style="font-size:12px;color:var(--text-muted);">(2-50 chars)</span></label>
+                <input type="text" id="beta-name" class="beta-input" placeholder="e.g. Alex Sharma" minlength="2" maxlength="50" required>
+              </div>
+
+              <div class="beta-field">
+                <label for="beta-email">Your Gmail Address <span style="font-size:12px;color:var(--primary);font-weight:700;">(@gmail.com)</span></label>
+                <input type="email" id="beta-email" class="beta-input" placeholder="e.g. yourname@gmail.com" maxlength="80" pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" title="Must be a valid @gmail.com address" required>
+                <div id="email-error" style="display:none; color:#dc2626; font-size:12.5px; font-weight:700; margin-top:4px;">Please enter a valid @gmail.com address</div>
+              </div>
+            </div>
+
+            <div class="beta-grid-2">
+              <div class="beta-field">
+                <label for="beta-university">University Name <span style="font-size:12px;color:var(--text-muted);">(3-80 chars)</span></label>
+                <input type="text" id="beta-university" class="beta-input" placeholder="e.g. Christ University" minlength="3" maxlength="80" required>
+              </div>
+
+              <div class="beta-field">
+                <label for="beta-class">Class / Section <span style="font-size:12px;color:var(--text-muted);">(2-40 chars)</span></label>
+                <input type="text" id="beta-class" class="beta-input" placeholder="e.g. 5 BCA B" minlength="2" maxlength="40" required>
+              </div>
+            </div>
+
+            <div class="beta-grid-2">
+              <div class="beta-field">
+                <label for="beta-dept">Department <span style="font-size:12px;color:var(--text-muted);">(2-60 chars)</span></label>
+                <input type="text" id="beta-dept" class="beta-input" placeholder="e.g. Computer Science" minlength="2" maxlength="60" required>
+              </div>
+
+              <div class="beta-field">
+                <label for="beta-campus">Campus Location <span style="font-size:12px;color:var(--text-muted);">(2-60 chars)</span></label>
+                <input type="text" id="beta-campus" class="beta-input" placeholder="e.g. Central Campus / Yeshwanthpur" minlength="2" maxlength="60" required>
+              </div>
+            </div>
+
+            <div class="beta-field">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label for="beta-reason">Reason to Join Beta <span style="font-size:12px;color:var(--text-muted);">(10-300 chars)</span></label>
+                <span id="char-counter" style="font-size:12px; font-weight:700; color:var(--text-muted);">0 / 300</span>
+              </div>
+              <textarea id="beta-reason" class="beta-textarea" placeholder="Tell us why you would like to test the extension early..." minlength="10" maxlength="300" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-beta-submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span>Submit Application via Email</span>
+            </button>
+          </form>
+        </div>
+
+        <div style="margin-top: 24px; text-align: center;">
+          <a href="index.html" style="font-size: 14px; font-weight: 700; color: var(--text-muted); text-decoration: none;">
+            ← Back to Homepage
+          </a>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-credit">
+          Designed & Developed by <strong>Dhruv Dhameliya</strong>.
+        </div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="policy.html">Privacy Policy</a></li>
+          <li><a href="payment.html">Support / Donate</a></li>
+          <li><a href="advertise.html">Advertise</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js?v=3.2.6"></script>
+  <script>
+    // Handle Beta Application Email Generation & Realtime Validation
+    document.addEventListener('DOMContentLoaded', () => {
+      const betaForm = document.getElementById('beta-app-form');
+      const emailInput = document.getElementById('beta-email');
+      const emailError = document.getElementById('email-error');
+      const reasonTextarea = document.getElementById('beta-reason');
+      const charCounter = document.getElementById('char-counter');
+
+      if (reasonTextarea && charCounter) {
+        reasonTextarea.addEventListener('input', () => {
+          const len = reasonTextarea.value.length;
+          charCounter.textContent = `${len} / 300`;
+          charCounter.style.color = len >= 300 ? '#dc2626' : 'var(--text-muted)';
+        });
+      }
+
+      if (emailInput && emailError) {
+        emailInput.addEventListener('input', () => {
+          if (emailInput.value.trim() && !emailInput.value.trim().toLowerCase().endsWith('@gmail.com')) {
+            emailError.style.display = 'block';
+          } else {
+            emailError.style.display = 'none';
+          }
+        });
+      }
+
+      if (betaForm) {
+        betaForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById('beta-name').value.trim();
+          const email = document.getElementById('beta-email').value.trim();
+          const university = document.getElementById('beta-university').value.trim();
+          const className = document.getElementById('beta-class').value.trim();
+          const department = document.getElementById('beta-dept').value.trim();
+          const campus = document.getElementById('beta-campus').value.trim();
+          const reason = document.getElementById('beta-reason').value.trim();
+
+          if (!email.toLowerCase().endsWith('@gmail.com')) {
+            if (emailError) emailError.style.display = 'block';
+            emailInput.focus();
+            return;
+          }
+
+          const emailTo = 'dhruvdhameliya23@gmail.com';
+          const subject = 'I wanna join beta';
+          
+          const bodyText = `Hyy Dhruv,\n\n${name} here from ${university}.\nMy Email: ${email}\n\nI wanna join beta for so and so reason: ${reason}.\n\nStudent Details:\nClass: ${className}\nDepartment: ${department}\nCampus: ${campus}\n\nThank you for considering!`;
+
+          const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+          
+          window.location.href = mailtoUrl;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
