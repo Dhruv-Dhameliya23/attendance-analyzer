@@ -10,9 +10,13 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Ambient Lighting Effects -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Navigation Bar -->
   <nav class="navbar">
-    <div class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <div class="brand-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -20,9 +24,10 @@
         </svg>
       </div>
       <span class="brand-title">Attendance Analyzer</span>
-    </div>
+    </a>
 
-    <ul class="nav-links">
+    <!-- Desktop Navigation Menu -->
+    <ul class="nav-menu">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="policy.html">Privacy Policy</a></li>
@@ -30,13 +35,53 @@
       <li><a href="advertise.html">Advertise</a></li>
     </ul>
 
-    <a href="payment.html" class="nav-cta">
-      <span>Support Project</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14M12 5l7 7-7 7"></path>
-      </svg>
-    </a>
+    <!-- Action Buttons -->
+    <div class="nav-actions">
+      <a href="https://chromewebstore.google.com/detail/attendance-analyzer/gbepkebfijgoafbkbcbjmmjipnhoaifd" target="_blank" rel="noopener" class="btn-install">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="21.17" y1="8" x2="12" y2="8"></line>
+          <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+          <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+        </svg>
+        <span>Install Extension</span>
+      </a>
+
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="index.html" class="active">
+      <span>Home</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="policy.html">
+      <span>Privacy Policy</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="payment.html">
+      <span>Support / Donate</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="advertise.html">
+      <span>Advertise With Us</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="https://chromewebstore.google.com/detail/attendance-analyzer/gbepkebfijgoafbkbcbjmmjipnhoaifd" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%); color: #ffffff; font-weight: 700;">
+      <span>Install Extension to Chrome</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+    </a>
+  </div>
 
   <!-- Main Container -->
   <div class="container">
@@ -45,17 +90,17 @@
     <header class="hero">
       <div class="badge-pill">
         <span class="badge-dot"></span>
-        <span>Version 3.1 — Fast & 100% Client-Side</span>
+        <span>Version 3.1 — Fast, Accurate & 100% Client-Side</span>
       </div>
 
       <h1 class="hero-title">Master Your Attendance With Real-Time Intelligence</h1>
       
       <p class="hero-subtitle">
-        The ultimate Chrome extension for university students. Calculate exact safe bunk limits, simulate Yellow & Blue claims, and never get caught below 75% or 85%.
+        The ultimate Chrome extension for university students. Calculate exact safe bunk limits, simulate Yellow & Blue concession claims, and protect your attendance before exams.
       </p>
 
       <div class="hero-actions">
-        <a href="https://chrome.google.com/webstore" class="btn btn-primary" id="webstore-btn" target="_blank" rel="noopener">
+        <a href="https://chromewebstore.google.com/detail/attendance-analyzer/gbepkebfijgoafbkbcbjmmjipnhoaifd" class="btn btn-primary" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <circle cx="12" cy="12" r="4"></circle>
@@ -63,13 +108,13 @@
             <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
             <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
           </svg>
-          Get on Chrome Web Store
+          Install Extension to Chrome
         </a>
         <a href="payment.html" class="btn btn-glass">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
-          Support Development
+          Support Project
         </a>
       </div>
     </header>
@@ -85,7 +130,7 @@
           </svg>
         </div>
         <h3>Safe Bunks & Leave Planner</h3>
-        <p>Know exactly how many classes you can afford to skip while keeping your attendance safely above your target (75%, 80%, 85%, or 90%).</p>
+        <p>Know exactly how many classes you can afford to miss while keeping your attendance comfortably above your target (75%, 80%, 85%, or 90%).</p>
       </div>
 
       <div class="feature-card">
@@ -95,7 +140,7 @@
           </svg>
         </div>
         <h3>Yellow & Blue Claim Simulator</h3>
-        <p>Simulate co-curricular (Yellow) and medical (Blue) concession claims with instant visual percentage forecasts before submitting official paperwork.</p>
+        <p>Simulate co-curricular (Yellow) and medical (Blue) concession claims with instant visual percentage forecasts before submitting official requests.</p>
       </div>
 
       <div class="feature-card">
@@ -106,7 +151,7 @@
           </svg>
         </div>
         <h3>100% Privacy Focused</h3>
-        <p>Everything runs 100% locally in your browser sandbox. No user data, passwords, or attendance logs are ever sent to remote tracking servers.</p>
+        <p>All calculations run 100% locally in your browser sandbox. No user data, passwords, or attendance logs are ever sent to remote tracking servers.</p>
       </div>
 
       <div class="feature-card">
@@ -117,7 +162,7 @@
           </svg>
         </div>
         <h3>Seamless Portal Overlay</h3>
-        <p>A sleek, non-intrusive floating glassmorphic dashboard that sits directly on top of your student portal without disturbing native page functionality.</p>
+        <p>A non-intrusive floating glassmorphic dashboard that sits directly on top of your student portal without breaking native page functionality.</p>
       </div>
 
     </section>
@@ -128,7 +173,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-credit">
-        Designed & Developed by <strong>Dhruv Dhameliya</strong> for students.
+        Designed & Developed by <strong>Dhruv Dhameliya</strong> (<a href="mailto:dhruvdhameliya23@gmail.com" style="color: #a5b4fc;">dhruvdhameliya23@gmail.com</a>).
       </div>
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
@@ -139,5 +184,6 @@
     </div>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>

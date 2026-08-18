@@ -4,74 +4,120 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advertise With Us — Attendance Analyzer</title>
-  <meta name="description" content="Advertising inquiries for Attendance Analyzer. Learn about our sponsorship policy and future opportunities.">
+  <meta name="description" content="Advertising inquiries and policy for Attendance Analyzer Chrome Extension.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/combo-chart.png">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <a href="index.html" style="display:flex; align-items:center; gap:12px;">
-        <div class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
-          </svg>
-        </div>
-        <span class="brand-title">Attendance Analyzer</span>
-      </a>
-    </div>
+  <!-- Ambient Lighting Effects -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
 
-    <ul class="nav-links">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+          <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+        </svg>
+      </div>
+      <span class="brand-title">Attendance Analyzer</span>
+    </a>
+
+    <!-- Desktop Navigation Menu -->
+    <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
       <li><a href="policy.html">Privacy Policy</a></li>
       <li><a href="payment.html">Support / Donate</a></li>
       <li><a href="advertise.html" class="active">Advertise</a></li>
     </ul>
 
-    <a href="index.html" class="nav-cta">
-      <span>Back to Home</span>
-    </a>
+    <!-- Action Buttons -->
+    <div class="nav-actions">
+      <a href="https://chromewebstore.google.com/detail/attendance-analyzer/gbepkebfijgoafbkbcbjmmjipnhoaifd" target="_blank" rel="noopener" class="btn-install">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="21.17" y1="8" x2="12" y2="8"></line>
+          <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+          <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+        </svg>
+        <span>Install Extension</span>
+      </a>
+
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <a href="index.html">
+      <span>Home</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="policy.html">
+      <span>Privacy Policy</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="payment.html">
+      <span>Support / Donate</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="advertise.html" class="active">
+      <span>Advertise With Us</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="https://chromewebstore.google.com/detail/attendance-analyzer/gbepkebfijgoafbkbcbjmmjipnhoaifd" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%); color: #ffffff; font-weight: 700;">
+      <span>Install Extension to Chrome</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+    </a>
+  </div>
 
   <!-- Main Container -->
   <div class="container">
     
-    <div class="glass-card payment-card">
-      <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(245, 158, 11, 0.15); color: #fbbf24; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <div class="glass-card payment-wrapper">
+      <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(245, 158, 11, 0.15); color: #fbbf24; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
           <polyline points="22,6 12,13 2,6"></polyline>
         </svg>
       </div>
 
-      <h1 class="payment-title">Advertising & Partnerships</h1>
+      <h1 class="payment-title">Advertising & Sponsorships</h1>
       
-      <div class="doc-highlight-box" style="text-align: center; margin: 24px auto 32px; max-width: 540px;">
-        <p style="font-size: 16px; font-weight: 700; color: #fef08a; margin-bottom: 8px;">
-          📢 Notice: Advertising is disabled in the current version
-        </p>
-        <p style="font-size: 14px; color: var(--text-muted); margin: 0;">
-          To ensure students enjoy a fast, distraction-free, and clean interface, we are currently not displaying any paid ads or commercial promotions in the extension.
+      <!-- Notice Box -->
+      <div class="ad-notice-box">
+        <h3>📢 Advertising Is Not Available in Current Version</h3>
+        <p>
+          To maintain an uncluttered, fast, and completely distraction-free experience for students, advertising and commercial promotions are not available in Attendance Analyzer v3.1.
         </p>
       </div>
 
       <p class="payment-desc">
-        Are you organizing a student event, hackathon, non-profit academic workshop, or university club fest? We welcome non-commercial community collaborations!
+        Are you organizing a student hackathon, college club fest, or academic non-profit workshop? We welcome non-commercial community collaborations!
       </p>
 
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <a href="mailto:dhruvdhameliya.dev@gmail.com?subject=Community%20Collaboration%20Inquiry%20-%20Attendance%20Analyzer" class="btn btn-primary">
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+        <a href="mailto:dhruvdhameliya23@gmail.com?subject=Community%20Collaboration%20Inquiry%20-%20Attendance%20Analyzer" class="btn btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
-          Contact Developer via Email
+          Contact via Email
         </a>
         <a href="index.html" class="btn btn-glass">
-          Back to Homepage
+          Back to Home
         </a>
       </div>
 
@@ -83,16 +129,17 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-credit">
-        Designed & Developed by <strong>Dhruv Dhameliya</strong>.
+        Designed & Developed by <strong>Dhruv Dhameliya</strong> (<a href="mailto:dhruvdhameliya23@gmail.com" style="color: #a5b4fc;">dhruvdhameliya23@gmail.com</a>).
       </div>
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="policy.html">Privacy Policy</a></li>
-        <li><a href="payment.html">Support</a></li>
+        <li><a href="payment.html">Support / Donate</a></li>
         <li><a href="advertise.html">Advertise</a></li>
       </ul>
     </div>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
