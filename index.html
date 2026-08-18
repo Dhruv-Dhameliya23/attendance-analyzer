@@ -232,6 +232,93 @@
 
             </section>
 
+            <!-- Interactive Live Attendance Sandbox & Safe Leave Calculator Widget -->
+            <section class="calc-sandbox-card" id="calculator-section">
+                <div class="calc-sandbox-header">
+                    <h2 class="calc-sandbox-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                            <line x1="8" y1="6" x2="16" y2="6"></line>
+                            <line x1="16" y1="14" x2="16" y2="18"></line>
+                            <path d="M16 10h.01"></path>
+                            <path d="M12 10h.01"></path>
+                            <path d="M8 10h.01"></path>
+                            <path d="M12 14h.01"></path>
+                            <path d="M8 14h.01"></path>
+                            <path d="M12 18h.01"></path>
+                            <path d="M8 18h.01"></path>
+                        </svg>
+                        Try Live Attendance Calculator
+                    </h2>
+                    <p class="calc-sandbox-subtitle">
+                        Test your current conducted classes and target attendance percentage instantly in this live sandbox.
+                    </p>
+                </div>
+
+                <div class="calc-grid">
+                    <!-- Left: Interactive Inputs -->
+                    <div class="calc-input-group">
+                        <div class="calc-field">
+                            <label class="calc-label" for="calc-conducted">
+                                <span>Total Classes Conducted</span>
+                            </label>
+                            <input type="number" id="calc-conducted" class="calc-input" value="60" min="1" max="500">
+                        </div>
+
+                        <div class="calc-field">
+                            <label class="calc-label" for="calc-attended">
+                                <span>Total Classes Attended</span>
+                            </label>
+                            <input type="number" id="calc-attended" class="calc-input" value="52" min="0" max="500">
+                        </div>
+
+                        <div class="calc-field">
+                            <label class="calc-label">
+                                <span>Target Attendance Goal</span>
+                            </label>
+                            <div class="calc-targets">
+                                <button type="button" class="calc-target-btn active" data-target="75">75%</button>
+                                <button type="button" class="calc-target-btn" data-target="80">80%</button>
+                                <button type="button" class="calc-target-btn" data-target="85">85%</button>
+                                <button type="button" class="calc-target-btn" data-target="90">90%</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Live Result Analysis -->
+                    <div class="calc-results">
+                        <div>
+                            <div class="calc-pct-display">
+                                <div>
+                                    <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 2px;">Current Percentage</div>
+                                    <div class="calc-pct-value" id="calc-result-pct">86.67%</div>
+                                </div>
+                                <div id="calc-result-badge" class="calc-badge-safe">Safe Standing</div>
+                            </div>
+
+                            <div class="calc-stat-row">
+                                <span class="calc-stat-label">Safe Bunks / Leaves Left</span>
+                                <span class="calc-stat-value" id="calc-result-leaves" style="color: #16a34a;">9 classes</span>
+                            </div>
+
+                            <div class="calc-stat-row">
+                                <span class="calc-stat-label">Classes Missed</span>
+                                <span class="calc-stat-value" id="calc-result-missed">8 classes</span>
+                            </div>
+
+                            <div class="calc-stat-row">
+                                <span class="calc-stat-label">Classes to Recover Goal</span>
+                                <span class="calc-stat-value" id="calc-result-recovery">0 (Goal Met)</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center;">
+                            The extension automates all of this directly inside your portal in real time.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
         <!-- Footer -->
