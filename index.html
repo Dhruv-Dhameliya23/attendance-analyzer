@@ -192,7 +192,116 @@
                     </div>
                 </div>
             </section>
+<!-- v3.2.3 UI Reference & Bug Fix Notes -->
+<section class="version-notes">
+  <div class="version-notes-header">
+    <h3>v3.2.3 — UI Reference & Bug Fix Notes</h3>
+  </div>
 
+  <div class="version-notes-list">
+
+    <div class="version-note">
+      <strong>1. Slider Interaction Bug</strong>
+      <p>
+        Scrolling and dragging on the page is affecting the slider.
+        Fix the slider so normal page scrolling and drag interactions do not
+        unintentionally change the slider value.
+      </p>
+    </div>
+
+    <div class="version-note">
+      <strong>2. Attendance Data Loading Issue</strong>
+      <p>
+        If attendance data is not detected or parsed correctly, go to the
+        Attendance section on the university website and switch to
+        <strong>Card Mode</strong>. The Card Mode button is located immediately
+        after the <strong>Download Report</strong> button.
+      </p>
+    </div>
+
+    <div class="version-note">
+      <strong>3. Push Notification</strong>
+      <p>
+        Make sure push notifications work properly and users receive important
+        attendance alerts even when the extension popup is not open.
+      </p>
+    </div>
+
+    <div class="version-note">
+      <strong>4. Drag to Here</strong>
+      <p>
+        Make sure the drag-and-drop interaction works correctly. Users should
+        be able to drag the required item or file and clearly drop it into the
+        designated <strong>“Drag to Here”</strong> area without triggering
+        unwanted scrolling or slider movement.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .version-notes {
+    width: 100%;
+    max-width: 100%;
+    margin: 24px 0 0;
+    padding: clamp(14px, 2.5vw, 22px);
+    box-sizing: border-box;
+    border: 1px solid #fecaca;
+    border-radius: clamp(10px, 1.5vw, 14px);
+    background: #fef2f2;
+    overflow: hidden;
+  }
+
+  .version-notes-header {
+    margin-bottom: clamp(12px, 2vw, 16px);
+  }
+
+  .version-notes-header h3 {
+    margin: 0;
+    color: #b91c1c;
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.4;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+  }
+
+  .version-notes-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(10px, 1.5vw, 14px);
+  }
+
+  .version-note {
+    min-width: 0;
+    padding: clamp(12px, 1.8vw, 16px);
+    box-sizing: border-box;
+    border: 1px solid #fecaca;
+    border-radius: clamp(8px, 1vw, 11px);
+    background: #ffffff;
+  }
+
+  .version-note strong {
+    display: block;
+    color: #dc2626;
+    font-size: clamp(13px, 1.5vw, 15px);
+    line-height: 1.4;
+  }
+
+  .version-note p {
+    margin: 6px 0 0;
+    color: #7f1d1d;
+    font-size: clamp(12px, 1.35vw, 14px);
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 700px) {
+    .version-notes-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
             <!-- Feature Cards (Matching Interactive Tour) -->
             <section class="features-grid">
 
