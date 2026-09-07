@@ -2,7 +2,7 @@
   "version": "4.0.0",
   "min_required_version": "4.0.0",
   "release_date": "2026-09-01",
-  "release_notes": " test msg Subject-wise calculations with margin forecasting, detailed subject drilldown, leave & claim redirection, 900 Target Mode, 5-slot multi-student profiles, portal theme matching, network sync fixes, and many more.",
+  "release_notes": "Subject-wise calculations with margin forecasting, detailed subject drilldown, leave & claim redirection, 900 Target Mode, 5-slot multi-student profiles, portal theme matching, network sync fixes, and many more.",
   "website_url": "https://dhruv-dhameliya23.github.io/attendance-analyzer/",
   "extension_url": "https://chromewebstore.google.com/detail/gbepkebfijgoafbkbcbjmmjipnhoaifd"
 }
