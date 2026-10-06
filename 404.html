@@ -11,26 +11,10 @@
       var segments = path.split('/').filter(Boolean);
       var lastSegment = segments.length ? segments[segments.length - 1] : '';
 
-      // If user visited a clean URL without .html (e.g. /browsers, /sidepanel, /faq)
+      // If user visited a clean URL without .html (e.g. /browsers, /sidepanel, /faq, /payment)
       if (lastSegment && !lastSegment.includes('.')) {
-        var targetFile = lastSegment + '.html';
-        fetch(targetFile)
-          .then(function (res) {
-            if (res.ok) return res.text();
-            throw new Error('Not found');
-          })
-          .then(function (html) {
-            document.open();
-            document.write(html);
-            document.close();
-            // Preserve the clean URL in browser address bar (no .html)
-            if (window.history && window.history.replaceState) {
-              window.history.replaceState(null, '', path + window.location.search + window.location.hash);
-            }
-          })
-          .catch(function () {
-            window.location.replace('index.html');
-          });
+        var targetFile = lastSegment + '.html' + window.location.search + window.location.hash;
+        window.location.replace(targetFile);
       } else {
         window.location.replace('index.html');
       }

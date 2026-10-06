@@ -84,19 +84,8 @@
 
   const isFileProto = typeof window !== 'undefined' && window.location.protocol === 'file:';
 
-  // =========================================================================
-  // Clean URL Bar Aesthetic: Always hide .html from URL bar when surfing
-  // =========================================================================
-  function cleanUrlBar() {
-    try {
-      if (!isFileProto && window.location.pathname.endsWith('.html')) {
-        let cleanPath = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
-        if (!cleanPath) cleanPath = '/';
-        window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
-      }
-    } catch (err) {}
-  }
-  cleanUrlBar();
+  // GitHub Pages Safe URL Resolution (Keep .html extension intact for 100% reliable CSS/asset loading)
+
 
   const NAV_CONFIG = {
     brand: {
@@ -436,7 +425,7 @@
       ? `Chrome Web Store extensions cannot be installed on mobile devices. Please open this page on your <strong>Laptop / Desktop (Windows, Mac, Linux)</strong> using Google Chrome, Brave, or Microsoft Edge.`
       : `Extensions require a Chromium browser. Please open this page on <strong>Google Chrome, Brave, Microsoft Edge, or Opera</strong> on your computer.`;
 
-    const browsersPageUrl = isFileProto ? 'browsers.html' : 'browsers';
+    const browsersPageUrl = 'browsers.html';
 
     toast.innerHTML = `
       <div class="caa-toast-top">
@@ -703,9 +692,7 @@
   function getCleanDisplayPath(urlStr) {
     try {
       const urlObj = new URL(urlStr, window.location.href);
-      let clean = urlObj.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
-      if (!clean) clean = '/';
-      return clean + urlObj.search + urlObj.hash;
+      return urlObj.pathname + urlObj.search + urlObj.hash;
     } catch (e) {
       return urlStr;
     }
@@ -854,6 +841,9 @@
       if (url.origin !== window.location.origin) return false;
       const path = url.pathname;
       if (path.endsWith('.zip') || path.endsWith('.crx') || path.endsWith('.pdf') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.json')) {
+        return false;
+      }
+      if (path.endsWith('payment.html')) {
         return false;
       }
       return true;
