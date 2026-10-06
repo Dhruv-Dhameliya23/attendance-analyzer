@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <title>Supported Chromium Browsers Directory — Attendance Analyzer</title>
+  <meta name="description" content="Explore the complete interactive directory of all Chromium-based web browsers supported by Attendance Analyzer. Search, filter by privacy, speed, and platform, and download directly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
+  <style>
+    /* Browsers Page Custom Component Styles */
+    .br-header-area {
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .br-badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      border: 1.5px solid rgba(37, 99, 235, 0.25);
+      color: #3b82f6;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      backdrop-filter: blur(8px);
+    }
+    .br-hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      margin: 0 0 12px 0;
+      line-height: 1.15;
+    }
+    .br-hero-subtitle {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Important Requirement Alert */
+    .br-req-card {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1.5px solid rgba(245, 158, 11, 0.3);
+      border-radius: 18px;
+      padding: 20px 22px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.06);
+    }
+    .br-req-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #d97706;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    [data-theme="dark"] .br-req-icon {
+      color: #fbbf24;
+    }
+    .br-req-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #b45309;
+      margin: 0 0 4px 0;
+    }
+    [data-theme="dark"] .br-req-title {
+      color: #fbbf24;
+    }
+    .br-req-text {
+      font-size: 13.8px;
+      color: #78350f;
+      line-height: 1.55;
+      margin: 0;
+    }
+    [data-theme="dark"] .br-req-text {
+      color: #cbd5e1;
+    }
+
+    /* Live Search & Filter Bar Container */
+    .br-search-container {
+      background: var(--bg-card, rgba(255, 255, 255, 0.85));
+      border: 1.5px solid var(--border-light, #e2e8f0);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+      backdrop-filter: blur(14px);
+    }
+    [data-theme="dark"] .br-search-container {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .br-search-box-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .br-search-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .br-search-input-wrap svg.search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .br-search-input {
+      width: 100%;
+      padding: 13px 40px 13px 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1.5px solid var(--border-light);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    [data-theme="dark"] .br-search-input {
+      background: rgba(30, 41, 59, 0.7);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .br-search-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.2);
+    }
+
+    .br-search-clear-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 18px;
+      padding: 4px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .br-search-clear-btn.active {
+      display: flex;
+    }
+
+    /* Platform Dropdown Selector */
+    .br-platform-select-wrap {
+      position: relative;
+      min-width: 160px;
+    }
+    .br-platform-select {
+      width: 100%;
+      padding: 13px 36px 13px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1.5px solid var(--border-light);
+      font-size: 13.5px;
+      font-weight: 750;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+    [data-theme="dark"] .br-platform-select {
+      background: rgba(30, 41, 59, 0.7);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .br-platform-select-wrap svg {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Filter Pills */
+    .br-filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .br-pill-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12.8px;
+      font-weight: 750;
+      border: 1.2px solid var(--border-light);
+      background: rgba(255, 255, 255, 0.5);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    [data-theme="dark"] .br-pill-btn {
+      background: rgba(30, 41, 59, 0.5);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+    }
+    .br-pill-btn:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #2563eb;
+    }
+    [data-theme="dark"] .br-pill-btn:hover {
+      color: #60a5fa;
+    }
+    .br-pill-btn.active {
+      background: #2563eb !important;
+      border-color: #2563eb !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Status Counter Bar */
+    .br-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 18px 4px 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .br-reset-all-link {
+      color: #2563eb;
+      cursor: pointer;
+      text-decoration: underline;
+      display: none;
+    }
+    .br-reset-all-link.active {
+      display: inline;
+    }
+
+    /* Browsers Grid */
+    .br-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 56px;
+    }
+
+    .br-card {
+      background: var(--bg-card, #ffffff);
+      border: 1.5px solid var(--border-light, #e2e8f0);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    [data-theme="dark"] .br-card {
+      background: rgba(15, 23, 42, 0.65);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+    .br-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+      border-color: #93c5fd;
+    }
+    [data-theme="dark"] .br-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 20px rgba(56, 189, 248, 0.1);
+    }
+
+    .br-card.is-rec {
+      border-color: #93c5fd;
+      background: linear-gradient(180deg, rgba(239, 246, 255, 0.7) 0%, var(--bg-card) 45%);
+    }
+    [data-theme="dark"] .br-card.is-rec {
+      border-color: rgba(56, 189, 248, 0.35);
+      background: linear-gradient(180deg, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.65) 45%);
+    }
+
+    .br-card-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 850;
+      padding: 3.5px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3);
+    }
+
+    .br-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .br-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .br-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      font-weight: 850;
+      color: var(--text-main);
+      margin: 0 0 2px 0;
+      letter-spacing: -0.2px;
+    }
+
+    .br-card-tagline {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #3b82f6;
+      margin: 0;
+    }
+
+    .br-card-engine {
+      font-size: 11.5px;
+      font-weight: 650;
+      color: var(--text-muted);
+      margin: 10px 0 12px;
+      padding: 4px 8px;
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 8px;
+      display: inline-block;
+      width: fit-content;
+    }
+    [data-theme="dark"] .br-card-engine {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .br-card-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+      flex: 1;
+    }
+
+    /* Chips & Feature Tags */
+    .br-chips-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .br-chip {
+      font-size: 11px;
+      font-weight: 750;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+    }
+    [data-theme="dark"] .br-chip {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    /* Platform Badges Row */
+    .br-plat-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 18px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .br-plat-badge {
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border-light);
+    }
+    [data-theme="dark"] .br-plat-badge {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .br-btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      background: #f1f5f9;
+      color: var(--text-main);
+      border: 1.5px solid var(--border-light);
+      box-sizing: border-box;
+      text-align: center;
+      cursor: pointer;
+    }
+    [data-theme="dark"] .br-btn-download {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+    }
+    .br-btn-download:hover {
+      background: #2563eb;
+      color: #ffffff !important;
+      border-color: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+    .br-card.is-rec .br-btn-download {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff !important;
+      border-color: #2563eb;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+    .br-card.is-rec .br-btn-download:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Empty state */
+    .br-empty-state {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+      grid-column: 1 / -1;
+    }
+    .br-empty-state.active {
+      display: block;
+    }
+    .br-empty-icon {
+      font-size: 44px;
+      margin-bottom: 12px;
+    }
+    .br-empty-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .br-empty-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* FAQ Box */
+    .br-faq-box {
+      background: var(--bg-card, #ffffff);
+      border: 1.5px solid var(--border-light);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+    [data-theme="dark"] .br-faq-box {
+      background: rgba(15, 23, 42, 0.65);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .br-faq-header-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 850;
+      color: var(--text-main);
+      margin: 0 0 18px 0;
+    }
+    .br-faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .br-faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .br-faq-q {
+      font-weight: 800;
+      font-size: 15.5px;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .br-faq-a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .br-hero-title {
+        font-size: 2.1rem;
+      }
+      .br-grid {
+        grid-template-columns: 1fr;
+      }
+      .br-search-box-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Modular Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="content-container">
+
+      <!-- Page Header -->
+      <section class="br-header-area">
+        <div class="br-badge-top">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>Chromium-Powered Ecosystem · Direct Chrome Web Store Support</span>
+        </div>
+        <h1 class="br-hero-title">Supported Web Browsers</h1>
+        <p class="br-hero-subtitle">
+          Attendance Analyzer is engineered on modern Chrome Extension Manifest V3 standards. Explore every supported Chromium browser below with direct download links and feature breakdowns.
+        </p>
+      </section>
+
+      <!-- Important Requirement Banner -->
+      <div class="br-req-card">
+        <div class="br-req-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v4M12 16h.01"></path>
+          </svg>
+        </div>
+        <div>
+          <h2 class="br-req-title">Non-Chromium Browsers (Firefox & Safari) Are Not Supported</h2>
+          <p class="br-req-text">
+            If you are viewing this on Apple Safari or Mozilla Firefox, Chrome Web Store extensions cannot be installed directly. Please open your university portal inside one of our recommended Chromium browsers listed below.
+          </p>
+        </div>
+      </div>
+
+      <!-- Live Search & Interactive Filter Control Bar -->
+      <section class="br-search-container" id="br-search-container">
+        <div class="br-search-box-row">
+          <div class="br-search-input-wrap">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="br-search-input" class="br-search-input" placeholder="Search browsers by name, feature (e.g. Brave, adblock, speed, Kiwi, Android)..." autocomplete="off" spellcheck="false">
+            <button type="button" id="br-search-clear" class="br-search-clear-btn" aria-label="Clear search">&times;</button>
+          </div>
+
+          <div class="br-platform-select-wrap">
+            <select id="br-platform-filter" class="br-platform-select" aria-label="Filter by Operating System">
+              <option value="all">🌐 All Operating Systems</option>
+              <option value="Windows">🪟 Windows (10 / 11)</option>
+              <option value="macOS">🍎 macOS (Apple Silicon & Intel)</option>
+              <option value="Linux">🐧 Linux (Ubuntu, Debian, Arch)</option>
+              <option value="Android">🤖 Android (Kiwi / Mobile Ext)</option>
+            </select>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="br-filter-pills" id="br-category-pills">
+          <button type="button" class="br-pill-btn active" data-category="all">
+            <span>All Browsers</span>
+            <span class="count-tag" id="count-all">21</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="recommended">
+            <span>★ Recommended</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="privacy">
+            <span>🛡️ Privacy-Focused</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="productivity">
+            <span>💼 Productivity & Workspaces</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="performance">
+            <span>⚡ Ultra-Fast / Performance</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="gaming">
+            <span>🎮 Gaming</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="mobile">
+            <span>📱 Mobile Extension Support</span>
+          </button>
+          <button type="button" class="br-pill-btn" data-category="developer">
+            <span>🧪 Developer / Canary</span>
+          </button>
+        </div>
+
+        <!-- Live Result Counter Bar -->
+        <div class="br-status-bar">
+          <span id="br-result-count-label">Showing 21 of 21 Chromium Browsers</span>
+          <span id="br-reset-filters" class="br-reset-all-link">✕ Reset Filters</span>
+        </div>
+      </section>
+
+      <!-- Browsers Dynamic Card Grid -->
+      <section class="br-grid" id="br-grid">
+        <!-- Rendered dynamically by browser directory engine -->
+      </section>
+
+      <!-- Empty State when 0 search matches -->
+      <div class="br-empty-state" id="br-empty-state">
+        <div class="br-empty-icon">🔍</div>
+        <div class="br-empty-title">No matching Chromium browsers found</div>
+        <p class="br-empty-desc">Try checking for spelling or resetting your filter criteria.</p>
+        <button type="button" id="br-empty-reset-btn" class="br-pill-btn active" style="margin: 0 auto;">
+          <span>Reset Search & Show All</span>
+        </button>
+      </div>
+
+      <!-- FAQ Section -->
+      <section class="br-faq-box">
+        <h2 class="br-faq-header-title">Frequently Asked Questions about Browser Support</h2>
+
+        <div class="br-faq-item">
+          <div class="br-faq-q">Why does Attendance Analyzer require a Chromium-based browser?</div>
+          <p class="br-faq-a">
+            The extension is engineered on modern <strong>Manifest V3 Chrome Standards</strong>, taking full advantage of the Chrome Side Panel API, client-side isolated background service workers, and local indexed storage. Chromium powers over 75% of desktop browsers worldwide, ensuring maximum speed and privacy.
+          </p>
+        </div>
+
+        <div class="br-faq-item">
+          <div class="br-faq-q">Can I use Attendance Analyzer on Mac (Apple Silicon M1/M2/M3/M4 or Intel)?</div>
+          <p class="br-faq-a">
+            <strong>Yes, 100%!</strong> You can install and use Attendance Analyzer on macOS using Google Chrome, Brave Browser, Microsoft Edge, Arc Browser, Opera, or Vivaldi. All calculations run with high-performance native ARM64 speed.
+          </p>
+        </div>
+
+        <div class="br-faq-item">
+          <div class="br-faq-q">Can I install the extension on an Android phone?</div>
+          <p class="br-faq-a">
+            Standard Google Chrome on Android does not support desktop extensions. However, you can download <strong>Kiwi Browser</strong> from the Google Play Store on Android, which provides a native extension bridge to install Attendance Analyzer directly from the Chrome Web Store.
+          </p>
+        </div>
+
+        <div class="br-faq-item">
+          <div class="br-faq-q">What happens to my data if I uninstall or switch browsers?</div>
+          <p class="br-faq-a">
+            All attendance calculations, targets, and simulated concessions are stored 100% locally in your browser's private indexed sandbox. If you uninstall the extension, the browser immediately wipes its local database with zero cloud footprint.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Browser Directory Data & Search Engine Script -->
+  <script>
+    (function () {
+      const BROWSERS_DATA = [
+        {
+          id: "chrome",
+          name: "Google Chrome",
+          tagline: "The World's Standard Web Browser",
+          categories: ["popular", "recommended"],
+          badge: "Recommended #1",
+          engine: "Blink / V8 Core · 100% Native Extension Compatibility",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "The official standard browser with full direct compatibility for Attendance Analyzer. Native side panel docking, background web worker execution, and local storage database.",
+          features: ["Direct Web Store Install", "Side Panel API", "Google Sync", "DevTools"],
+          downloadUrl: "https://www.google.com/chrome/",
+          color: "#2563eb",
+          isRecommended: true
+        },
+        {
+          id: "brave",
+          name: "Brave Browser",
+          tagline: "Ultra-Fast Privacy by Default",
+          categories: ["popular", "privacy", "recommended"],
+          badge: "Recommended #2",
+          engine: "Chromium Core · Zero Telemetry & Built-in Shields",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Blazing fast Chromium browser with built-in ad, tracker, and fingerprinting blocking. 100% compatible with Chrome Web Store extensions and ideal for students desiring speed & privacy.",
+          features: ["Brave Shields", "Chrome Web Store Native", "3x Faster Page Loads", "Tor Integration"],
+          downloadUrl: "https://brave.com/",
+          color: "#ea580c",
+          isRecommended: true
+        },
+        {
+          id: "edge",
+          name: "Microsoft Edge",
+          tagline: "Native Performance for Windows & Mac",
+          categories: ["popular", "productivity", "recommended"],
+          badge: "Recommended #3",
+          engine: "Chromium Engine · Optimized Memory & Sleeping Tabs",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Pre-installed on Windows 10 & 11 and available for macOS and Linux. Supports Chrome Web Store extensions directly in 1-click alongside Edge Add-ons, vertical tabs, and sleeping tabs.",
+          features: ["Vertical Tabs", "Sleeping Tabs", "Direct Chrome Web Store", "Built-in Copilot"],
+          downloadUrl: "https://www.microsoft.com/edge",
+          color: "#0284c7",
+          isRecommended: true
+        },
+        {
+          id: "arc",
+          name: "Arc Browser",
+          tagline: "The Modern Computer Workspace Browser",
+          categories: ["popular", "productivity", "recommended"],
+          badge: "Top Pick · Productivity",
+          engine: "Chromium Engine · Spaces & Clean Split View",
+          platforms: ["macOS", "Windows", "Android"],
+          desc: "Created by The Browser Company. Arc transforms your browsing with customizable Workspaces, Split Tabs, and a distraction-free sidebar. Full Chrome extension support out-of-the-box.",
+          features: ["Spaces & Profiles", "Split View Tabs", "Command Bar", "Full Extension Support"],
+          downloadUrl: "https://arc.net/",
+          color: "#ec4899",
+          isRecommended: true
+        },
+        {
+          id: "opera-gx",
+          name: "Opera GX",
+          tagline: "The World's First Gaming Browser",
+          categories: ["gaming", "popular"],
+          badge: "Gaming Edition",
+          engine: "Chromium Engine · RAM, CPU & Network Limiters",
+          platforms: ["Windows", "macOS", "Android"],
+          desc: "Engineered for gamers and power-users with hardware control limits (RAM / CPU / Network limiters), Discord/Twitch sidebars, custom themes, and full Chrome Web Store extension compatibility.",
+          features: ["RAM & CPU Limiter", "Twitch/Discord Sidebar", "Custom Audio FX", "Web Store Native"],
+          downloadUrl: "https://www.opera.com/gx",
+          color: "#dc2626"
+        },
+        {
+          id: "opera",
+          name: "Opera One",
+          tagline: "Smart Browser with Integrated AI & Tab Islands",
+          categories: ["popular", "productivity"],
+          badge: "Standard Edition",
+          engine: "Chromium Engine · Tab Islands & Native Messenger",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Feature-packed Chromium browser featuring Tab Islands for grouping research tabs, built-in WhatsApp & Telegram sidebars, free VPN, and seamless Chrome extension installation.",
+          features: ["Tab Islands", "Free Built-in VPN", "Sidebar Messengers", "Chrome Web Store Ready"],
+          downloadUrl: "https://www.opera.com/",
+          color: "#e11d48"
+        },
+        {
+          id: "vivaldi",
+          name: "Vivaldi",
+          tagline: "Extreme Customization for Power Users",
+          categories: ["productivity", "privacy"],
+          badge: "Power-User Custom",
+          engine: "Chromium Engine · Two-Level Tab Stacks & Web Panels",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "The most customizable browser on earth. Offers two-level tab stacks, custom web panels, mouse gestures, built-in notes, ad blocker, and 100% Chrome Web Store extension support.",
+          features: ["Two-Level Tab Stacks", "Web Panels", "Mouse Gestures", "Chrome Web Store Native"],
+          downloadUrl: "https://vivaldi.com/",
+          color: "#ef4444"
+        },
+        {
+          id: "thorium",
+          name: "Thorium Browser",
+          tagline: "The Fastest Chromium Fork on Earth",
+          categories: ["performance", "privacy"],
+          badge: "Maximum FPS & Speed",
+          engine: "Chromium Engine · Compiler Optimized (AVX2/SSE4/FMA)",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Open-source Chromium fork compiled with extreme compiler optimizations (LLVM Clang, AVX2, SSE4, AES). Up to 38% faster page load and JavaScript execution than vanilla Chrome.",
+          features: ["AVX2 / SSE4 Optimizations", "Clean Codebase", "HEVC & Widevine Support", "Full Web Store Access"],
+          downloadUrl: "https://thorium.rocks/",
+          color: "#059669"
+        },
+        {
+          id: "ungoogled",
+          name: "Ungoogled Chromium",
+          tagline: "100% De-Googled Pure Open-Source",
+          categories: ["privacy", "developer"],
+          badge: "Pure Privacy",
+          engine: "Chromium Engine · Google Services Stripped Out",
+          platforms: ["Windows", "macOS", "Linux"],
+          desc: "A drop-in replacement for Chromium retaining the default Chromium experience without background Google telemetry, Google Host detector, or tracking requests. Complete student privacy.",
+          features: ["Zero Google Telemetry", "100% Open Source", "Clean Sandbox", "Extension Support"],
+          downloadUrl: "https://github.com/ungoogled-software/ungoogled-chromium",
+          color: "#475569"
+        },
+        {
+          id: "kiwi",
+          name: "Kiwi Browser (Android)",
+          tagline: "Chrome Extension Support on Android",
+          categories: ["mobile", "popular"],
+          badge: "Mobile WebStore Support",
+          engine: "Chromium Engine · Mobile Extension Bridge",
+          platforms: ["Android"],
+          desc: "The premier Android mobile browser that supports Chrome Web Store extensions! Allows students to install Attendance Analyzer directly onto Android phones and calculate attendance on mobile portals.",
+          features: ["Mobile Chrome Extensions", "Night Mode with Contrast", "Bottom Address Bar", "Ad Blocker"],
+          downloadUrl: "https://kiwibrowser.com/",
+          color: "#14b8a6"
+        },
+        {
+          id: "sidekick",
+          name: "Sidekick Browser",
+          tagline: "The Operating System for Work & School",
+          categories: ["productivity"],
+          badge: "Focus & Workspaces",
+          engine: "Chromium Core · Multi-Account & Focus Mode",
+          platforms: ["Windows", "macOS", "Linux"],
+          desc: "Designed to eliminate distraction and tab clutter. Features multi-account login for university portals, built-in task manager, memory defragmenter, and full Chrome Web Store extension support.",
+          features: ["Multi-Account Sidebar", "Distraction Blocker", "Memory Saver", "Web Store Compatible"],
+          downloadUrl: "https://www.meetsidekick.com/",
+          color: "#7c3aed"
+        },
+        {
+          id: "naver-whale",
+          name: "Naver Whale",
+          tagline: "Dual-Screen Split & Productivity Browser",
+          categories: ["productivity"],
+          badge: "Dual Tab Screen",
+          engine: "Chromium Engine · Smart Sidebar & Mobile Window",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Innovative Chromium browser featuring dual-tab browsing (viewing two web pages side-by-side on one screen), a smart widget sidebar, quick translations, and full Chrome Web Store support.",
+          features: ["Dual-Tab Split Screen", "Quick Translation", "Custom Sidebar", "Full Chrome Store Support"],
+          downloadUrl: "https://whale.naver.com/",
+          color: "#0891b2"
+        },
+        {
+          id: "yandex",
+          name: "Yandex Browser",
+          tagline: "Fast Browser with Turbo Mode",
+          categories: ["performance", "popular"],
+          badge: "Turbo Compression",
+          engine: "Chromium Core + Blink · Active Protection",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "High-speed Chromium browser with Turbo page compression for weak Wi-Fi networks, smart search bar, DNS spoofing protection, and dual extension support (Chrome Web Store + Opera Add-ons).",
+          features: ["Turbo Slow-Network Mode", "Smart Box Search", "Dual Store Support", "Antivirus Guard"],
+          downloadUrl: "https://browser.yandex.com/",
+          color: "#dc2626"
+        },
+        {
+          id: "cent",
+          name: "Cent Browser",
+          tagline: "Enhanced Power-User Chromium",
+          categories: ["productivity", "performance"],
+          badge: "Custom Gestures",
+          engine: "Chromium Engine · Custom Tab Bar & Mouse Gestures",
+          platforms: ["Windows"],
+          desc: "A power-packed Windows Chromium browser with customizable mouse gestures, scrollable multi-row tab bars, boss key, auto memory optimization, and direct Chrome Web Store extension access.",
+          features: ["Mouse Gestures", "Scrollable Tab Bar", "Memory Auto-Purge", "Full Web Store Access"],
+          downloadUrl: "https://www.centbrowser.com/",
+          color: "#0284c7"
+        },
+        {
+          id: "orion",
+          name: "Orion Browser",
+          tagline: "Zero-Telemetry Mac Browser with Chrome Extension Support",
+          categories: ["privacy", "productivity"],
+          badge: "WebKit + Chrome Exts",
+          engine: "WebKit Core · Two-Way Chrome & Firefox Extension Bridge",
+          platforms: ["macOS"],
+          desc: "Ultra-fast native macOS browser built on WebKit that supports both Chrome and Firefox extensions natively with zero telemetry and exceptional battery efficiency on MacBooks.",
+          features: ["Chrome Extension Bridge", "Zero Telemetry", "100% Native Swift/WebKit", "Long Battery Life"],
+          downloadUrl: "https://kagi.com/orion/",
+          color: "#4f46e5"
+        },
+        {
+          id: "chromium-base",
+          name: "Chromium Open Source",
+          tagline: "The Official Open-Source Foundation",
+          categories: ["developer", "privacy"],
+          badge: "Raw Engine",
+          engine: "Blink & V8 · Upstream Source Code",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "The open-source browser project that powers Google Chrome, Brave, Edge, and dozens of modern web browsers. Download official pure builds directly without proprietary codecs.",
+          features: ["100% Open Source", "Upstream Releases", "Full API Access", "Standard Extension Support"],
+          downloadUrl: "https://www.chromium.org/getting-involved/download-chromium/",
+          color: "#2563eb"
+        },
+        {
+          id: "srware-iron",
+          name: "SRWare Iron",
+          tagline: "The Real Alternative to Chrome without Tracking",
+          categories: ["privacy"],
+          badge: "Privacy Classic",
+          engine: "Chromium Engine · Privacy Guard",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "One of the earliest privacy-focused Chromium builds developed in Germany. Removes Google Client ID, suggest tracking, RLZ tracking, and telemetry while maintaining full Web Store install.",
+          features: ["No Tracking IDs", "Built-in Adblocker", "Fast Security Updates", "Chrome Store Compatible"],
+          downloadUrl: "https://www.srware.net/iron/",
+          color: "#64748b"
+        },
+        {
+          id: "cromite",
+          name: "Cromite",
+          tagline: "Bromite Reborn — Privacy & Adblock for Android/PC",
+          categories: ["privacy", "mobile"],
+          badge: "Bromite Successor",
+          engine: "Chromium Engine · Built-in Adblocking Engine",
+          platforms: ["Android", "Windows", "Linux"],
+          desc: "The continuation of Bromite with built-in adblocking, fingerprinting defenses, and modern Chromium upstream tracking. Clean, secure, and fast for mobile and desktop browsing.",
+          features: ["Built-in Adblock Engine", "Enhanced Privacy Flags", "Dark Mode Support", "Open Source"],
+          downloadUrl: "https://github.com/uazo/cromite",
+          color: "#059669"
+        },
+        {
+          id: "chrome-canary",
+          name: "Google Chrome Canary",
+          tagline: "Bleeding-Edge Nightly Chrome Features",
+          categories: ["developer"],
+          badge: "Nightly Build",
+          engine: "Chromium Bleeding-Edge · Updated Daily",
+          platforms: ["Windows", "macOS", "Android"],
+          desc: "Designed for developers and enthusiasts. Updated nightly with raw experimental features and APIs before they arrive in stable Chrome. Runs side-by-side with stable Chrome.",
+          features: ["Daily Updates", "Experimental Flags", "Latest Manifest V3 APIs", "Independent Profile"],
+          downloadUrl: "https://www.google.com/chrome/canary/",
+          color: "#eab308"
+        },
+        {
+          id: "edge-dev",
+          name: "Microsoft Edge Insider (Dev/Canary)",
+          tagline: "Weekly Preview of Upcoming Edge Innovations",
+          categories: ["developer"],
+          badge: "Insider Build",
+          engine: "Chromium Engine · Weekly Insider Channels",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Microsoft Edge Insider Dev and Canary channels provide early access to new tab management, AI integration, and developer tooling with full extension support.",
+          features: ["Early Feature Access", "Dedicated Feedback Tools", "Fast Channel Releases", "Full Store Access"],
+          downloadUrl: "https://www.microsoft.com/edge/insider",
+          color: "#0284c7"
+        },
+        {
+          id: "brave-beta",
+          name: "Brave Beta & Nightly",
+          tagline: "Early Testing for Brave Shields & Speed",
+          categories: ["developer", "privacy"],
+          badge: "Beta & Nightly",
+          engine: "Chromium Engine · Early Shields Builds",
+          platforms: ["Windows", "macOS", "Linux", "Android"],
+          desc: "Preview the newest privacy shields, performance upgrades, and Chromium merges before they reach public release. Operates independently from standard Brave installation.",
+          features: ["Early Shields Engine", "Independent Storage", "Crash Reporting", "Full Web Store Access"],
+          downloadUrl: "https://brave.com/download-beta/",
+          color: "#ea580c"
+        }
+      ];
+
+      function renderBrowserCard(b) {
+        const isRecClass = b.isRecommended ? 'is-rec' : '';
+        const badgeHtml = b.badge ? `<span class="br-card-badge">${b.badge}</span>` : '';
+        const chipsHtml = (b.features || []).map(f => `<span class="br-chip">${f}</span>`).join('');
+        const platHtml = (b.platforms || []).map(p => `<span class="br-plat-badge">${p}</span>`).join('');
+
+        return `
+          <div class="br-card ${isRecClass}" data-id="${b.id}" data-categories="${b.categories.join(' ')}" data-platforms="${b.platforms.join(' ')}">
+            ${badgeHtml}
+            <div>
+              <div class="br-card-top">
+                <div class="br-icon-box" style="background: ${b.color}15; color: ${b.color};">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <line x1="21.17" y1="8" x2="12" y2="8"></line>
+                    <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+                    <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="br-card-title">${b.name}</h3>
+                  <div class="br-card-tagline">${b.tagline}</div>
+                </div>
+              </div>
+              <div class="br-card-engine">${b.engine}</div>
+              <p class="br-card-desc">${b.desc}</p>
+              <div class="br-chips-row">${chipsHtml}</div>
+              <div class="br-plat-row">
+                <span>Available for:</span>
+                ${platHtml}
+              </div>
+            </div>
+            <a href="${b.downloadUrl}" target="_blank" rel="noopener noreferrer" class="br-btn-download">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download ${b.name}</span>
+            </a>
+          </div>
+        `;
+      }
+
+      window.initBrowserDirectory = function () {
+        const grid = document.getElementById('br-grid');
+        const searchInput = document.getElementById('br-search-input');
+        const clearBtn = document.getElementById('br-search-clear');
+        const platformSelect = document.getElementById('br-platform-filter');
+        const categoryPills = document.querySelectorAll('#br-category-pills .br-pill-btn');
+        const resultLabel = document.getElementById('br-result-count-label');
+        const resetLink = document.getElementById('br-reset-filters');
+        const emptyState = document.getElementById('br-empty-state');
+        const emptyResetBtn = document.getElementById('br-empty-reset-btn');
+
+        if (!grid) return;
+
+        let activeCategory = 'all';
+        let activePlatform = 'all';
+        let searchQuery = '';
+
+        // Initial render
+        grid.innerHTML = BROWSERS_DATA.map(renderBrowserCard).join('');
+
+        function filterBrowsers() {
+          const query = searchQuery.trim().toLowerCase();
+          let visibleCount = 0;
+
+          const cards = grid.querySelectorAll('.br-card');
+          cards.forEach((card, idx) => {
+            const b = BROWSERS_DATA[idx];
+            if (!b) return;
+
+            // Category matching
+            const matchCategory = (activeCategory === 'all') || b.categories.includes(activeCategory);
+
+            // Platform matching
+            const matchPlatform = (activePlatform === 'all') || b.platforms.includes(activePlatform);
+
+            // Search query matching
+            const searchHaystack = `${b.name} ${b.tagline} ${b.desc} ${b.engine} ${(b.features || []).join(' ')} ${(b.platforms || []).join(' ')}`.toLowerCase();
+            const matchSearch = !query || searchHaystack.includes(query);
+
+            if (matchCategory && matchPlatform && matchSearch) {
+              card.style.display = 'flex';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Update count label
+          if (resultLabel) {
+            resultLabel.textContent = `Showing ${visibleCount} of ${BROWSERS_DATA.length} Chromium Browsers`;
+          }
+
+          // Show / Hide empty state
+          if (emptyState) {
+            emptyState.classList.toggle('active', visibleCount === 0);
+          }
+
+          // Show / Hide reset link
+          const isFiltered = activeCategory !== 'all' || activePlatform !== 'all' || query !== '';
+          if (resetLink) resetLink.classList.toggle('active', isFiltered);
+          if (clearBtn) clearBtn.classList.toggle('active', query !== '');
+        }
+
+        // Search Input Event
+        if (searchInput) {
+          searchInput.oninput = () => {
+            searchQuery = searchInput.value;
+            filterBrowsers();
+          };
+        }
+
+        // Clear Search Button
+        if (clearBtn) {
+          clearBtn.onclick = () => {
+            if (searchInput) {
+              searchInput.value = '';
+              searchQuery = '';
+              searchInput.focus();
+              filterBrowsers();
+            }
+          };
+        }
+
+        // Platform Filter Event
+        if (platformSelect) {
+          platformSelect.onchange = () => {
+            activePlatform = platformSelect.value;
+            filterBrowsers();
+          };
+        }
+
+        // Category Pills Events
+        categoryPills.forEach(pill => {
+          pill.onclick = () => {
+            categoryPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activeCategory = pill.getAttribute('data-category') || 'all';
+            filterBrowsers();
+          };
+        });
+
+        // Reset Filters Action
+        const resetFilters = () => {
+          searchQuery = '';
+          activeCategory = 'all';
+          activePlatform = 'all';
+          if (searchInput) searchInput.value = '';
+          if (platformSelect) platformSelect.value = 'all';
+          categoryPills.forEach(p => {
+            p.classList.toggle('active', p.getAttribute('data-category') === 'all');
+          });
+          filterBrowsers();
+        };
+
+        if (resetLink) resetLink.onclick = resetFilters;
+        if (emptyResetBtn) emptyResetBtn.onclick = resetFilters;
+      };
+
+      // Auto-run on load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.initBrowserDirectory);
+      } else {
+        window.initBrowserDirectory();
+      }
+    })();
+  </script>
+</body>
+</html>

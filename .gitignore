@@ -1,7 +1,9 @@
-# OS & Temporary files
-.DS_Store
-Thumbs.db
-*.tmp
-*.bak
-.vscode/
-.idea/
+# Python & Local Server ignores
+*.py
+*.pyc
+*.pyo
+__pycache__/
+dev-server.py
+server.py
+*.log
+*.zip

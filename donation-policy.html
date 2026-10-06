@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <title>Donation & Giving Back Policy — Attendance Analyzer</title>
+  <meta name="description" content="Official Donation, Giving Back, and Sponsorship Policy of Attendance Analyzer. Equal distribution, disbursement thresholds, and preferred club support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
+</head>
+<body>
+
+  <!-- Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="content-container">
+      
+      <div class="policy-header">
+        <div class="section-tagline">Official Framework & Guidelines</div>
+        <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 8px;">Donation & Giving Back Policy</h1>
+        <div class="policy-updated">Last updated: August 22, 2026 · Version 4.0.0</div>
+      </div>
+
+        <!-- Policy Summary Box -->
+        <div class="policy-summary-box">
+          <p style="margin-bottom: 10px; font-weight: 700; color: var(--text-main);">
+            Attendance Analyzer operates with a strong social mission: empowering students through free productivity tools while channeling voluntary support into verified university social impact clubs (CSA & Anvaya) and charitable trusts.
+          </p>
+          <p style="margin-bottom: 0;">
+            This policy outlines our transparent donation allocation framework, disbursement thresholds, equal distribution principles, and non-refundable gratuity terms.
+          </p>
+        </div>
+
+        <!-- Non-Refundable Notice Alert -->
+        <div class="non-refundable-alert">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <strong>Strict Non-Refundable Policy:</strong> All developer contributions, tip jar gratuities, and charitable pledge donations are voluntary student contributions and are <strong>strictly non-refundable by any chance / under any circumstance</strong>. Please verify your amount before paying.
+          </div>
+        </div>
+
+        <!-- Section 1: Equal Distribution Model -->
+        <div class="policy-section">
+          <h2>1. Equal Distribution Principle</h2>
+          <p>
+            All funds allocated for community giving back are distributed <strong>equally between our preferred student clubs: CSA (BYC Campus) and Anvaya (Central Campus)</strong>. Every preferred club receives an exact 50/50 proportional share of the community giving pool.
+          </p>
+          <p>
+            Contributions are dedicated to genuine student welfare causes, including financial aid for poor students, school supply kits, exam fee support, and grassroots community volunteering.
+          </p>
+        </div>
+
+        <!-- Section 2: Minimum Disbursement Threshold -->
+        <div class="policy-section">
+          <h2>2. Payout & Disbursement Threshold (₹1,000 per Club)</h2>
+          <p>
+            To prevent excessive payment gateway processing overhead and bank transaction friction, funds are pooled and disbursed only when the accumulated balance reaches a minimum of <strong>₹1,000 per club</strong>.
+          </p>
+          <ul>
+            <li><strong>Accumulation:</strong> Monthly contribution pledges accumulate in the pooled fund.</li>
+            <li><strong>Disbursement:</strong> Once a club's accumulated balance reaches ₹1,000+, an official direct transfer is executed.</li>
+            <li><strong>Receipts & Proof:</strong> Transaction slips and proofs will be uploaded to our public <a href="proof" style="color: var(--primary); font-weight:700;">Proof & Ledger</a> page (updated every 2 to 3 months).</li>
+          </ul>
+        </div>
+
+        <!-- Section 3: Escalation Matrix (10% to 30%-40%+) -->
+        <div class="policy-section">
+          <h2>3. Scalable Contribution Matrix</h2>
+          <p>
+            Our charitable giving percentage starts at 10% and will scale upwards as more campus collaborations are formalized:
+          </p>
+
+          <div class="matrix-grid">
+            <div class="matrix-item">
+              <div class="matrix-val" style="color: #10b981;">10%</div>
+              <div class="matrix-label">Current Starting Pledge</div>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">10% of monthly contributions donated equally to CSA & Anvaya</p>
+            </div>
+            <div class="matrix-item">
+              <div class="matrix-val" style="color: #6366f1;">30% – 40%+</div>
+              <div class="matrix-label">Expanded Collaboration Tier</div>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Pledge automatically scales to 30%-40%+ or more as per requirements</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Preferred Campus Clubs Showcase -->
+        <div class="policy-section">
+          <h2>4. Preferred Campus Clubs</h2>
+          <p>
+            We proudly channel voluntary student support towards two key student organizations:
+          </p>
+
+          <div class="clubs-grid" id="policy-clubs-container">
+            <!-- Rendered dynamically from sdg-data.js -->
+          </div>
+        </div>
+
+        <!-- Section 5: Relevant United Nations SDG Goals Alignment -->
+        <div class="policy-section">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <h2>5. United Nations Sustainable Development Goals (SDG) Alignment</h2>
+            <span style="font-size: 12px; font-weight: 800; background: var(--primary); color: #fff; padding: 3px 8px; border-radius: 6px;">Supported SDGs</span>
+          </div>
+          <p>
+            Here is how our core supported UN Sustainable Development Goals connect with our student tool and giving back pledge to CSA (BYC) and Anvaya (Central):
+          </p>
+
+          <div class="all-sdg-grid" id="policy-sdg-container">
+            <!-- Rendered dynamically from sdg-data.js -->
+          </div>
+        </div>
+
+        <!-- Section 6: Public Ledger & Redaction Privacy -->
+        <div class="policy-section">
+          <h2>6. Public Ledger & Privacy Redaction</h2>
+          <p>
+            Full transparency is guaranteed while upholding absolute student privacy:
+          </p>
+          <ul>
+            <li><strong>Public Proofs:</strong> Verified donation transfer receipts will be published on the <a href="proof" style="color: var(--primary); font-weight:700;">Proof & Transparency</a> page once the ₹1,000 threshold per club is reached.</li>
+            <li><strong>Privacy Masking:</strong> Student donor phone numbers, account numbers, and personal identifiers are strictly hidden and redacted.</li>
+            <li><strong>Cadence:</strong> Records are refreshed every <strong>2 to 3 months</strong> or upon executing a ₹1,000+ payout.</li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="proof-action-links">
+          <a href="payment" class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">
+            Support & Donate Now
+          </a>
+          <a href="proof" class="btn-policy-link">
+            View Proof & Ledger →
+          </a>
+          <a href="policy" class="btn-policy-link">
+            Privacy Policy →
+          </a>
+        </div>
+
+    </main>
+
+    <!-- Footer dynamically injected via navigation.js -->
+    <footer class="footer"></footer>
+  </div>
+
+  <script src="sdg-data.js?v=4.1.0"></script>
+  <script src="main.js?v=4.1.0"></script>
+  <script>
+    (function initPolicyPage() {
+      const clubsContainer = document.getElementById('policy-clubs-container');
+      const sdgContainer = document.getElementById('policy-sdg-container');
+
+      if (window.SDG_DATA) {
+        if (clubsContainer && window.SDG_DATA.clubs) {
+          clubsContainer.innerHTML = window.SDG_DATA.clubs.map(club => `
+            <div class="club-card" style="border-top: 4px solid ${club.color};">
+              <div class="club-header">
+                <span class="club-campus-badge" style="background: ${club.badgeBg}; color: ${club.badgeColor};">
+                  ${club.badge}
+                </span>
+                <span class="club-sdg-tag" style="color: ${club.color}; background: ${club.lightBg};">
+                  ${club.sdgTarget}
+                </span>
+              </div>
+              <h3 class="club-name" style="color: ${club.color};">${club.name}</h3>
+              <div class="club-fullname">${club.fullName}</div>
+              <p class="club-desc">${club.description}</p>
+            </div>
+          `).join('');
+        }
+
+        if (sdgContainer && window.SDG_DATA.goals) {
+          sdgContainer.innerHTML = window.SDG_DATA.goals.map(sdg => `
+            <div class="sdg-card-17" style="border-left: 4px solid ${sdg.color};">
+              <div class="sdg-card-top">
+                <div class="sdg-img-slot" style="background: ${sdg.color};">
+                  <img src="${sdg.image}" alt="SDG ${sdg.number}: ${sdg.name}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.innerText='SDG ${sdg.number}'">
+                </div>
+                <div>
+                  <div class="sdg-card-name">${sdg.name}</div>
+                  <span class="sdg-affiliation-tag" style="background: ${sdg.bgColor}; color: ${sdg.color};">
+                    ${sdg.clubAffiliation}
+                  </span>
+                </div>
+              </div>
+              <p class="sdg-card-desc">${sdg.whyRelevant}</p>
+            </div>
+          `).join('');
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

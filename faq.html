@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <title>Frequently Asked Questions & Documentation — Attendance Analyzer</title>
+  <meta name="description" content="Official FAQ, university disclaimer, privacy protections, donation transparency, campus giving back framework (CSA & Anvaya), and offline cache guide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
+  <style>
+    /* FAQ Custom Component Styles (Aligned with White/Light Theme) */
+    .faq-hero {
+      margin-bottom: 2rem;
+    }
+    
+    .faq-search-wrap {
+      position: relative;
+      margin: 1.5rem 0 1.25rem 0;
+      max-width: 720px;
+    }
+
+    .faq-search-input {
+      width: 100%;
+      padding: 14px 18px 14px 44px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .faq-search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    .faq-search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .faq-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .faq-filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      color: var(--text-secondary);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-filter-btn:hover {
+      background: var(--bg-card-subtle);
+      border-color: var(--border-glow);
+      color: var(--primary);
+    }
+
+    .faq-filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    /* Red Disclaimer Card on Top */
+    .faq-disclaimer-card {
+      background: #fff5f5;
+      border: 1.5px solid #fca5a5;
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 2.25rem;
+      box-shadow: 0 4px 20px -2px rgba(239, 68, 68, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-disclaimer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+    }
+
+    .disclaimer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #b91c1c;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .disclaimer-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #991b1b;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .disclaimer-desc {
+      color: #450a0a;
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .disclaimer-desc strong {
+      color: #7f1d1d;
+    }
+
+    .disclaimer-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .disclaimer-point-box {
+      background: #ffffff;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      font-size: 0.88rem;
+      color: #7f1d1d;
+      line-height: 1.5;
+    }
+
+    /* Featured Deep Dive Article */
+    .deep-dive-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .deep-dive-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4338ca 0%, #0284c7 50%, #059669 100%);
+    }
+
+    .deep-dive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .deep-dive-box {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+    }
+
+    .deep-dive-box h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deep-dive-box p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Accordion Item Styles */
+    .faq-accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 2.25rem;
+    }
+
+    .faq-category-header {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 2rem 0 0.75rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: transparent;
+      border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: left;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-icon-chevron {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-item.open .faq-icon-chevron {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease;
+      background: var(--bg-card-subtle);
+      border-top: 1px solid transparent;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      padding: 0 20px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 900px;
+      padding: 16px 20px;
+      border-top-color: var(--border-card);
+    }
+
+    .faq-answer code {
+      background: rgba(67, 56, 202, 0.08);
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+      font-weight: 600;
+    }
+
+    .faq-highlight-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .faq-highlight-pill.yellow {
+      background: rgba(217, 119, 6, 0.12);
+      color: #b45309;
+      border: 1px solid rgba(217, 119, 6, 0.25);
+    }
+    .faq-highlight-pill.blue {
+      background: rgba(2, 132, 199, 0.12);
+      color: #0369a1;
+      border: 1px solid rgba(2, 132, 199, 0.25);
+    }
+    .faq-highlight-pill.green {
+      background: rgba(5, 150, 105, 0.12);
+      color: #047857;
+      border: 1px solid rgba(5, 150, 105, 0.25);
+    }
+    .faq-highlight-pill.purple {
+      background: rgba(147, 51, 234, 0.12);
+      color: #7e22ce;
+      border: 1px solid rgba(147, 51, 234, 0.25);
+    }
+
+    .faq-empty-state {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-card);
+      border-radius: var(--radius-lg);
+      margin: 2rem 0;
+    }
+
+    .faq-empty-state h3 {
+      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .faq-empty-state p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    .faq-empty-btn {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Modular Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="content-container">
+
+      <!-- Header Banner -->
+      <section class="faq-hero">
+        <div class="badge-pill">
+          <span>Knowledge Base & Documentation</span>
+        </div>
+        <h1 class="hero-title" style="font-size: 2.35rem; margin-top: 8px;">Frequently Asked Questions</h1>
+        <p class="hero-subtitle" style="margin-left: 0; max-width: 720px;">
+          Explore clear answers categorized into 6 focused topics: Privacy & Affiliation, Giving Back & Donations, Attendance Claims & Rules, Multi-User Storage & 900h Limits, Smart Feature Tour & Sync Verification, and Productivity Shortcuts.
+        </p>
+
+        <!-- Smart Search Bar -->
+        <div class="faq-search-wrap">
+          <svg class="faq-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="faq-search" class="faq-search-input" placeholder="Search questions, privacy, donations, 900hr limit, shortcuts..." autocomplete="off">
+        </div>
+
+        <!-- 6 Clean Consolidated Filter Chips -->
+        <div class="faq-filters" id="faq-filters">
+          <button type="button" class="faq-filter-btn active" data-filter="all">All Topics</button>
+          <button type="button" class="faq-filter-btn" data-filter="privacy">1. Privacy & University Affiliation</button>
+          <button type="button" class="faq-filter-btn" data-filter="donation">2. Donations & Giving Back (CSA & Anvaya)</button>
+          <button type="button" class="faq-filter-btn" data-filter="claims">3. Attendance Claims & Calculation Rules</button>
+          <button type="button" class="faq-filter-btn" data-filter="cache">4. Multi-User Storage & 900h Limit</button>
+          <button type="button" class="faq-filter-btn" data-filter="tour">5. Smart Tour & Sync Verification</button>
+          <button type="button" class="faq-filter-btn" data-filter="other">6. Shortcuts & Security</button>
+        </div>
+      </section>
+
+      <!-- TOP RED CARD: Official University Affiliation & Disclaimer -->
+      <article class="faq-disclaimer-card" id="university-affiliation" data-categories="privacy disclaimer university other">
+        <div class="disclaimer-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          Official Independent Entity Disclaimer
+        </div>
+
+        <h2 class="disclaimer-title">
+          Is Attendance Analyzer officially affiliated with, endorsed by, or associated with Christ University?
+        </h2>
+
+        <p class="disclaimer-desc">
+          <strong>No. Attendance Analyzer is an independent, student-developed utility and is NOT affiliated, associated, authorized, endorsed by, or in any way officially connected with Christ (Deemed to be University).</strong>
+        </p>
+
+        <p class="disclaimer-desc" style="margin-top: 8px;">
+          Christ University bears zero liability, responsibility, or endorsement for this software. Attendance Analyzer is a harmless, local browser assistant designed to help students plan their academic attendance.
+        </p>
+
+        <div class="disclaimer-points">
+          <div class="disclaimer-point-box">
+            <strong>No Server Fetching:</strong> The extension does NOT query, scrape, or overload university backend servers.
+          </div>
+          <div class="disclaimer-point-box">
+            <strong>100% Client-Side:</strong> It only reads the attendance already displayed on your screen when you log in.
+          </div>
+          <div class="disclaimer-point-box">
+            <strong>Zero Database Alteration:</strong> It cannot and does not modify official university records in any way.
+          </div>
+          <div class="disclaimer-point-box">
+            <strong>Strictly Legal & Safe:</strong> Performs harmless client-side calculations inside your own browser tab.
+          </div>
+        </div>
+      </article>
+
+      <!-- Featured Blog Post: Offline Cache Deep Dive -->
+      <article class="deep-dive-card" id="offline-cache" data-categories="cache privacy other">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; background: rgba(67, 56, 202, 0.1); color: var(--primary);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </span>
+          <span style="font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--primary);">Technical Guide & Blog</span>
+        </div>
+
+        <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px; line-height: 1.3;">
+          How Offline Cached Memory & Register Number Mapping Works
+        </h2>
+
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; margin-bottom: 16px;">
+          When you open your Christ University Portal, <strong>Attendance Analyzer</strong> saves a local snapshot of your attendance figures. This enables rich simulations and instant calculations without waiting for server responses.
+        </p>
+
+        <div class="deep-dive-grid">
+          <div class="deep-dive-box">
+            <h4 style="color: var(--accent-cyan);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Zero Portal Latency
+            </h4>
+            <p>Portal servers frequently experience load during peak morning hours. Cached data loads in 0.01 seconds without waiting for portal network requests.</p>
+          </div>
+
+          <div class="deep-dive-box">
+            <h4 style="color: var(--accent-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Register No. Isolation
+            </h4>
+            <p>Cached states are strictly partitioned by your unique student <strong>Account Profile Key</strong>. Multiple accounts on the same laptop stay completely isolated.</p>
+          </div>
+
+          <div class="deep-dive-box">
+            <h4 style="color: var(--primary);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              100% Client-Side Privacy
+            </h4>
+            <p>All cached attendance figures remain strictly within your browser's private <code>chrome.storage.local</code>. No server ever sees or stores your data.</p>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-card-subtle); border-radius: var(--radius-md); padding: 18px 20px; border: 1px solid var(--border-card);">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">
+            How to Refresh or Clear Your Cache
+          </h3>
+          <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65;">
+            <li><strong>Auto-Sync:</strong> Navigating to <a href="https://cue.christuniversity.in/main/attendence" target="_blank" style="color: var(--primary); font-weight: 700;">https://cue.christuniversity.in/main/attendence</a> automatically updates your live attendance.</li>
+            <li><strong>Claim Sync:</strong> Visiting <strong>Absent Details</strong> automatically synchronizes approved Yellow and Blue concession hours.</li>
+            <li><strong>Manual Reset:</strong> Right-click the extension icon &rarr; <strong>Options</strong> &rarr; Click <strong>Reset Cache</strong> to purge stored snapshots.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- FAQ Accordion Section (5 Consolidated Groups) -->
+      <section id="faq-list">
+
+        <!-- ============================================================
+             SECTION: BROWSER SUPPORT & CHROMIUM ENGINE
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="browsers installation chromium chrome brave">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+            Supported Web Browsers &amp; Chromium Engine
+          </h2>
+          <div class="faq-accordion-group">
+
+            <div class="faq-item" data-categories="browsers chromium chrome brave edge opera">
+              <button class="faq-question">
+                <span>Which web browsers are supported by Attendance Analyzer?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Attendance Analyzer is built strictly for <strong>Chromium-based browsers</strong>. Supported browsers include:
+                  <br>&bull; <strong>Google Chrome</strong> (Recommended #1)
+                  <br>&bull; <strong>Brave Browser</strong> (Recommended #2 &mdash; Privacy-focused)
+                  <br>&bull; <strong>Microsoft Edge</strong> (Default on Windows)
+                  <br>&bull; <strong>Opera &amp; Opera GX</strong>
+                  <br>&bull; <strong>Vivaldi Browser</strong>
+                  <br>&bull; <strong>Arc Browser</strong>
+                  <br>&bull; <strong>Thorium, Ungoogled Chromium &amp; Chromium Upstream</strong>
+                  <br>&bull; <strong>Kiwi Browser</strong> (Android mobile with extension support)
+                  <br>&bull; <strong>DuckDuckGo, Yandex, Naver Whale, Epic &amp; Slimjet</strong>
+                  <br><br>
+                  View our complete <a href="browsers.html" style="color: var(--primary); font-weight: 700;">Supported Browsers Hub &rarr;</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="browsers mac os windows linux chromium">
+              <button class="faq-question">
+                <span>Can I use this on a Mac?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Yes, absolutely!</strong> You can use Attendance Analyzer on any computer with any operating system &mdash; including macOS (Apple Silicon M1/M2/M3/M4 &amp; Intel), Windows (10/11), Linux, and ChromeOS. It just needs any Chromium-based browser (such as Google Chrome, Brave, Microsoft Edge, Arc, Opera, or Vivaldi) and then you can install the extension in 1 click.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="browsers chromium chrome brave edge opera arc install">
+              <button class="faq-question">
+                <span>Can I install through any Chromium-based browser, or am I limited to a few?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>You can install and use it through all Chromium-based browsers!</strong> You are not limited to just a few options. Every browser powered by the Chromium engine &mdash; including Google Chrome, Brave Browser, Microsoft Edge, Arc, Opera, Opera GX, Vivaldi, Thorium, and Kiwi on mobile &mdash; supports the extension directly from the Chrome Web Store with full performance, side panel docking, and offline storage.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="browsers chromium firefox safari">
+              <button class="faq-question">
+                <span>Why does the extension require a Chromium browser (and not Firefox or Safari)?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The extension is built on modern <strong>Manifest V3 Chrome Extension architecture</strong>, utilizing the Chrome Side Panel API, client-side isolated background service workers, and local indexed storage. Non-Chromium browsers like Mozilla Firefox and Apple Safari use different extension engines and cannot install Chrome Web Store extensions directly.
+                  <br><br>
+                  <em>Note: You can still test calculations online on any browser at <a href="sidepanel.html" style="color: var(--primary); font-weight: 700;">Try Now Here</a>, but in-portal automation requires a Chromium browser.</em>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 1: PRIVACY & UNIVERSITY AFFILIATION
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="privacy disclaimer university">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-emerald);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            1. Privacy, Security & University Affiliation
+          </h2>
+          <div class="faq-accordion-group">
+            
+            <div class="faq-item" data-categories="privacy security">
+              <button class="faq-question">
+                <span>Does Attendance Analyzer collect, track, or sell my personal information?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p><strong>Absolutely not.</strong> We do not collect, track, store on remote servers, or sell any student information. There is no user database, no cloud backend, and no third-party data broker integration. Everything operates 100% locally on your own computer.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy security">
+              <button class="faq-question">
+                <span>Does the extension ask for or store my student login credentials (passwords)?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p><strong>Never.</strong> Attendance Analyzer activates only after you have already logged into the official portal yourself. It never asks for, captures, intercepts, or logs your password, OTP, or session tokens.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy cache storage">
+              <button class="faq-question">
+                <span>Where is my attendance data and Register Number stored?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Your data is stored exclusively in your browser's sandboxed <code>chrome.storage.local</code> database on your local drive. This storage is isolated and inaccessible to any other website or external party.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy security">
+              <button class="faq-question">
+                <span>Does the extension inject tracking cookies, analytics pixels, or ads?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p><strong>No.</strong> Attendance Analyzer contains zero Google Analytics, zero Facebook pixels, zero ad networks, and zero telemetry beacons. It runs completely offline without sending background pings.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy disclaimer university">
+              <button class="faq-question">
+                <span>Can university professors, staff, or portal administrators see that I am using this extension?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>No. Browser extensions run in an isolated execution environment inside your client browser. Since Attendance Analyzer sends zero network requests to university servers and does not alter server cookies, university administrators cannot detect its local visual overlay.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy disclaimer university">
+              <button class="faq-question">
+                <span>Can the extension alter or tamper with official university attendance records?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p><strong>No, it is technically impossible.</strong> Official university attendance resides in Christ University's secure SQL databases. The extension has read-only access to your browser screen and cannot write to or modify server records.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy storage">
+              <button class="faq-question">
+                <span>What happens to my data if I uninstall the extension?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>When you uninstall the extension from Chrome (<code>chrome://extensions/</code>), Chrome automatically purges its entire local storage database immediately. No residual data remains on your computer or anywhere else.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy security">
+              <button class="faq-question">
+                <span>Does the extension run on other websites like banking, email, or social media?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p><strong>No.</strong> The extension manifest permissions strictly limit execution to Christ University portal domains (<code>cue.christuniversity.in</code> and <code>espro.christuniversity.in:444</code>). It remains completely inactive and has zero permissions on any other website.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy cache storage">
+              <button class="faq-question">
+                <span>How does multi-user device sharing protect each student's privacy?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Snapshots are keyed exclusively to the active student's <strong>Register Number</strong>. When a student logs out and another student logs in, the extension switches to the second student's profile, ensuring complete separation and confidentiality.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="privacy security">
+              <button class="faq-question">
+                <span>Is the extension code audited and safe to install?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. Attendance Analyzer is vetted under Google Chrome Web Store Developer Program policies. It undergoes automated and manual security verification ensuring zero malicious payloads, zero background miners, and strict permission compliance.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 2: DONATIONS, GIVING BACK & UN SDGS
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="donation clubs sdg proof refund">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            2. Donations, Giving Back & Policy Guidelines
+          </h2>
+          <div class="faq-accordion-group">
+
+            <!-- Question on Refund Policy -->
+            <div class="faq-item" data-categories="donation refund policy">
+              <button class="faq-question">
+                <span>What is the strict refund policy for voluntary contributions?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Strict Non-Refundable Policy:</strong> All developer contributions, tip jar gratuities, and charitable pledge donations are voluntary student contributions and are <strong>strictly non-refundable</strong> under normal circumstances. Please double-check your amount before completing payment.<br><br>
+                  <strong>Accidental Duplicate Exception:</strong> A refund request will be considered <strong>ONLY</strong> if an accidental duplicate payment is repeated twice within 1 hour using the exact same Name and UPI ID/transaction reference. Such requests must be submitted within <strong>48 hours</strong>, and a <strong>3% gateway/conversion processing fee</strong> will be deducted from the refunded amount.
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on Equal 50/50 Distribution -->
+            <div class="faq-item" data-categories="donation clubs sdg">
+              <button class="faq-question">
+                <span>How are giving back funds distributed between CSA and Anvaya clubs?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Equal Distribution Principle:</strong> All funds allocated for community social impact are split <strong>exactly 50/50</strong> between our two preferred student organizations:
+                  <br>&bull; <span class="faq-highlight-pill yellow">CSA (Centre for Social Action &bull; BYC Campus)</span> &mdash; 50%
+                  <br>&bull; <span class="faq-highlight-pill purple">Anvaya (Community Social Engagement &bull; Central Campus)</span> &mdash; 50%
+                  <br>Both organizations receive equal shares dedicated to genuine student welfare causes (fee subsidies, textbook kits, and grassroots village development).
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on ₹1,000 Disbursement Threshold -->
+            <div class="faq-item" data-categories="donation proof clubs">
+              <button class="faq-question">
+                <span>What is the ₹1,000 disbursement threshold per club?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  To eliminate excessive payment gateway processing overhead and banking friction, funds are pooled and disbursed only when accumulated balances reach a minimum of <strong>₹1,000 per club</strong>.<br><br>
+                  Once the threshold is reached, direct transfers are executed, and official bank transaction slips/proofs are uploaded to our public <a href="proof.html" style="color: var(--primary); font-weight: 700;">Proof & Ledger Page</a> (updated every 2 to 3 months).
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on Scalable Matrix -->
+            <div class="faq-item" data-categories="donation clubs">
+              <button class="faq-question">
+                <span>What is the scalable contribution matrix (10% to 30%-40%+)?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Our charitable giving percentage starts at <strong>10%</strong> of monthly contributions donated equally to CSA and Anvaya. As campus collaborations formalize and contribution volumes scale, our pledge automatically scales upward to <strong>30% &ndash; 40%+</strong> or higher to support expanded student initiatives.
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on Campus Clubs Details -->
+            <div class="faq-item" data-categories="clubs sdg university">
+              <button class="faq-question">
+                <span>What causes do preferred campus clubs (CSA & Anvaya) champion?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>CSA &bull; Centre for Social Action (BYC Campus):</strong> Student financial aid, education sponsorships & rural child welfare.<br><br>
+                  <strong>Anvaya &bull; Community Social Engagement (Central Campus):</strong> Grassroots community outreach, student volunteerism & civic engagement.
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on SDG Alignment -->
+            <div class="faq-item" data-categories="sdg clubs">
+              <button class="faq-question">
+                <span>How are contributions aligned with United Nations Sustainable Development Goals (SDGs)?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Our student support framework directly connects with 4 core UN Sustainable Development Goals:
+                  <br>&bull; <span class="faq-highlight-pill green">SDG 1: No Poverty</span> &mdash; Emergency living assistance and exam fee subsidies via CSA (BYC).
+                  <br>&bull; <span class="faq-highlight-pill blue">SDG 4: Quality Education</span> &mdash; Textbook lending banks and children's tutoring via CSA (BYC).
+                  <br>&bull; <span class="faq-highlight-pill purple">SDG 10: Reduced Inequalities</span> &mdash; Inclusivity and mutual student aid via Anvaya (Central).
+                  <br>&bull; <span class="faq-highlight-pill yellow">SDG 11: Sustainable Communities</span> &mdash; Student civic action and rural development via Anvaya (Central).
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on Public Proof & Ledger -->
+            <div class="faq-item" data-categories="donation proof privacy">
+              <button class="faq-question">
+                <span>How does the Public Proof & Ledger protect student donor privacy?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Full Transparency with Absolute Privacy:</strong> While official disbursement transaction slips are published publicly on <a href="proof.html" style="color: var(--primary); font-weight: 700;">proof.html</a>, all student donor phone numbers, bank account numbers, and personal identifiers are <strong>strictly masked and redacted</strong>.
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on Payment Methods -->
+            <div class="faq-item" data-categories="donation">
+              <button class="faq-question">
+                <span>What payment methods can I use to contribute?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We support all standard UPI payment applications across India (<strong>Google Pay, PhonePe, Paytm, BHIM, Cred</strong>) as well as direct UPI QR scanning on our <a href="payment.html" style="color: var(--primary); font-weight: 700;">Support Page</a>.
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on 100% Free Access -->
+            <div class="faq-item" data-categories="donation">
+              <button class="faq-question">
+                <span>Is Attendance Analyzer 100% free if I cannot donate?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Yes, 100%.</strong> All calculation features, Subject Simulators, and claim estimators are completely free for all students. We never lock features behind paywalls or provide artificial attendance advantages to donors.
+                </p>
+              </div>
+            </div>
+
+            <!-- Question on Non-Financial Support -->
+            <div class="faq-item" data-categories="donation clubs">
+              <button class="faq-question">
+                <span>How can I support the initiative if I cannot donate money?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Sharing Attendance Analyzer with classmates, leaving a 5-star review on the Chrome Web Store, or testing features via our <a href="install.html" style="color: var(--primary); font-weight: 700;">Join Beta Page</a> helps support the community tremendously!
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 3: ATTENDANCE CLAIMS & CALCULATION RULES
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="claims attendance rules calculation">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-amber);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            3. Attendance Claims, 75% Rules & Calculation Formulas
+          </h2>
+          <div class="faq-accordion-group">
+            
+            <div class="faq-item" data-categories="claims attendance rules">
+              <button class="faq-question">
+                <span>What is the 75% Minimum University Rule for ESE examinations?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>According to Christ (Deemed to be University) academic regulations, students must maintain a minimum aggregate and subject-level attendance of <strong>75%</strong> to be eligible to appear for End Semester Examinations (ESE). Attendance below 75% incurs exam debarment or mandatory remedial compensation hours.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance rules">
+              <button class="faq-question">
+                <span>What is the 85% Medical Leave (Blue Form) Concession Rule?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Under Christ University policy, Medical Concessions (<span class="faq-highlight-pill blue">Blue Forms</span>) operate under two strict conditions:
+                  <br>&bull; <strong>Eligibility Window:</strong> Medical concessions can only be applied if your attendance <em>after Yellow (co-curricular) claims</em> is at least <strong>75%</strong>.
+                  <br>&bull; <strong>Upper Ceiling:</strong> Medical leave can only boost your attendance up to a maximum cap of <strong>85%</strong>. If your attendance is already 85% or higher, medical concessions become inactive.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance settings">
+              <button class="faq-question">
+                <span>What does the "Ignore 75% Rule for Medical Claims" toggle in Settings do?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>If your specific department, Deanery, or special academic circumstances grant an exemption allowing medical concessions to be applied unconditionally below 75% or beyond 85%, turning ON <strong>"Ignore 75% Rule for Medical Claims"</strong> in Extension Settings removes this safety restriction in the simulator calculations.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance calculation">
+              <button class="faq-question">
+                <span>How does the Safe Leave Calculator compute allowed bunks vs recovery classes?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The calculator uses the mathematical formula:
+                  <br><code>Safe Leaves = floor((Attended Hours &times; 100 / Target %) - Conducted Hours)</code>
+                  <br><br>
+                  &bull; <strong>Positive Result:</strong> Displays the exact number of consecutive hours you can miss while maintaining your goal (e.g. 75% or 85%).
+                  <br>&bull; <strong>Negative Result:</strong> Calculates the exact continuous recovery classes you must attend consecutively without missing any to lift your percentage back to your goal.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance">
+              <button class="faq-question">
+                <span>What is the difference between Yellow Form and Blue Form claims?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <span class="faq-highlight-pill yellow">Yellow Form (Co-curricular)</span> is for approved college fest, event, cultural, and sports duties. Approved yellow hours are added directly to your present attendance.<br><br>
+                  <span class="faq-highlight-pill blue">Blue Form (Medical)</span> is for certified illness leaves. By university rule, medical concession can only be utilized if your attendance is between <strong>75% and 85%</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance">
+              <button class="faq-question">
+                <span>Why is the Blue Form slider hidden or showing "Ineligible (<75%)"?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Under Christ University regulations, medical concession cannot be claimed if your attendance falls below the mandatory <strong>75%</strong> threshold. The extension automatically hides the slider and displays the status badge to ensure you don't calculate invalid claims.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance">
+              <button class="faq-question">
+                <span>What does the "+1h" badge mean on the subject slider?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>The <code>+1h</code> tag indicates that the extension detected and automatically credited an approved claim from the portal's <em>Absent Details</em> table for that specific subject. You don't need to manually re-enter it!</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims attendance calculation rules">
+              <button class="faq-question">
+                <span>How does the strict 100% Yellow Form (Co-curricular) Claim Ceiling work?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Under Christ University regulations, Yellow Form concessions can only compensate for actual unexcused missed classes up to a maximum overall attendance ceiling of <strong>100%</strong> (<code>Attended + Claims &le; Conducted Hours</code>). The extension strictly caps the Yellow Claim slider dynamically so you cannot simulate claims beyond 100%, guaranteeing that your projections remain realistic, accurate, and compliant.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims calculation shortcuts other">
+              <button class="faq-question">
+                <span>How do the + / − Stepper Controls and Long-Press Auto-Repeat (3 steps/second) work?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Every slider across the extension dashboard and subject simulator features precision iOS-style inline stepper controls:
+                  <br>&bull; <strong>Single Click:</strong> Increments or decrements your hours by 1 immediately.
+                  <br>&bull; <strong>Long Press (Hold):</strong> Holding down on <code>+</code> or <code>−</code> activates auto-repeat after 350ms, adjusting your hours at a fast, smooth rate of <strong>3 steps per second</strong> (~333ms per step) until released or boundaries are reached.
+                  <br>&bull; <strong>Direct Numerical Typing:</strong> You can also click directly on any value box and type your exact desired hours with the keyboard.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims calculation attendance">
+              <button class="faq-question">
+                <span>Can I simulate expected Yellow and Medical claims in the Future Attendance Calculator?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Yes!</strong> Section 4 (Future Attendance Calculator) includes dedicated sliders for both <strong>Expected Yellow Forms</strong> and <strong>Expected Medical Forms</strong>. You can forecast how upcoming event duties or certified medical concessions will compensate for expected absences as the college conducts more classes throughout the semester.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="claims calculation attendance">
+              <button class="faq-question">
+                <span>How is the Future Attendance Calculator integrated with the Subject Simulator?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The Future Attendance Calculator and individual Subject Simulator cards share a fully synchronized reactive engine. Any absences, conducted hours, or claim hours you simulate inside an individual course card automatically aggregate into your overall Future Attendance standing in real time!
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 4: MULTI-USER STORAGE & 900-HOUR LIMIT
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="cache storage settings calculation multi-user">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-cyan);"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            4. Multi-User Storage, 5-Slot Limits & Advanced 900-Hour Option
+          </h2>
+          <div class="faq-accordion-group">
+            
+            <div class="faq-item" data-categories="cache storage multi-user">
+              <button class="faq-question">
+                <span>How many student profiles can be saved on one device? (5-Slot Capacity Limit)</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>The extension supports a strict limit of <strong>5 student profiles</strong> per browser. Each profile maintains an isolated database slot containing the student's register number, name, course code, raw attendance, post-claim percentages, subject breakdowns, and last synced timestamp.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="cache storage multi-user">
+              <button class="faq-question">
+                <span>Why can't I delete the currently active student session individually?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  To protect memory integrity and avoid corrupted state or data bleed while browsing university pages, the extension locks the <strong>currently active student profile</strong> from single-card deletion. If you want to clear your current slot, you can:
+                  <br>&bull; Open Settings &rarr; <strong>Reset Database</strong> &rarr; Hold <strong>"Clear All 5 Slots"</strong> for 5 seconds to reset all student slots safely.
+                  <br>&bull; Or perform a full <strong>Factory Reset</strong> at the bottom of the Settings page.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="cache storage multi-user">
+              <button class="faq-question">
+                <span>What happens when all 5 slots are full, and how does the 5-Second Hold-to-Reset work?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  When all 5 slots are occupied, a new student registration cannot be saved until a slot is freed. You can manage slots safely:
+                  <br>&bull; <strong>Delete Inactive Profiles:</strong> Open Settings &rarr; Manage Users &rarr; Click the red trash icon on any inactive student card.
+                  <br>&bull; <strong>Clear All 5 Slots (Hold 5s):</strong> In the Reset Database modal, press and hold the red button for <strong>5 full seconds</strong>. An animated progress bar confirms the wipe.
+                  <br>&bull; <strong>Factory Reset Extension (Hold 5s):</strong> At the very bottom of the Settings page, press and hold for <strong>5 seconds</strong> to wipe all settings, student profiles, and database caches back to a freshly downloaded state.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="cache storage">
+              <button class="faq-question">
+                <span>Why do I see "Cached" on some attendance cards?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>When you are on pages like <em>Absent Details</em> or when the main attendance table is temporarily loading, the extension uses your last verified saved snapshot from local storage to display your figures instantly with zero waiting.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="cache storage">
+              <button class="faq-question">
+                <span>Does offline cache update automatically when teachers mark attendance?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Yes! Every time you open or refresh the main <code>/main/attendence</code> page on the student portal, Attendance Analyzer reads the latest live numbers and automatically updates your stored local cache in real time.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="cache settings calculation">
+              <button class="faq-question">
+                <span>How do I calculate or simulate attendance above 300 hours? (Maximum 900hr Option)</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Default Precision (100h / 300h):</strong> By default, subject sliders are capped at 100 hours and overall future prediction is capped at 300 hours for ultra-smooth 1-hour drag precision in standard semesters.<br><br>
+                  <strong>High-Credit & Annual Courses (900h Limit):</strong> If you are enrolled in an annual academic program, trimester structure, or high-credit lab curriculum where conducted hours exceed 300 hours:
+                  <br>1. Open <strong>Extension Settings</strong> (Right-click icon &rarr; Options or press <code>Alt+S</code>).
+                  <br>2. Under <em>Advanced Customization</em>, toggle ON <strong>"Maximum 900hr Simulation Limit"</strong>.
+                  <br>3. All Future Predictor and Subject Simulator sliders will automatically scale their upper limit up to <strong>900 hours</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="cache settings calculation">
+              <button class="faq-question">
+                <span>Should I keep the Maximum 900hr option enabled if my course has fewer classes?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>If your semester subjects usually have between 30 to 80 conducted hours, keeping the option disabled is recommended for optimal slider drag sensitivity. Only enable the 900hr mode when your total course hours require high-capacity forecasting.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 5: SMART FEATURE TOUR & SYNC VERIFICATION
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="tour sync verification other">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            5. Interactive Smart Tour & Deep Sync Verification
+          </h2>
+          <div class="faq-accordion-group">
+
+            <div class="faq-item" data-categories="tour">
+              <button class="faq-question">
+                <span>What is the Smart Feature Tour and how do I trigger it?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>The Smart Tour is an interactive, step-by-step liquid glass walkthrough that demonstrates every tool and button in the extension directly on your live screen.
+                  <br><br>
+                  <strong>How to launch:</strong>
+                  <br>&bull; In Extension Settings (Options), click the <strong>"Start Smart Feature Tour"</strong> button.
+                  <br>&bull; Press the shortcut key <code>S</code> or <code>Alt + S</code> to open settings, or click the Feature Tour banner.
+                  <br>The tour walks you through the Portal Tour (Steps 0–9), transitions at Step 10 ("Click here for setting"), and then walks you through the 11-step Settings breakdown!
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="tour">
+              <button class="faq-question">
+                <span>What do the Portal Tour Steps (0 to 10) cover?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  &bull; <strong>Step 0:</strong> Floating pill & badge toggle.<br>
+                  &bull; <strong>Step 1:</strong> Attendance Dashboard (Attended vs Conducted hours).<br>
+                  &bull; <strong>Step 2:</strong> Safe Leave Calculator (Safe bunks vs recovery classes).<br>
+                  &bull; <strong>Step 3:</strong> Claims Breakdown (Yellow & Blue concessions).<br>
+                  &bull; <strong>Step 4:</strong> Future Attendance Predictor sliders.<br>
+                  &bull; <strong>Step 5:</strong> Subject-Wise Attendance table.<br>
+                  &bull; <strong>Step 6:</strong> Individual Subject Sliders.<br>
+                  &bull; <strong>Step 7:</strong> Theme Switcher (Dark, Light, Portal Auto).<br>
+                  &bull; <strong>Step 8:</strong> Offline Multi-User Registration Cache.<br>
+                  &bull; <strong>Step 9:</strong> Deep Sync & Keyboard Shortcuts.<br>
+                  &bull; <strong>Step 10:</strong> Transition to Settings Tour.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="tour settings">
+              <button class="faq-question">
+                <span>What do the Settings Tour Steps (1 to 11) cover?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  &bull; <strong>Step 1:</strong> Active student profile header.<br>
+                  &bull; <strong>Step 2:</strong> Goal presets (75% to 95%).<br>
+                  &bull; <strong>Step 3:</strong> Profile Actions &mdash; <span class="faq-highlight-pill" style="background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);"><svg width="10" height="10" viewBox="0 0 24 24" fill="#ef4444" style="display:inline-block;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/></svg>Red Box (Sync All)</span> & <span class="faq-highlight-pill" style="background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);"><svg width="10" height="10" viewBox="0 0 24 24" fill="#10b981" style="display:inline-block;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/></svg>Green Box (Manage Users)</span>.<br>
+                  &bull; <strong>Step 4:</strong> User Management modal (Active switching, delete, <strong>Reset All Profiles</strong>, 5-slot limit).<br>
+                  &bull; <strong>Step 5:</strong> Smart Low Attendance Alerts.<br>
+                  &bull; <strong>Step 6:</strong> Appearance & layout customization.<br>
+                  &bull; <strong>Step 7:</strong> 900-Hour Simulation Mode.<br>
+                  &bull; <strong>Step 8:</strong> Reset to Default Settings vs Full Factory Reset (Hold 5s).<br>
+                  &bull; <strong>Step 9:</strong> Developer support via UPI/Razorpay.<br>
+                  &bull; <strong>Step 10:</strong> UN SDG Preferred Clubs (CSA & Anvaya).<br>
+                  &bull; <strong>Step 11:</strong> Zero Ads Guarantee & Return to Portal.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="sync verification">
+              <button class="faq-question">
+                <span>What is 3-Step Deep Sync and how does Two-Sided Verification work?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Deep Sync automatically guides you through all three university portal sections:
+                  <br>1. <code>/main/home</code> &mdash; Student Profile & Register Number.
+                  <br>2. <code>/main/attendence</code> &mdash; Course Attendance table & conducted hours.
+                  <br>3. <code>/main/absence</code> &mdash; Sanctioned Yellow & Medical claim forms ledger.
+                  <br><br>
+                  <strong>Two-Sided Verification:</strong>
+                  <br>&bull; <strong>Screen Verification:</strong> Waits for the portal to finish loading your courses and attendance numbers completely.
+                  <br>&bull; <strong>Offline Save Verification:</strong> Confirms your attendance figures are securely saved on your device before moving forward.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="sync verification">
+              <button class="faq-question">
+                <span>What if my internet is slow during Deep Sync? Can I advance manually?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p><strong>Yes!</strong> The sync window includes easy <strong>"Next Step &rarr;"</strong> and <strong>"Capture / Retry Now"</strong> buttons so you can comfortably guide the sync at your own pace if the university portal is loading slowly.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="sync verification">
+              <button class="faq-question">
+                <span>How can I verify that my sync was successful?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  You can confirm your sync status in two places:
+                  <br>1. <strong>Dashboard Header:</strong> Check for the green <strong>"Verified Live"</strong> badge and the updated <strong>"Last Synced: [Date, Time]"</strong> timestamp.
+                  <br>2. <strong>Settings Profile Card:</strong> Open Settings &rarr; User Management to view your updated attendance numbers and course records.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="tour verification">
+              <button class="faq-question">
+                <span>What new features are demonstrated in the updated Smart Tour?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The guided Smart Tour walks you through all recent enhancements:
+                  <br>&bull; <strong>Precision Controls:</strong> Use single clicks or hold down plus/minus buttons, drag smooth sliders, or type numbers directly.
+                  <br>&bull; <strong>Dynamic Claim Rules:</strong> Explains how Yellow claims and Medical concession adjustments work in Christ University policy.
+                  <br>&bull; <strong>Subject Simulator:</strong> Guides you through course-level simulation and its real-time calculation with the Future Attendance Calculator.
+                  <br>&bull; <strong>Deep Sync &amp; Multi-Profiles:</strong> Explains automatic syncing, offline data saving, and separate multi-student profiles.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 6: SHORTCUTS & SECURITY
+             ============================================================ -->
+        <div class="faq-category-section" data-categories="other shortcuts productivity privacy">
+          <h2 class="faq-category-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: #6366f1;"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="8" y1="12" x2="8.01" y2="12"></line><line x1="12" y1="12" x2="12.01" y2="12"></line><line x1="16" y1="12" x2="16.01" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+            6. Keyboard Shortcuts &amp; Security Protections
+          </h2>
+          <div class="faq-accordion-group">
+
+            <div class="faq-item" data-categories="other shortcuts productivity">
+              <button class="faq-question">
+                <span>What keyboard shortcuts are available across the extension, settings, and portal?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Attendance Analyzer provides high-speed productivity keyboard shortcuts across the Christ University portal (<code>cue.christuniversity.in</code> and <code>espro.christuniversity.in</code>) and Extension Settings:
+                  <br>&bull; <code>Alt + A</code> (or <code>A</code> / <code>Ctrl + Shift + A</code>) &mdash; <strong>Toggle Dashboard:</strong> Instantly expands or minimizes the floating Attendance Analyzer simulator without touching your mouse.
+                  <br>&bull; <code>Alt + S</code> (or <code>S</code> / <code>Ctrl + Shift + S</code>) &mdash; <strong>Extension Settings:</strong> Opens Extension Preferences (Target goals, 900h limit, color themes, and user manager).
+                  <br>&bull; <code>Alt + Q</code> (or <code>Q</code>) &mdash; <strong>Quick Claims Sync &amp; Two-Way Switch:</strong> Syncs Yellow &amp; Medical concession hours; when in Absent Details, toggles instantly back to Attendance.
+                  <br>&bull; <code>Alt + Z</code> (or <code>Z</code>) &mdash; <strong>Full Automated Deep Sync:</strong> Runs the complete 3-step audit across Home (profile/reg no), Course Attendance, and Claims ledger.
+                  <br>&bull; <code>Alt + W</code> (or <code>W</code>) &mdash; <strong>Official Website:</strong> Opens or focuses the Attendance Analyzer web portal.
+                  <br>&bull; <code>Alt + P</code> (or <code>P</code>) &mdash; <strong>Donation Proof &amp; Ledger:</strong> Opens the verified donation ledger and community impact records.
+                  <br>&bull; <code>Alt + F</code> (or <code>F</code>) &mdash; <strong>FAQ &amp; Documentation:</strong> Opens this categorized knowledge base.
+                  <br>&bull; <code>Esc</code> &mdash; <strong>Close / Dismiss:</strong> Closes the floating dashboard drawer, dismisses active sync modals, reverts input edits, or exits the guided tour.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other shortcuts sync">
+              <button class="faq-question">
+                <span>How does the Alt + Z (or Z) Deep Sync shortcut work?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Pressing <code>Z</code> or <code>Alt + Z</code> initiates the extension's intelligent 3-step automated synchronization pipeline:
+                  <br>1. <strong>Step 1 (Home Dashboard):</strong> Reads your student profile and class/semester.
+                  <br>2. <strong>Step 2 (Attendance Page):</strong> Scans conducted and attended hours across all semester courses.
+                  <br>3. <strong>Step 3 (Absent Details &amp; Claims):</strong> Captures verified Yellow (Co-curricular) and Blue (Medical) concession records.
+                  <br>4. <strong>Security Seal:</strong> Computes a cryptographic anti-tamper hash and stores your multi-profile record for instant 100% offline access.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other shortcuts claims">
+              <button class="faq-question">
+                <span>How does the two-way Alt + Q (or Q) quick claim shortcut work?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The <code>Q</code> shortcut offers smart context-aware navigation:
+                  <br>&bull; <strong>When on Attendance or Home:</strong> Pressing <code>Q</code> or <code>Alt + Q</code> immediately opens Absent Details and captures your latest sanctioned Yellow and Medical concession hours.
+                  <br>&bull; <strong>When on Absent Details:</strong> Pressing <code>Q</code> or <code>Alt + Q</code> acts as an instant return shortcut, navigating directly back to the primary Attendance course table with a single keystroke.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other shortcuts calculation">
+              <button class="faq-question">
+                <span>What keyboard shortcuts and stepper controls work inside simulation inputs?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  All numerical inputs across Section 3 (Claims Simulation), Section 4 (Future Attendance Calculator), and Section 5 (Subject Simulator) support keyboard shortcuts:
+                  <br>&bull; <code>ArrowUp</code> / <code>ArrowDown</code> &mdash; Increments or decrements hours by <strong>1</strong>.
+                  <br>&bull; <code>Shift + ArrowUp</code> / <code>Shift + ArrowDown</code> &mdash; Increments or decrements hours rapidly by <strong>5</strong>.
+                  <br>&bull; <code>Enter</code> &mdash; Commits the typed number and blurs the input field.
+                  <br>&bull; <code>Esc</code> &mdash; Cancels the edit and instantly restores the previous numerical value.
+                  <br>&bull; <code>Space</code> / <code>Enter</code> (on Stepper buttons) &mdash; Triggers a single step increment/decrement when focused on <code>+</code> or <code>−</code>.
+                  <br>&bull; <strong>Long-Press / Pointer Hold:</strong> Holding down <code>+</code> or <code>−</code> with mouse or touch for &gt;350ms automatically repeats adjustments at <strong>3 steps per second</strong> (~333ms per step).
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other shortcuts">
+              <button class="faq-question">
+                <span>Can I use keyboard shortcuts when I am inside the Extension Settings page?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Yes!</strong> All shortcuts (<code>A</code>, <code>Q</code>, <code>Z</code>, <code>W</code>, <code>P</code>, <code>F</code>, <code>Esc</code>) are fully active inside the Settings page (<code>options.html</code>). Instead of spawning duplicate browser windows, pressing <code>A</code>, <code>Q</code>, or <code>Z</code> automatically shifts focus to your active Christ University portal tab and executes the requested action immediately.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other shortcuts">
+              <button class="faq-question">
+                <span>Can I customize or change the default Alt + A extension shortcut in Chrome?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Yes.</strong> You can customize the extension shortcut anytime in Chrome:
+                  <br>1. Open Google Chrome and navigate to <code>chrome://extensions/shortcuts</code> in your address bar (or click <strong>"Enable Shortcut"</strong> in Extension Settings).
+                  <br>2. Find <strong>Attendance Analyzer</strong>.
+                  <br>3. Click the pencil edit icon next to <em>"Toggle Attendance Analyzer Dashboard"</em> and type your preferred key combination (e.g. <code>Ctrl + Shift + A</code> or <code>Alt + Q</code>).
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other privacy security">
+              <button class="faq-question">
+                <span>Why is DevTools blocked on portal tabs?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>To protect academic data integrity and prevent unauthorized tampering with live attendance calculations, developer inspection tools are strictly restricted on active portal sessions. Full DevTools access is maintained for authorized developer accounts.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other shortcuts">
+              <button class="faq-question">
+                <span>Do keyboard shortcuts interfere with typing or form inputs?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>No. The shortcuts automatically check active DOM focus and use dedicated modifier keys (<code>Alt</code>) to ensure they never interfere with standard text typing or selecting text with <code>Ctrl+A</code> in textboxes.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-categories="other tour">
+              <button class="faq-question">
+                <span>How can I take the guided tour again?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="faq-answer">
+                <p>You can restart the step-by-step onboarding tour anytime by opening <strong>Extension Settings</strong> &rarr; clicking <strong>"Start Smart Feature Tour"</strong>.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Empty State for Zero Search Results -->
+      <div class="faq-empty-state" id="faq-empty">
+        <h3>No matching questions found</h3>
+        <p>We couldn't find any questions matching your search terms. Try searching for "privacy", "CSA", "Anvaya", "900hr", "refund", "claims", "ledger", or "shortcuts".</p>
+        <button type="button" class="faq-empty-btn" id="faq-reset-btn">Clear Search & View All</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Advanced Multi-Category & Multi-Token Search Engine
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('faq-search');
+      const filterBtns = document.querySelectorAll('.faq-filter-btn');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const categorySections = document.querySelectorAll('.faq-category-section');
+      const disclaimerCard = document.getElementById('university-affiliation');
+      const deepDiveCard = document.getElementById('offline-cache');
+      const emptyState = document.getElementById('faq-empty');
+      const resetBtn = document.getElementById('faq-reset-btn');
+
+      // Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq-item');
+          const isOpen = item.classList.contains('open');
+          
+          // Close other open items in same group
+          item.parentElement.querySelectorAll('.faq-item').forEach(other => {
+            if (other !== item) other.classList.remove('open');
+          });
+
+          item.classList.toggle('open', !isOpen);
+        });
+      });
+
+      // Filter by Category (Multi-category compatible)
+      let activeFilter = 'all';
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeFilter = btn.dataset.filter;
+          applySearchAndFilter();
+        });
+      });
+
+      // Search Query Input
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          applySearchAndFilter();
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          activeFilter = 'all';
+          filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+          applySearchAndFilter();
+        });
+      }
+
+      function applySearchAndFilter() {
+        const rawQuery = (searchInput ? searchInput.value : '').toLowerCase().trim();
+        const tokens = rawQuery ? rawQuery.split(/\s+/).filter(t => t.length > 0) : [];
+        let totalVisibleItems = 0;
+
+        // Check if an element matches all search tokens
+        function matchesTokens(text) {
+          if (tokens.length === 0) return true;
+          const lower = text.toLowerCase();
+          return tokens.every(token => lower.includes(token));
+        }
+
+        // Check if element categories contain active filter
+        function matchesCategory(categoriesStr) {
+          if (activeFilter === 'all') return true;
+          const cats = (categoriesStr || '').toLowerCase().split(/\s+/);
+          return cats.includes(activeFilter.toLowerCase());
+        }
+
+        // 1. Top Disclaimer Card
+        if (disclaimerCard) {
+          const showDisclaimer = matchesCategory(disclaimerCard.dataset.categories) && matchesTokens(disclaimerCard.textContent);
+          disclaimerCard.style.display = showDisclaimer ? 'block' : 'none';
+          if (showDisclaimer) totalVisibleItems++;
+        }
+
+        // 2. Deep Dive Card
+        if (deepDiveCard) {
+          const showDeepDive = matchesCategory(deepDiveCard.dataset.categories) && matchesTokens(deepDiveCard.textContent);
+          deepDiveCard.style.display = showDeepDive ? 'block' : 'none';
+          if (showDeepDive) totalVisibleItems++;
+        }
+
+        // 3. Category Sections & Accordion Items
+        categorySections.forEach(section => {
+          const sectionCats = section.dataset.categories || '';
+          const items = section.querySelectorAll('.faq-item');
+          let sectionVisibleCount = 0;
+
+          items.forEach(item => {
+            const itemCats = item.dataset.categories || sectionCats;
+            const itemMatchesCat = matchesCategory(itemCats);
+            const itemMatchesSearch = matchesTokens(item.textContent);
+
+            if (itemMatchesCat && itemMatchesSearch) {
+              item.style.display = 'block';
+              sectionVisibleCount++;
+              totalVisibleItems++;
+              if (tokens.length > 0) {
+                item.classList.add('open');
+              }
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          // Show section if either the section itself matches the filter and has items, or if any items match
+          section.style.display = sectionVisibleCount > 0 ? 'block' : 'none';
+        });
+
+        // 4. Empty State
+        if (emptyState) {
+          emptyState.style.display = totalVisibleItems === 0 ? 'block' : 'none';
+        }
+      }
+
+      // Handle URL Hash Deep Linking
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.style.transition = 'box-shadow 0.4s ease';
+            target.style.boxShadow = '0 0 0 4px var(--primary-glow), var(--shadow-card)';
+            setTimeout(() => {
+              target.style.boxShadow = 'var(--shadow-card)';
+            }, 2500);
+          }, 300);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

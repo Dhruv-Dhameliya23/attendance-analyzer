@@ -2,108 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
   <title>Privacy Policy — Attendance Analyzer</title>
   <meta name="description" content="Privacy Policy for Attendance Analyzer. Independent attendance tracking and prediction tool. 100% local browser processing.">
-  <link rel="stylesheet" href="styles.css?v=3.2.4">
-  <link rel="icon" type="image/png" href="assets/icon48.png?v=3.2.4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
 </head>
 <body>
 
-  <!-- Mobile Top Bar -->
-  <header class="mobile-topbar">
-    <a href="index.html" class="mobile-brand-link">
-      <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img" style="width: 32px; height: 32px; border-radius: 8px;">
-      <span class="brand-title" style="font-size: 17px; font-weight: 800;">Attendance Analyzer</span>
-    </a>
-    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </header>
-
-  <!-- Left Sidebar Navigation -->
-  <aside class="sidebar" id="sidebar">
-    <div>
-      <a href="index.html" class="sidebar-brand">
-        <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img">
-        <div class="brand-title">Attendance Analyzer</div>
-      </a>
-
-      <!-- Left Navigation Menu Items -->
-      <ul class="sidebar-menu">
-        <li>
-          <a href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="policy.html" class="active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            Privacy Policy
-          </a>
-        </li>
-        <li>
-          <a href="payment.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-            Support / Donate
-          </a>
-        </li>
-        <li>
-          <a href="advertise.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            Advertise
-          </a>
-        </li>
-        <li>
-          <a href="install.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            Join Beta
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Bottom Action Button -->
-    <div class="sidebar-bottom">
-      <a href="install.html" class="btn-sidebar-install">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <circle cx="12" cy="12" r="4"></circle>
-          <line x1="21.17" y1="8" x2="12" y2="8"></line>
-          <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
-          <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
-        </svg>
-        <span>Install Extension</span>
-      </a>
-    </div>
-  </aside>
+  <!-- Modular Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
 
   <!-- Main Content Wrapper -->
   <div class="main-wrapper">
     <main class="content-container">
-      
-      <div class="white-card policy-card">
-        <div class="policy-header">
-          <h1 class="policy-title">Attendance Analyzer — Privacy Policy</h1>
-          <div class="policy-updated">Last updated: August 16, 2026</div>
-        </div>
+              <div class="policy-header">
+        <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 8px;">Attendance Analyzer — Privacy Policy</h1>
+        <div class="policy-updated">Last updated: September 25, 2026</div>
+      </div>
 
         <!-- Privacy at a glance -->
         <div class="policy-summary-box">
@@ -111,7 +32,7 @@
             Attendance Analyzer is an independent, unofficial browser extension that helps students understand attendance information, calculate attendance, simulate supported claim adjustments, and predict possible future attendance outcomes.
           </p>
           <p style="margin-bottom: 0; font-weight: 600;">
-            Privacy at a glance: Attendance information read by the extension is processed locally in the browser for the extension's attendance features. Attendance data is not sold or transferred to the developer's servers for advertising or unrelated purposes.
+            Privacy at a glance: Attendance calculations and data processing are performed 100% locally in your browser. Anonymous, aggregated feature usage metrics may be processed via Google Analytics 4 (GA4) through a privacy-preserving proxy to ensure stability and feature improvement. Zero student passwords, credentials, or personally identifiable information (PII) are ever collected or transmitted.
           </p>
         </div>
 
@@ -119,7 +40,7 @@
         <div class="policy-section">
           <h2>1. Information the Extension Accesses</h2>
           <p>
-            To provide its core functionality, Attendance Analyzer may read attendance-related information displayed on supported student portal pages. This can include attendance percentages, conducted classes or hours, attended hours, missed hours, subject names, and other attendance-related values needed for calculations.
+            To provide its core functionality, Attendance Analyzer reads attendance-related numbers displayed on supported student portal pages. This can include attendance percentages, conducted classes or hours, attended hours, missed hours, subject names, and other attendance-related values needed for calculations.
           </p>
           <p>
             The extension may also access information needed to calculate or simulate supported attendance adjustments, such as Yellow Form and Blue Form scenarios, where that information is available on the supported page.
@@ -130,10 +51,10 @@
         <div class="policy-section">
           <h2>2. Information Stored Locally</h2>
           <p>
-            Attendance Analyzer may use Chrome's local extension storage to save user preferences and settings, such as predictor values, notification preferences, display preferences, and other configuration needed for the extension to work consistently across sessions.
+            Attendance Analyzer uses Chrome's local extension storage (<code>chrome.storage.local</code>) to save user preferences, such as predictor target values, notification preferences, theme selection, and optional offline cached data for up to 5 student profiles.
           </p>
           <p>
-            Local storage is used to provide the extension's attendance tracking, calculation, prediction, and customization features. Stored settings remain on the user's browser unless the user removes the extension data or Chrome otherwise manages that storage.
+            Local storage is used strictly to provide the extension's attendance tracking, calculation, prediction, and offline cache features. Stored settings remain on your local device unless you clear extension storage or uninstall the extension.
           </p>
         </div>
 
@@ -142,135 +63,152 @@
           <h2>3. How Information Is Used</h2>
           <p>Information accessed by Attendance Analyzer is used only to:</p>
           <ul>
-            <li>Display attendance information in the extension.</li>
-            <li>Calculate attendance percentages and related values.</li>
-            <li>Provide subject-wise attendance analysis.</li>
-            <li>Simulate supported Yellow Form and Blue Form adjustments.</li>
-            <li>Predict possible attendance outcomes from user-selected scenarios.</li>
-            <li>Save extension preferences and provide optional attendance notifications.</li>
+            <li>Display attendance information and percentages in the extension interface.</li>
+            <li>Calculate attendance percentages and required hours to reach target thresholds.</li>
+            <li>Provide subject-wise attendance breakdowns and safe-bunk leave calculations.</li>
+            <li>Simulate supported Yellow Form and Blue Form claim adjustments.</li>
+            <li>Predict possible future attendance outcomes from user-selected scenarios.</li>
+            <li>Save extension preferences and provide optional local attendance notifications.</li>
           </ul>
         </div>
 
         <!-- Section 4 -->
         <div class="policy-section">
-          <h2>4. Data Sharing and Sale</h2>
+          <h2>4. Google Analytics 4 (GA4) & Anonymized Operational Telemetry</h2>
           <p>
-            Attendance Analyzer does not sell, rent, or transfer attendance information, personal information, or locally stored extension data to third parties for advertising, profiling, or unrelated purposes.
+            To monitor extension health, detect breaking portal DOM layout changes, and understand feature engagement, Attendance Analyzer uses Google Analytics 4 (GA4) via the GA4 Measurement Protocol.
           </p>
           <p>
-            The extension does not intentionally transmit attendance information to the developer's own servers. The extension's core attendance calculations are designed to be performed locally in the user's browser.
+            <strong>Privacy-Preserving Telemetry Architecture:</strong>
           </p>
+          <ul>
+            <li><strong>Privacy Edge Relay:</strong> Telemetry packets are sent through a secure Cloudflare Worker proxy that strips client IP addresses before events reach Google Analytics.</li>
+            <li><strong>Anonymized Event Metrics:</strong> Only aggregated, pseudorandom operational events are recorded (e.g., <code>extension_opened</code>, <code>attendance_calculated</code>, <code>leave_calculation_used</code>, extension version, and anonymized client identifiers).</li>
+            <li><strong>Zero PII or Credentials:</strong> Passwords, portal login credentials, student names, individual subject remarks, or private communications are <em>strictly scrubbed and never collected, transmitted, or logged</em>.</li>
+            <li><strong>No Tracking Cookies:</strong> The extension does not use third-party tracking cookies or cross-site tracking mechanisms.</li>
+            <li><strong>User Control:</strong> Users can reset or clear all extension analytics identifiers at any time from the extension options page.</li>
+          </ul>
         </div>
 
         <!-- Section 5 -->
         <div class="policy-section">
-          <h2>5. Personal, Health, Financial, and Authentication Information</h2>
+          <h2>5. Data Sharing and Sale</h2>
           <p>
-            Attendance Analyzer does not intentionally collect passwords, PINs, authentication credentials, payment card information, financial statements, or personal communications.
+            Attendance Analyzer does not sell, rent, monetize, or transfer attendance information, personal information, or user data to third parties, data brokers, or advertising networks.
           </p>
           <p>
-            The extension does not require medical diagnoses or medical histories for its core functionality. A Blue Form simulation does not by itself mean that the extension collects health information; the extension only processes the attendance-related information required for its calculation features.
+            Core attendance calculations are performed locally within your browser sandbox. No student attendance records are stored on developer servers.
           </p>
         </div>
 
         <!-- Section 6 -->
         <div class="policy-section">
-          <h2>6. Web Pages and Browsing Activity</h2>
+          <h2>6. Personal, Health, Financial, and Authentication Information</h2>
           <p>
-            The extension accesses supported attendance pages only to provide its disclosed attendance analysis and prediction functionality. It does not intentionally build a history of the user's browsing activity, track unrelated websites, record keystrokes, record mouse movements, or monitor unrelated browsing behavior.
+            Attendance Analyzer does not collect passwords, PINs, authentication tokens, payment card details, financial statements, or personal communications.
+          </p>
+          <p>
+            The extension does not require or collect medical records or health histories. Simulating a Blue Form (medical concession) only adjusts attendance math based on user-entered numerical hours and does not store or process health data.
           </p>
         </div>
 
         <!-- Section 7 -->
         <div class="policy-section">
-          <h2>7. Notifications</h2>
+          <h2>7. Web Pages and Browsing Activity</h2>
           <p>
-            If enabled by the user, notifications may be used to provide attendance-related alerts based on the extension's configured attendance settings. Notifications are part of the attendance management functionality and can be disabled through the extension settings.
+            The extension accesses supported attendance pages only to provide its disclosed attendance analysis and prediction functionality. It does not monitor external websites, record keystrokes, log browsing history, or track unrelated user behavior.
           </p>
         </div>
 
         <!-- Section 8 -->
         <div class="policy-section">
-          <h2>8. Third-Party Services</h2>
+          <h2>8. Notifications</h2>
           <p>
-            Attendance Analyzer does not use attendance data for third-party advertising or data brokerage. The browser, operating system, Chrome Web Store, supported student portal, and any third-party resources used by a browser may have their own privacy practices and policies. Users should review those policies where applicable.
+            If enabled by the user, local Chrome notifications may be used to provide attendance threshold alerts. Notifications are generated locally based on configured preferences and can be toggled on or off at any time.
           </p>
         </div>
 
         <!-- Section 9 -->
         <div class="policy-section">
-          <h2>9. Security</h2>
+          <h2>9. Third-Party Services & Donation Gateway</h2>
           <p>
-            The extension is designed to minimize data handling and process attendance calculations locally where possible. Users should keep Chrome and their operating system updated and use their normal account and device security practices.
+            Attendance Analyzer does not use user data for advertising. Voluntary developer support donations are processed securely through Razorpay's PCI-DSS compliant payment portal on an external web page. All developer contributions are voluntary, non-refundable gratuities.
           </p>
         </div>
 
         <!-- Section 10 -->
         <div class="policy-section">
-          <h2>10. Children's Privacy</h2>
+          <h2>10. Security</h2>
           <p>
-            Attendance Analyzer is intended as a student productivity tool and is not designed to knowingly collect personal information from children for unrelated purposes.
+            The extension minimizes data handling by conducting calculations locally. All local storage uses Chrome's secure sandboxed storage API, and telemetry requests to the Cloudflare proxy use encrypted HTTPS/TLS 1.3 connections.
           </p>
         </div>
 
         <!-- Section 11 -->
         <div class="policy-section">
-          <h2>11. Changes to This Privacy Policy</h2>
+          <h2>11. Children's Privacy</h2>
           <p>
-            This Privacy Policy may be updated if the extension's data practices, features, or applicable requirements change. The latest version will be published on this page, with the updated date shown at the top.
+            Attendance Analyzer is designed as a student productivity tool and does not knowingly collect personal information from children or minors.
           </p>
         </div>
 
         <!-- Section 12 -->
         <div class="policy-section">
-          <h2>12. Independent and Unofficial Tool</h2>
+          <h2>12. Changes to This Privacy Policy</h2>
           <p>
-            Attendance Analyzer is an independent, unofficial tool. It is not affiliated with, endorsed by, sponsored by, or officially connected to any university, college, educational institution, or student portal provider unless explicitly stated.
-          </p>
-          <p>
-            Attendance calculations and predictions are provided for informational and planning purposes only. Official attendance records and institutional decisions remain authoritative. The extension does not guarantee eligibility, claim approval, examination eligibility, or any particular final attendance result.
+            This Privacy Policy may be updated periodically to reflect improvements in features, data handling practices, or regulatory requirements. Any updates will be published on this page with an updated revision date.
           </p>
         </div>
 
         <!-- Section 13 -->
         <div class="policy-section">
-          <h2>13. Chrome Web Store User Data Policy</h2>
+          <h2>13. Independent and Unofficial Tool</h2>
           <p>
-            Attendance Analyzer limits its handling of user data to the extension's disclosed single purpose: attendance tracking, calculation, simulation, and prediction. User data is not sold or transferred for personalized advertising, data brokerage, creditworthiness decisions, or other unrelated purposes.
+            Attendance Analyzer is an independent, unofficial project created by students for students. It is not affiliated with, endorsed by, or officially connected to any university, college, educational institution, or student portal provider.
+          </p>
+          <p>
+            Attendance calculations and predictions are provided for informational and planning purposes only. Official university portal records and institutional regulations remain authoritative.
           </p>
         </div>
 
         <!-- Section 14 -->
         <div class="policy-section">
-          <h2>14. Contact</h2>
+          <h2>14. Chrome Web Store User Data Policy Compliance</h2>
           <p>
-            For privacy questions or concerns, please use the support contact provided on the Attendance Analyzer Chrome Web Store listing.
-          </p>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 14px;">
-            Attendance Analyzer · Independent attendance tracking and prediction tool
+            Attendance Analyzer strictly complies with the Chrome Web Store User Data Policy and the Limited Use requirements. All data accessed is strictly limited to providing and improving the single disclosed purpose: attendance tracking, calculation, simulation, and forecasting.
           </p>
         </div>
 
-      </div>
+        <!-- Section 15 -->
+        <div class="policy-section">
+          <h2>15. Contact & Support</h2>
+          <p>
+            If you have questions, concerns, or feedback regarding this Privacy Policy or data handling practices, please contact:
+          </p>
+          <p style="margin-top: 10px;">
+            <strong>Developer:</strong> Dhruv Dhameliya<br>
+            <strong>Email:</strong> <a href="mailto:dhruvdhameliya23@gmail.com" style="color: var(--primary); font-weight: 700;">dhruvdhameliya23@gmail.com</a>
+          </p>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 14px;">
+            Attendance Analyzer · Independent student attendance tracking and prediction tool
+          </p>
+        </div>
+
+        <div class="proof-action-links" style="margin-top: 24px;">
+          <a href="donation-policy" class="btn-policy-link">
+            Read Donation Policy →
+          </a>
+          <a href="proof" class="btn-policy-link">
+            View Public Proofs →
+          </a>
+        </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-credit">
-          Designed & Developed by <strong>Dhruv Dhameliya</strong>.
-        </div>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="policy.html">Privacy Policy</a></li>
-          <li><a href="payment.html">Support / Donate</a></li>
-          <li><a href="advertise.html">Advertise</a></li>
-        </ul>
-      </div>
-    </footer>
+    <!-- Footer dynamically injected via navigation.js -->
+    <footer class="footer"></footer>
   </div>
 
-  <script src="main.js?v=3.2.4"></script>
+  <script src="main.js?v=4.1.0"></script>
 </body>
 </html>

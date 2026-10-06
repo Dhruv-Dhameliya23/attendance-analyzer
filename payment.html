@@ -1,236 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support Development — Attendance Analyzer</title>
-  <meta name="description" content="Support Attendance Analyzer independent student development. 100% free and client-side attendance tool.">
-  
-  <!-- Preconnect to Razorpay CDN for instant loading speed -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <title>Support Development & Giving Back — Attendance Analyzer</title>
+  <meta name="description"
+    content="Support Attendance Analyzer student development and our university campus giving back pledge to CSA and Anvaya.">
+
+  <!-- Preload & Preconnect for Instant Razorpay Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://checkout.razorpay.com" crossorigin>
   <link rel="dns-prefetch" href="https://checkout.razorpay.com">
   <link rel="preconnect" href="https://api.razorpay.com" crossorigin>
   <link rel="dns-prefetch" href="https://api.razorpay.com">
-  
-  <link rel="stylesheet" href="styles.css?v=3.2.4">
-  <link rel="icon" type="image/png" href="assets/icon48.png?v=3.2.4">
+  <link rel="preload" href="https://checkout.razorpay.com/v1/payment-button.js" as="script">
+
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
 </head>
+
 <body>
 
-  <!-- Mobile Top Bar -->
-  <header class="mobile-topbar">
-    <a href="index.html" class="mobile-brand-link">
-      <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img" style="width: 32px; height: 32px; border-radius: 8px;">
-      <span class="brand-title" style="font-size: 17px; font-weight: 800;">Attendance Analyzer</span>
-    </a>
-    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </header>
-
-  <!-- Left Sidebar Navigation -->
-  <aside class="sidebar" id="sidebar">
-    <div>
-      <a href="index.html" class="sidebar-brand">
-        <img src="assets/icon48.png" alt="Attendance Analyzer" class="brand-icon-img">
-        <div class="brand-title">Attendance Analyzer</div>
-      </a>
-
-      <!-- Left Navigation Menu Items -->
-      <ul class="sidebar-menu">
-        <li>
-          <a href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="policy.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            Privacy Policy
-          </a>
-        </li>
-        <li>
-          <a href="payment.html" class="active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-            Support / Donate
-          </a>
-        </li>
-        <li>
-          <a href="advertise.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            Advertise
-          </a>
-        </li>
-        <li>
-          <a href="install.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            Join Beta
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Bottom Action Button -->
-    <div class="sidebar-bottom">
-      <a href="install.html" class="btn-sidebar-install">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <circle cx="12" cy="12" r="4"></circle>
-          <line x1="21.17" y1="8" x2="12" y2="8"></line>
-          <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
-          <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
-        </svg>
-        <span>Install Extension</span>
-      </a>
-    </div>
-  </aside>
+  <!-- Modular Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
 
   <!-- Main Content Wrapper -->
   <div class="main-wrapper">
     <main class="content-container">
-      
-      <div class="white-card payment-card">
-        <div style="width: 52px; height: 52px; border-radius: 12px; background: #eef2ff; color: #4f46e5; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+
+      <!-- Page Header -->
+      <div style="margin-bottom: 28px;">
+        <div
+          style="width: 54px; height: 54px; border-radius: 14px; background: #eef2ff; color: #4f46e5; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+            </path>
           </svg>
         </div>
 
-        <h1 class="payment-title">Support Attendance Analyzer</h1>
-        
-        <p class="payment-desc">
-          Attendance Analyzer is an independent, free tool built for students. Your contributions help support server costs, maintenance, and rapid updates whenever student portals change.
+        <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 8px;">Support Development & Giving Back</h1>
+
+        <p class="hero-subtitle" style="max-width: 780px;">
+          Attendance Analyzer is an independent, 100% free tool built for university students. Your contributions
+          support server infrastructure, client-side updates, and our verified <strong>Giving Back Student
+            Pledge</strong>.
         </p>
-
-        <!-- Large Razorpay Payment Box with Instant Skeleton Loader -->
-        <div class="razorpay-large-container" id="razorpay-container">
-          
-          <!-- Animated Skeleton Loader -->
-          <div class="razorpay-loading-status" id="razorpay-loader">
-            <div class="razorpay-skeleton">
-              <div class="loading-spinner"></div>
-            </div>
-            <div class="razorpay-loading-text">
-              Loading payment for you...
-            </div>
-          </div>
-
-          <!-- Animated Arrow Callout directly touching the button -->
-          <div class="support-arrow-indicator" style="margin-bottom: 12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-            <span>Click here to support</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </div>
-
-          <!-- Razorpay Form Script -->
-          <form id="razorpay-form">
-            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TQA3uVur1HTG1F" async> </script>
-          </form>
-
-        </div>
-
-        <!-- Charity Pledge Message -->
-        <div class="charity-pledge-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-            <path d="M2 17l10 5 10-5"></path>
-            <path d="M2 12l10 5 10-5"></path>
-          </svg>
-          <div>
-            <strong>Giving Back Pledge:</strong> We will donate 10% of total contributions in a month, or if your amount is more than ₹500, then 10% of your amount to <span style="background: #16a34a; color: #ffffff; padding: 2px 7px; border-radius: 6px; font-weight: 800; display: inline-block;">CSA</span> or any other charitable trust we trust.
-          </div>
-        </div>
-
-        <!-- Student Developers Support Message Box -->
-        <div class="dev-support-msg-box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
-          <div>
-            This extension is 100% free and maintained by student developers. Contributions help keep it updated with portal changes.
-          </div>
-        </div>
-
-        <!-- Secure checkout badge -->
-        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text-muted); font-size: 13.5px; font-weight: 600; margin-top: 20px;">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <span>100% Secure Checkout via Razorpay</span>
-        </div>
-
       </div>
+
+          <!-- Official Razorpay Payment Box -->
+          <div class="razorpay-official-box" id="razorpay-container">
+
+            <div class="support-arrow-indicator" style="margin-bottom: 16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+              <span>Click Support me for payment</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+
+            <!-- Overlapping Slot Wrapper: Loading text sits underneath, Razorpay button overlaps on top -->
+            <div class="razorpay-slot-wrapper">
+              <div class="razorpay-bg-loading" id="razorpay-bg-loader">
+                <div class="loading-spinner-mini"></div>
+                <span> Loading payment </span>
+              </div>
+
+              <!-- Official Razorpay Form Button Widget (Big & Scaled) -->
+              <form id="razorpay-form">
+                <script src="https://checkout.razorpay.com/v1/payment-button.js"
+                  data-payment_button_id="pl_TQA3uVur1HTG1F" async> </script>
+              </form>
+            </div>
+
+          </div>
+
+          <!-- Charity Pledge Message with Scaling Mention -->
+          <div class="charity-pledge-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            <div>
+              <strong>Official Giving Back Pledge:</strong> We pledge <strong>10% of monthly contributions</strong> (and
+              10% of any contribution over ₹500) to verified student social action clubs: <span
+                style="background: #10b981; color: #ffffff; padding: 2px 7px; border-radius: 6px; font-weight: 800; display: inline-block;">CSA
+                (BYC Campus)</span> and <span
+                style="background: #6366f1; color: #ffffff; padding: 2px 7px; border-radius: 6px; font-weight: 800; display: inline-block;">Anvaya
+                (Central Campus)</span>.
+              <div style="margin-top: 6px; font-size: 13px; opacity: 0.95; display: flex; align-items: flex-start; gap: 6px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <em>Once we collaborate with more campus clubs, this donation pledge will increase to <strong>30% to
+                    40%+</strong> or more as per requirement. All pledged funds are distributed equally once the minimum
+                  ₹1,000 disbursement threshold per club is met.</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strict Non-Refundable Disclosure Alert -->
+          <div class="non-refundable-alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div>
+              <strong>Refund Policy:</strong> Support developer and donation amounts will <strong>not be refunded by any
+                chance</strong> under any circumstance.
+            </div>
+          </div>
+
+          <!-- 2 Preferred Campus Clubs Showcase Section -->
+          <div style="text-align: left; margin-top: 28px;">
+            <div class="section-tagline">Preferred Campus Clubs</div>
+            <h2 class="section-heading-large" style="font-size: 20px;">Supported University Clubs</h2>
+            <div class="clubs-grid" id="donate-clubs-container" style="margin-top: 12px;">
+              <!-- Dynamically populated from sdg-data.js -->
+            </div>
+          </div>
+
+          <!-- Policy & Proof Action Links -->
+          <div style="display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+            <a href="donation-policy" class="btn-policy-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              Read Full Donation Policy
+            </a>
+            <a href="proof" class="btn-policy-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              View Proof & Ledger
+            </a>
+          </div>
+
+          <!-- Secure checkout badge -->
+          <div
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text-muted); font-size: 13px; font-weight: 600; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-light);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>100% Secure Checkout via Razorpay · Client-Side Tool</span>
+          </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-credit">
-          Designed & Developed by <strong>Dhruv Dhameliya</strong>.
-        </div>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="policy.html">Privacy Policy</a></li>
-          <li><a href="payment.html">Support / Donate</a></li>
-          <li><a href="advertise.html">Advertise</a></li>
-        </ul>
-      </div>
-    </footer>
+    <!-- Footer dynamically injected via navigation.js -->
+    <footer class="footer"></footer>
   </div>
 
-  <script src="main.js?v=3.2.4"></script>
+  <script src="sdg-data.js?v=4.1.0"></script>
+  <script src="main.js?v=4.1.0"></script>
   <script>
-    // Seamless transition from skeleton loader to loaded Razorpay button
-    document.addEventListener('DOMContentLoaded', () => {
-      const loader = document.getElementById('razorpay-loader');
+    (function initPaymentPage() {
+      // Render 2 Campus Clubs immediately
+      const clubsContainer = document.getElementById('donate-clubs-container');
+      if (clubsContainer && window.SDG_DATA && window.SDG_DATA.clubs) {
+        clubsContainer.innerHTML = window.SDG_DATA.clubs.map(club => `
+          <div class="club-card" style="border-top: 4px solid ${club.color};">
+            <div class="club-header">
+              <span class="club-campus-badge" style="background: ${club.badgeBg}; color: ${club.badgeColor};">
+                ${club.badge}
+              </span>
+              <span class="club-sdg-tag" style="color: ${club.color}; background: ${club.lightBg};">
+                ${club.sdgTarget}
+              </span>
+            </div>
+            <h3 class="club-name" style="color: ${club.color}; font-size: 17px;">${club.name}</h3>
+            <div class="club-fullname" style="font-size: 12px;">${club.fullName}</div>
+            <p class="club-desc" style="font-size: 12.5px;">${club.description}</p>
+          </div>
+        `).join('');
+      }
+
+      // Keep background loader spinning until official Razorpay button is truly mounted and visible
+      const bgLoader = document.getElementById('razorpay-bg-loader');
       const form = document.getElementById('razorpay-form');
-      
-      const checkLoaded = () => {
-        if (form && form.querySelector('.razorpay-payment-button, button, iframe, [class*="razorpay"]')) {
-          if (loader) loader.style.display = 'none';
-          return true;
-        }
-        return false;
-      };
+      if (bgLoader && form) {
+        const checkReady = () => {
+          const btn = form.querySelector('.razorpay-payment-button, .PaymentButton, button');
+          if (btn && btn.offsetHeight > 20 && (btn.innerText.trim().length > 0 || btn.children.length > 0)) {
+            bgLoader.style.opacity = '0';
+            setTimeout(() => { 
+              if (bgLoader) bgLoader.style.display = 'none'; 
+            }, 250);
+            return true;
+          }
+          return false;
+        };
 
-      const interval = setInterval(() => {
-        if (checkLoaded()) {
-          clearInterval(interval);
+        if (!checkReady()) {
+          const observer = new MutationObserver(() => {
+            if (checkReady()) {
+              observer.disconnect();
+            }
+          });
+          observer.observe(form, { childList: true, subtree: true });
         }
-      }, 100);
-
-      setTimeout(() => {
-        clearInterval(interval);
-        if (loader) loader.style.display = 'none';
-      }, 3500);
-    });
+      }
+    })();
   </script>
 </body>
+
 </html>

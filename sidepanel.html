@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <title>Try Now Here — Live Attendance Calculator &amp; Tools</title>
+  <meta name="description" content="Test your conducted classes, attended classes, and calculate exactly how many classes you can safely miss. Add yellow claim form concessions and explore full Chrome extension tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
+  <style>
+    /* Header Section */
+    .sp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .sp-header-content {
+      flex: 1;
+      min-width: 290px;
+    }
+    .sp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 750;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      margin-bottom: 12px;
+    }
+    .sp-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 850;
+      color: var(--text-main);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin: 0 0 10px 0;
+    }
+    .sp-subtitle {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 740px;
+      margin: 0;
+    }
+
+    /* Top Chromium Note */
+    .sp-browser-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      font-size: 13px;
+      font-weight: 750;
+      margin-top: 12px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .sp-browser-note:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+    }
+
+    /* Main Calculator Container */
+    .sp-calc-container {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 22px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .sp-calc-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      background: #f8fafc;
+      border-bottom: 1.5px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .sp-calc-badge-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sp-calc-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+    .sp-calc-topbar-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .sp-trial-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    /* Calculator Form & Results Grid (Generous Padding & Uncluttered Spacing) */
+    .sp-calc-body {
+      padding: 32px 30px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      transition: filter 0.2s ease;
+      overflow-y: auto;
+      max-height: calc(100vh - 180px);
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent;
+    }
+    /* Smooth 3px Ultra-Thin Scrollbar for Calculator Body */
+    .sp-calc-body::-webkit-scrollbar {
+      width: 3px;
+    }
+    .sp-calc-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .sp-calc-body::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 999px;
+    }
+    .sp-calc-body::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .sp-calc-body::-webkit-scrollbar-button {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none !important;
+      margin: 0 !important;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield !important;
+    }
+
+    @media (max-width: 900px) {
+      .sp-calc-body {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+        gap: 24px;
+        max-height: none;
+      }
+    }
+
+    /* Left Side: Inputs */
+    .sp-calc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sp-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sp-input-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sp-input-stepper {
+      display: flex;
+      align-items: center;
+      background: #f8fafc;
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.15s ease;
+      height: 48px;
+    }
+    .sp-input-stepper:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.15);
+      background: #ffffff;
+    }
+    .sp-step-btn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .sp-step-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .sp-num-input {
+      flex: 1;
+      height: 48px;
+      border: none;
+      background: transparent;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      font-weight: 850;
+      color: #0f172a;
+      outline: none;
+    }
+
+    /* Target Goal Selector */
+    .sp-goal-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .sp-goal-btn {
+      padding: 11px 6px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: #f8fafc;
+      font-size: 14px;
+      font-weight: 800;
+      color: #334155;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .sp-goal-btn:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+    .sp-goal-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Yellow Claim Quick Add */
+    .sp-yellow-box {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+    .sp-yellow-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .sp-yellow-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .sp-yellow-btns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .sp-yellow-chip {
+      padding: 6px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #f59e0b;
+      background: #ffffff;
+      color: #b45309;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .sp-yellow-chip:hover, .sp-yellow-chip.active {
+      background: #f59e0b;
+      color: #ffffff;
+    }
+
+    /* Right Side: Results Display (Dark Card with High Contrast Colors) */
+    .sp-calc-results {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-radius: 20px;
+      padding: 28px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .sp-res-primary {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .sp-res-pct-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.4rem;
+      font-weight: 850;
+      line-height: 1;
+      color: #38bdf8 !important;
+    }
+    .sp-res-status-pill {
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399 !important;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    /* Miss / Safe Bunks Highlight */
+    .sp-res-highlight {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+    .sp-highlight-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #94a3b8 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .sp-highlight-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 850;
+      color: #10b981 !important;
+      margin-bottom: 4px;
+    }
+    .sp-highlight-sub {
+      font-size: 13.5px;
+      color: #cbd5e1 !important;
+      line-height: 1.5;
+    }
+
+    /* Metric Rows */
+    .sp-res-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .sp-metric-box {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .sp-metric-lbl {
+      font-size: 12px;
+      color: #94a3b8 !important;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .sp-metric-val {
+      font-size: 16.5px;
+      font-weight: 850;
+      color: #f8fafc !important;
+    }
+
+    /* 3-Day Lock Overlay (Pure High Contrast Fix - No Black-on-Black Camouflage) */
+    .sp-lock-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(12px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 24px;
+      text-align: center;
+      color: #ffffff !important;
+      z-index: 30;
+      border-radius: 20px;
+    }
+    .sp-lock-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: rgba(37, 99, 235, 0.25);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      color: #60a5fa !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 0 24px rgba(37, 99, 235, 0.3);
+    }
+    /* Explicitly override any global h2 dark color */
+    .sp-lock-overlay h2,
+    .sp-lock-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.85rem !important;
+      font-weight: 850 !important;
+      color: #ffffff !important;
+      margin: 0 0 10px 0 !important;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+    .sp-lock-overlay p,
+    .sp-lock-desc {
+      font-size: 14.5px !important;
+      color: #cbd5e1 !important;
+      max-width: 520px;
+      line-height: 1.6;
+      margin: 0 0 20px 0 !important;
+    }
+
+    /* Live 3-Day Countdown Pill (Compact & Subtle) */
+    .sp-countdown-card {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 100px;
+      padding: 7px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .sp-countdown-label {
+      font-size: 12px !important;
+      font-weight: 750;
+      color: #94a3b8 !important;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .sp-countdown-timer {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 850;
+      color: #38bdf8 !important;
+      letter-spacing: 0.02em;
+    }
+
+    .sp-lock-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* Large Prominent Download Extension Button */
+    .sp-btn-install-big {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff !important;
+      font-size: 16.5px;
+      font-weight: 850;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.45);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+      max-width: 440px;
+      letter-spacing: -0.2px;
+    }
+    .sp-btn-install-big:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(37, 99, 235, 0.55);
+      color: #ffffff !important;
+    }
+    .sp-btn-install-big svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    /* 20-Token Download Suggestion Modal */
+    .sp-popup-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .sp-popup-card {
+      background: #ffffff !important;
+      border-radius: 22px;
+      padding: 36px 32px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      border: 1.5px solid var(--border-color);
+      color: #0f172a !important;
+      animation: popScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popScale {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .sp-popup-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626 !important;
+      font-size: 12.5px;
+      font-weight: 800;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      margin-bottom: 14px;
+    }
+    .sp-popup-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.7rem !important;
+      font-weight: 850 !important;
+      color: #0f172a !important;
+      margin: 0 0 10px 0 !important;
+      line-height: 1.25;
+    }
+    .sp-popup-desc {
+      font-size: 14.5px !important;
+      color: #475569 !important;
+      line-height: 1.6;
+      margin: 0 0 24px 0 !important;
+    }
+    .sp-popup-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sp-btn-close-modal {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #475569 !important;
+      font-size: 13.5px;
+      font-weight: 750;
+      cursor: pointer;
+      padding: 11px 16px;
+      border-radius: 10px;
+      transition: all 0.15s ease;
+    }
+    .sp-btn-close-modal:hover {
+      color: #0f172a !important;
+      background: #e2e8f0;
+    }
+
+    /* Feature Teaser Footer Banner */
+    .sp-teaser-banner {
+      background: #f8fafc;
+      border-top: 1.5px solid var(--border-color);
+      padding: 24px 28px;
+    }
+    .sp-teaser-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .sp-teaser-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 850;
+      color: #0f172a;
+      margin: 0;
+    }
+    .sp-features-pills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .sp-feat-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      color: #334155;
+    }
+    .sp-feat-pill-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Core Action Buttons */
+    .sp-btn-install-full {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 28px;
+      background: var(--primary);
+      color: #ffffff !important;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+    }
+    .sp-btn-install-full:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.4);
+      color: #ffffff !important;
+    }
+
+    /* Browser Compatibility Card */
+    .sp-compat-box {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .sp-compat-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .sp-compat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sp-compat-title {
+      font-size: 16.5px;
+      font-weight: 850;
+      color: #0f172a;
+      margin: 0 0 4px 0;
+    }
+    .sp-compat-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Modular Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="content-container">
+
+      <!-- Page Header -->
+      <section class="sp-header">
+        <div class="sp-header-content">
+          <div class="sp-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Live Attendance Sandbox</span>
+          </div>
+          <h1 class="sp-title">Try Now Here — Live Attendance Calculator</h1>
+          <p class="sp-subtitle">
+            Test your conducted classes, attended classes, target goal, and calculate exactly how many classes you can afford to miss. Add yellow claim form concessions to see instant recovery.
+          </p>
+          <a href="browsers.html" class="sp-browser-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>Chromium-Based Browsers Only (Chrome, Brave, Edge) &rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Live Attendance Calculator Sandbox -->
+      <section class="sp-calc-container" id="trial-calculator">
+        <div class="sp-calc-topbar">
+          <div class="sp-calc-badge-wrap">
+            <div class="sp-calc-dot" id="calc-status-dot"></div>
+            <span class="sp-calc-topbar-title">Token-Based Attendance Sandbox</span>
+          </div>
+          <div>
+            <span class="sp-trial-badge" id="trial-count-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span id="trial-count-text">100 Tokens Left</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="sp-calc-body" id="calc-interactive-body">
+          
+          <!-- Left: User Inputs -->
+          <div class="sp-calc-form">
+            
+            <!-- Total Classes Conducted -->
+            <div class="sp-input-group">
+              <label class="sp-input-label">
+                <span>Total Classes Conducted</span>
+                <span style="font-size: 12px; color: #64748b;">(Hours)</span>
+              </label>
+              <div class="sp-input-stepper">
+                <button class="sp-step-btn" id="btn-dec-conducted">&minus;</button>
+                <input type="number" class="sp-num-input" id="inp-conducted" value="60" min="1" max="500">
+                <button class="sp-step-btn" id="btn-inc-conducted">&plus;</button>
+              </div>
+            </div>
+
+            <!-- Total Classes Attended -->
+            <div class="sp-input-group">
+              <label class="sp-input-label">
+                <span>Total Classes Attended</span>
+                <span style="font-size: 12px; color: #64748b;">(Present Hours)</span>
+              </label>
+              <div class="sp-input-stepper">
+                <button class="sp-step-btn" id="btn-dec-attended">&minus;</button>
+                <input type="number" class="sp-num-input" id="inp-attended" value="52" min="0" max="500">
+                <button class="sp-step-btn" id="btn-inc-attended">&plus;</button>
+              </div>
+            </div>
+
+            <!-- Target Goal Selection -->
+            <div class="sp-input-group">
+              <label class="sp-input-label">
+                <span>Target Attendance Goal</span>
+                <span style="font-size: 12.5px; font-weight: 800; color: var(--primary);" id="goal-val-display">85% Goal</span>
+              </label>
+              <input type="range" class="custom-slider" id="inp-goal-slider" min="65" max="95" step="1" value="85" aria-label="Target percentage slider">
+              <div class="sp-goal-pills" id="goal-pills">
+                <button class="sp-goal-btn" data-goal="75">75%</button>
+                <button class="sp-goal-btn" data-goal="80">80%</button>
+                <button class="sp-goal-btn active" data-goal="85">85%</button>
+                <button class="sp-goal-btn" data-goal="90">90%</button>
+              </div>
+            </div>
+
+            <!-- Add Yellow Form Concession Quick Test -->
+            <div class="sp-yellow-box">
+              <div class="sp-yellow-header">
+                <div class="sp-yellow-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                  <span>Add Yellow Claim Form (ECA / Sports):</span>
+                </div>
+                <strong style="color: #b45309;" id="yellow-val-text">+0 hrs</strong>
+              </div>
+              <div class="sp-yellow-btns" id="yellow-chips">
+                <button class="sp-yellow-chip active" data-yellow="0">0h (None)</button>
+                <button class="sp-yellow-chip" data-yellow="1">+1 hr</button>
+                <button class="sp-yellow-chip" data-yellow="2">+2 hrs</button>
+                <button class="sp-yellow-chip" data-yellow="3">+3 hrs</button>
+                <button class="sp-yellow-chip" data-yellow="5">+5 hrs</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Calculated Results -->
+          <div class="sp-calc-results">
+            
+            <div class="sp-res-primary">
+              <div>
+                <div style="font-size: 12px; color: #94a3b8 !important; font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">
+                  Current Attendance
+                </div>
+                <div class="sp-res-pct-val" id="res-pct">86.67%</div>
+              </div>
+              <span class="sp-res-status-pill" id="res-status-pill">Excellent Standing</span>
+            </div>
+
+            <!-- Safe Bunks / How many classes you can miss -->
+            <div class="sp-res-highlight">
+              <div class="sp-highlight-title">Classes You Can Safely Miss</div>
+              <div class="sp-highlight-val" id="res-safe-bunks">1 class</div>
+              <div class="sp-highlight-sub" id="res-safe-desc">You can miss 1 class before dropping below 85%</div>
+            </div>
+
+            <!-- Detailed Metrics -->
+            <div class="sp-res-metrics">
+              <div class="sp-metric-box">
+                <div class="sp-metric-lbl">Classes Missed</div>
+                <div class="sp-metric-val" id="res-missed">8 classes</div>
+              </div>
+              <div class="sp-metric-box">
+                <div class="sp-metric-lbl">Classes to Recover Goal</div>
+                <div class="sp-metric-val" id="res-recovery" style="color: #38bdf8 !important;">0 (Goal Met)</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- 3-Day Lock Overlay (High Contrast & Crystal Clear) -->
+        <div class="sp-lock-overlay" id="calc-lock-overlay">
+          <div class="sp-lock-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h2 class="sp-lock-title">Token Limit Reached · 3-Day Cooldown Active</h2>
+          <p class="sp-lock-desc">
+            You’ve used all 20 free sandbox tokens. To prevent server overload, web simulation unlocks every 3 days. Install our free Chrome extension for <strong>unlimited calculations 24/7</strong> directly on your student portal.
+          </p>
+
+          <div class="sp-countdown-card">
+            <span class="sp-countdown-label">Recharging in:</span>
+            <span class="sp-countdown-timer" id="lock-countdown">3d 00h 00m 00s</span>
+          </div>
+
+          <div class="sp-lock-actions">
+            <a href="https://chromewebstore.google.com/detail/gbepkebfijgoafbkbcbjmmjipnhoaifd?utm_source=item-share-cb" target="_blank" rel="noopener" class="sp-btn-install-big">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="21.17" y1="8" x2="12" y2="8"></line>
+                <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+                <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+              </svg>
+              <span>Add Extension to Chrome / Brave (Free)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Teaser Bottom Banner -->
+        <div class="sp-teaser-banner">
+          <div class="sp-teaser-header">
+            <h2 class="sp-teaser-title">More Capabilities in the Chrome Extension</h2>
+            <a href="https://chromewebstore.google.com/detail/gbepkebfijgoafbkbcbjmmjipnhoaifd?utm_source=item-share-cb" target="_blank" rel="noopener" class="sp-btn-install-full" style="padding: 10px 20px; font-size: 13.5px;">
+              <span>Install Extension</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+
+          <div class="sp-features-pills-grid">
+            <div class="sp-feat-pill">
+              <div class="sp-feat-pill-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <span><strong>Subject-Wise Margins:</strong> Real-time bunk limits per subject</span>
+            </div>
+            <div class="sp-feat-pill">
+              <div class="sp-feat-pill-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <span><strong>Yellow &amp; Blue Claims:</strong> Medical &amp; ECA concession modeling</span>
+            </div>
+            <div class="sp-feat-pill">
+              <div class="sp-feat-pill-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+              </div>
+              <span><strong>900 Target Mode:</strong> Custom hours milestone tracking</span>
+            </div>
+            <div class="sp-feat-pill">
+              <div class="sp-feat-pill-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <span><strong>5 Multi-Student Profiles:</strong> Switch between profiles in 1 click</span>
+            </div>
+            <div class="sp-feat-pill">
+              <div class="sp-feat-pill-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <span><strong>100% Client-Side Privacy:</strong> Zero cloud storage, fully offline</span>
+            </div>
+            <div class="sp-feat-pill">
+              <div class="sp-feat-pill-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <span><strong>...and many more functions</strong> directly on your university portal!</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Supported Browsers Callout Banner -->
+      <section class="sp-compat-box">
+        <div class="sp-compat-left">
+          <div class="sp-compat-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="21.17" y1="8" x2="12" y2="8"></line>
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 class="sp-compat-title">Chromium-Based Browsers Supported</h3>
+            <p class="sp-compat-desc">
+              Works natively on <strong>Google Chrome</strong>, <strong>Brave Browser</strong>, <strong>Microsoft Edge</strong>, <strong>Opera</strong>, <strong>Vivaldi</strong>, <strong>Arc</strong>, and other Chromium browsers.
+            </p>
+          </div>
+        </div>
+        <a href="browsers.html" style="padding: 10px 18px; border-radius: 10px; border: 1.5px solid var(--border-color); background: #f8fafc; color: var(--text-main); font-weight: 750; font-size: 13.5px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+          <span>View Supported Browsers</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Install Reminder & Season Limit Modal (Triggers after each 20 uses, and locks at 100 uses) -->
+  <div class="sp-popup-modal-overlay" id="popup-20-interactions" style="display: none;">
+    <div class="sp-popup-card">
+      <div class="sp-popup-badge" id="popup-badge-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <span id="popup-badge-text">20 Sandbox Uses Completed</span>
+      </div>
+      <h3 class="sp-popup-title" id="popup-title-text">Unlock Direct University Portal Automation</h3>
+      <p class="sp-popup-desc" id="popup-desc-text">
+        Instead of manual entries, the free Chrome Extension gives you <strong>unlimited instant calculations</strong>, subject-level margins, and claim simulators directly in your student portal.
+      </p>
+      <div class="sp-popup-actions">
+        <a href="https://chromewebstore.google.com/detail/gbepkebfijgoafbkbcbjmmjipnhoaifd?utm_source=item-share-cb" target="_blank" rel="noopener" class="sp-btn-install-full" style="width: 100%;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="21.17" y1="8" x2="12" y2="8"></line>
+            <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+            <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+          </svg>
+          <span>Get Extension for Chrome / Brave (Free)</span>
+        </a>
+        <button class="sp-btn-close-modal" id="btn-close-popup">
+          <span id="btn-close-popup-text">Continue Using Sandbox &rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator Token & 3-Day Lock Engine Script -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Safe keyboard and context menu inspection guard (mirrors integrity.js & popup)
+      try {
+        const handleContextMenu = function (e) {
+          if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+            return;
+          }
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+          return false;
+        };
+
+        const handleKeyDown = function (e) {
+          const key = (e.key || '').toUpperCase();
+          const keyCode = e.keyCode || e.which;
+          const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+          if (key === 'F12' || keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+            return false;
+          }
+
+          if (isCtrlOrCmd && e.shiftKey) {
+            if (
+              key === 'I' || keyCode === 73 ||
+              key === 'J' || keyCode === 74 ||
+              key === 'C' || keyCode === 67 ||
+              key === 'K' || keyCode === 75 ||
+              key === 'P' || keyCode === 80 ||
+              key === 'E' || keyCode === 69 ||
+              key === 'M' || keyCode === 77
+            ) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+              return false;
+            }
+          }
+
+          if (isCtrlOrCmd && !e.shiftKey && !e.altKey) {
+            if (key === 'U' || keyCode === 85 || key === 'S' || keyCode === 83) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+              return false;
+            }
+          }
+        };
+
+        window.addEventListener('contextmenu', handleContextMenu, true);
+        document.addEventListener('contextmenu', handleContextMenu, true);
+        window.addEventListener('keydown', handleKeyDown, true);
+        document.addEventListener('keydown', handleKeyDown, true);
+      } catch (err) {}
+
+      const MAX_TOKENS = 100; // 100 total tokens per season
+      const REMIND_STEP = 20; // Remind to install every 20 uses
+      const LOCK_DURATION_MS = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+      const STORAGE_KEY_TOKENS = 'caa_calc_tokens_used';
+      const STORAGE_KEY_LOCK = 'caa_calc_lock_until';
+
+      const conductedInput = document.getElementById('inp-conducted');
+      const attendedInput = document.getElementById('inp-attended');
+      const goalBtns = document.querySelectorAll('#goal-pills .sp-goal-btn');
+      const yellowChips = document.querySelectorAll('#yellow-chips .sp-yellow-chip');
+      const yellowValText = document.getElementById('yellow-val-text');
+
+      const pctDisplay = document.getElementById('res-pct');
+      const statusPill = document.getElementById('res-status-pill');
+      const safeBunksDisplay = document.getElementById('res-safe-bunks');
+      const safeDescDisplay = document.getElementById('res-safe-desc');
+      const missedDisplay = document.getElementById('res-missed');
+      const recoveryDisplay = document.getElementById('res-recovery');
+
+      const trialCountBadge = document.getElementById('trial-count-text');
+      const lockOverlay = document.getElementById('calc-lock-overlay');
+      const lockCountdown = document.getElementById('lock-countdown');
+      const popupModal = document.getElementById('popup-20-interactions');
+      const popupBadgeText = document.getElementById('popup-badge-text');
+      const popupTitleText = document.getElementById('popup-title-text');
+      const popupDescText = document.getElementById('popup-desc-text');
+      const closePopupBtn = document.getElementById('btn-close-popup');
+      const closePopupBtnText = document.getElementById('btn-close-popup-text');
+
+      const btnDecCond = document.getElementById('btn-dec-conducted');
+      const btnIncCond = document.getElementById('btn-inc-conducted');
+      const btnDecAtt = document.getElementById('btn-dec-attended');
+      const btnIncAtt = document.getElementById('btn-inc-attended');
+
+      let currentGoal = 85;
+      let currentYellow = 0;
+      let countdownTimerInterval = null;
+
+      function getTokensUsed() {
+        return parseInt(localStorage.getItem(STORAGE_KEY_TOKENS) || '0', 10);
+      }
+
+      function getLockUntil() {
+        return parseInt(localStorage.getItem(STORAGE_KEY_LOCK) || '0', 10);
+      }
+
+      function isLocked() {
+        const lockUntil = getLockUntil();
+        return lockUntil > Date.now();
+      }
+
+      function formatRemainingTime(ms) {
+        if (ms <= 0) return '00h 00m 00s';
+        const totalSeconds = Math.floor(ms / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        const pad = (n) => String(n).padStart(2, '0');
+        if (days > 0) {
+          return `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+        }
+        return `${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+      }
+
+      function startCountdown() {
+        if (countdownTimerInterval) clearInterval(countdownTimerInterval);
+        
+        function updateTimer() {
+          const lockUntil = getLockUntil();
+          const remainingMs = lockUntil - Date.now();
+          if (remainingMs <= 0) {
+            // Lock expired! Auto reset tokens for new season
+            clearInterval(countdownTimerInterval);
+            localStorage.removeItem(STORAGE_KEY_TOKENS);
+            localStorage.removeItem(STORAGE_KEY_LOCK);
+            updateUIState();
+            return;
+          }
+          if (lockCountdown) {
+            lockCountdown.textContent = formatRemainingTime(remainingMs);
+          }
+        }
+
+        updateTimer();
+        countdownTimerInterval = setInterval(updateTimer, 1000);
+      }
+
+      function showReminderModal(tokensUsed, isFinalLock) {
+        if (!popupModal) return;
+        const remaining = Math.max(0, MAX_TOKENS - tokensUsed);
+
+        if (isFinalLock) {
+          if (popupBadgeText) popupBadgeText.textContent = `All 100 Season Tokens Used`;
+          if (popupTitleText) popupTitleText.textContent = `Season Limit Reached (100 Uses)`;
+          if (popupDescText) {
+            popupDescText.innerHTML = `You have completed all <strong>100 free sandbox calculations</strong> for this 3-day season. For uninterrupted automatic live calculations right on your student portal, install the free Chrome Extension.`;
+          }
+          if (closePopupBtnText) {
+            closePopupBtnText.textContent = `Close & View 3-Day Cooldown Timer →`;
+          }
+        } else {
+          if (popupBadgeText) popupBadgeText.textContent = `${tokensUsed} Sandbox Uses Completed (${remaining} Left)`;
+          if (popupTitleText) popupTitleText.textContent = `Automate Your Attendance Portal`;
+          if (popupDescText) {
+            popupDescText.innerHTML = `You've run <strong>${tokensUsed} manual calculations</strong>! The free Chrome Extension calculates safe bunks, yellow claims, and subject margins automatically inside your university portal with 0 manual typing.`;
+          }
+          if (closePopupBtnText) {
+            closePopupBtnText.textContent = `Continue Sandbox (${remaining} Tokens Left) →`;
+          }
+        }
+
+        popupModal.style.display = 'flex';
+      }
+
+      function updateUIState() {
+        const tokensUsed = getTokensUsed();
+        const lockUntil = getLockUntil();
+        const now = Date.now();
+
+        if (lockUntil > now) {
+          // Locked for 3 days
+          if (trialCountBadge) trialCountBadge.textContent = '0 / 100 Tokens · Locked';
+          if (lockOverlay) lockOverlay.style.display = 'flex';
+          startCountdown();
+          return;
+        }
+
+        // Not locked
+        if (lockOverlay) lockOverlay.style.display = 'none';
+        if (countdownTimerInterval) clearInterval(countdownTimerInterval);
+
+        const remaining = Math.max(0, MAX_TOKENS - tokensUsed);
+        if (trialCountBadge) {
+          trialCountBadge.textContent = `${remaining} / 100 Tokens Left`;
+        }
+
+        if (remaining <= 0) {
+          // Used all 100 tokens, initiate lock
+          const newLock = now + LOCK_DURATION_MS;
+          localStorage.setItem(STORAGE_KEY_LOCK, String(newLock));
+          showReminderModal(MAX_TOKENS, true);
+          if (lockOverlay) lockOverlay.style.display = 'flex';
+          startCountdown();
+        }
+      }
+
+      function handleModalDismiss() {
+        if (!popupModal) return;
+        popupModal.style.display = 'none';
+        const tokensUsed = getTokensUsed();
+        if (tokensUsed >= MAX_TOKENS || isLocked()) {
+          if (lockOverlay) lockOverlay.style.display = 'flex';
+          startCountdown();
+        }
+      }
+
+      if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', handleModalDismiss);
+      }
+
+      if (popupModal) {
+        popupModal.addEventListener('click', (e) => {
+          if (e.target === popupModal) {
+            handleModalDismiss();
+          }
+        });
+      }
+
+      function calculate() {
+        if (!conductedInput || !attendedInput) return;
+
+        let conducted = parseInt(conductedInput.value, 10) || 0;
+        let attended = parseInt(attendedInput.value, 10) || 0;
+
+        if (conducted <= 0) conducted = 1;
+        if (attended < 0) attended = 0;
+        if (attended > conducted) attended = conducted;
+
+        // Apply yellow claim hours to attended
+        const effectiveAttended = attended + currentYellow;
+        const pct = Math.min(100, Math.round((effectiveAttended / conducted) * 10000) / 100);
+
+        if (pctDisplay) {
+          pctDisplay.textContent = pct.toFixed(2) + '%';
+          if (pct >= 85) pctDisplay.style.color = '#38bdf8';
+          else if (pct >= 75) pctDisplay.style.color = '#fbbf24';
+          else pctDisplay.style.color = '#f87171';
+        }
+
+        if (statusPill) {
+          if (pct >= 85) {
+            statusPill.textContent = 'Excellent Standing';
+            statusPill.style.background = 'rgba(16, 185, 129, 0.2)';
+            statusPill.style.color = '#34d399';
+            statusPill.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+          } else if (pct >= 75) {
+            statusPill.textContent = 'Safe Zone (75%-84%)';
+            statusPill.style.background = 'rgba(245, 158, 11, 0.2)';
+            statusPill.style.color = '#fbbf24';
+            statusPill.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+          } else {
+            statusPill.textContent = 'Critical Risk (<75%)';
+            statusPill.style.background = 'rgba(239, 68, 68, 0.2)';
+            statusPill.style.color = '#f87171';
+            statusPill.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+          }
+        }
+
+        const missed = Math.max(0, conducted - effectiveAttended);
+        if (missedDisplay) missedDisplay.textContent = `${missed} class${missed === 1 ? '' : 'es'}`;
+
+        const targetFraction = currentGoal / 100;
+
+        if (pct >= currentGoal) {
+          // Safe bunks = floor((attended - targetFraction*conducted) / targetFraction)
+          const safeLeaves = Math.floor((effectiveAttended - targetFraction * conducted) / targetFraction);
+          if (safeBunksDisplay) {
+            safeBunksDisplay.textContent = `${safeLeaves} class${safeLeaves === 1 ? '' : 'es'}`;
+            safeBunksDisplay.style.color = '#10b981';
+          }
+          if (safeDescDisplay) {
+            safeDescDisplay.textContent = `You can miss ${safeLeaves} class${safeLeaves === 1 ? '' : 'es'} before dropping below ${currentGoal}%`;
+          }
+          if (recoveryDisplay) {
+            recoveryDisplay.textContent = '0 (Goal Met)';
+            recoveryDisplay.style.color = '#38bdf8';
+          }
+        } else {
+          // Deficit recovery = ceil((currentGoal*conducted - 100*attended) / (100 - currentGoal))
+          const reqClasses = Math.ceil((currentGoal * conducted - 100 * effectiveAttended) / (100 - currentGoal));
+          if (safeBunksDisplay) {
+            safeBunksDisplay.textContent = '0 classes';
+            safeBunksDisplay.style.color = '#ef4444';
+          }
+          if (safeDescDisplay) {
+            safeDescDisplay.textContent = `Need ${reqClasses} consecutive class${reqClasses === 1 ? '' : 'es'} to recover ${currentGoal}%`;
+          }
+          if (recoveryDisplay) {
+            recoveryDisplay.textContent = `Need ${reqClasses} classes`;
+            recoveryDisplay.style.color = '#f87171';
+          }
+        }
+      }
+
+      function consumeToken() {
+        if (isLocked()) {
+          updateUIState();
+          return false;
+        }
+
+        let tokensUsed = getTokensUsed();
+        tokensUsed++;
+        localStorage.setItem(STORAGE_KEY_TOKENS, String(tokensUsed));
+
+        if (tokensUsed >= MAX_TOKENS) {
+          // Lock for 3 days and show final limit modal
+          const lockUntil = Date.now() + LOCK_DURATION_MS;
+          localStorage.setItem(STORAGE_KEY_LOCK, String(lockUntil));
+          showReminderModal(MAX_TOKENS, true);
+          updateUIState();
+          return false;
+        }
+
+        // Show install reminder modal after each 20 uses (20, 40, 60, 80)
+        if (tokensUsed % REMIND_STEP === 0) {
+          showReminderModal(tokensUsed, false);
+        }
+
+        updateUIState();
+        return true;
+      }
+
+      function handleAction() {
+        if (!consumeToken()) return;
+        calculate();
+      }
+
+      // Steppers
+      if (btnDecCond) btnDecCond.addEventListener('click', () => {
+        conductedInput.value = Math.max(1, (parseInt(conductedInput.value, 10) || 60) - 1);
+        handleAction();
+      });
+      if (btnIncCond) btnIncCond.addEventListener('click', () => {
+        conductedInput.value = (parseInt(conductedInput.value, 10) || 60) + 1;
+        handleAction();
+      });
+      if (btnDecAtt) btnDecAtt.addEventListener('click', () => {
+        attendedInput.value = Math.max(0, (parseInt(attendedInput.value, 10) || 52) - 1);
+        handleAction();
+      });
+      if (btnIncAtt) btnIncAtt.addEventListener('click', () => {
+        attendedInput.value = (parseInt(attendedInput.value, 10) || 52) + 1;
+        handleAction();
+      });
+
+      if (conductedInput) conductedInput.addEventListener('input', handleAction);
+      if (attendedInput) attendedInput.addEventListener('input', handleAction);
+
+      // Goal Picker & Custom Slider
+      const goalSlider = document.getElementById('inp-goal-slider');
+      const goalValDisplay = document.getElementById('goal-val-display');
+
+      if (goalSlider) {
+        goalSlider.addEventListener('input', (e) => {
+          const val = parseInt(e.target.value, 10) || 85;
+          currentGoal = val;
+          if (goalValDisplay) goalValDisplay.textContent = `${val}% Goal`;
+          goalBtns.forEach(b => b.classList.toggle('active', parseInt(b.dataset.goal, 10) === val));
+          handleAction();
+        });
+      }
+
+      goalBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          goalBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentGoal = parseInt(btn.dataset.goal, 10) || 85;
+          if (goalSlider) goalSlider.value = currentGoal;
+          if (goalValDisplay) goalValDisplay.textContent = `${currentGoal}% Goal`;
+          handleAction();
+        });
+      });
+
+      // Yellow Form Chips
+      yellowChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          yellowChips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          currentYellow = parseInt(chip.dataset.yellow, 10) || 0;
+          if (yellowValText) yellowValText.textContent = `+${currentYellow} hrs`;
+          handleAction();
+        });
+      });
+
+      // Initial load calculation & state
+      updateUIState();
+      calculate();
+    })();
+  </script>
+</body>
+</html>

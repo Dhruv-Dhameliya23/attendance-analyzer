@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Analyzer</title>
+  <script>
+    // GitHub Pages Clean Route Recovery Engine
+    (function () {
+      var path = window.location.pathname;
+      var segments = path.split('/').filter(Boolean);
+      var lastSegment = segments.length ? segments[segments.length - 1] : '';
+
+      // If user visited a clean URL without .html (e.g. /browsers, /sidepanel, /faq)
+      if (lastSegment && !lastSegment.includes('.')) {
+        var targetFile = lastSegment + '.html';
+        fetch(targetFile)
+          .then(function (res) {
+            if (res.ok) return res.text();
+            throw new Error('Not found');
+          })
+          .then(function (html) {
+            document.open();
+            document.write(html);
+            document.close();
+            // Preserve the clean URL in browser address bar (no .html)
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState(null, '', path + window.location.search + window.location.hash);
+            }
+          })
+          .catch(function () {
+            window.location.replace('index.html');
+          });
+      } else {
+        window.location.replace('index.html');
+      }
+    })();
+  </script>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: center; padding: 60px 20px; background: #f8fafc; color: #0f172a;">
+  <p style="color: #64748b; font-size: 15px; font-weight: 600;">Loading...</p>
+</body>
+</html>

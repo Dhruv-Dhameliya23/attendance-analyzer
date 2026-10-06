@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0, user-scalable=yes">
+  <title>Proof of Payments & Transparency Ledger — Attendance Analyzer</title>
+  <meta name="description" content="Public transparency ledger and verified donation receipts for Attendance Analyzer student giving back initiative.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.1.0">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.0">
+</head>
+<body>
+
+  <!-- Navigation dynamically injected via navigation.js -->
+  <header class="mobile-topbar"></header>
+  <aside class="sidebar" id="sidebar"></aside>
+  <script src="navigation.js?v=4.1.0"></script>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="content-container">
+      
+      <div class="policy-header">
+        <div class="section-tagline">100% Student Transparency & Verification</div>
+        <h1 class="hero-title" style="font-size: 2.2rem; margin-bottom: 8px;">Donation Proofs & Public Ledger</h1>
+        <div class="policy-updated">Records audit updated every 2 to 3 months or upon ₹1,000+ club payout</div>
+      </div>
+
+        <!-- TOP: United Nations SDG Impact Goals Showcase (Top of Proof Page) -->
+        <div class="proof-top-sdg-section">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+            <div>
+              <div class="section-tagline" style="margin-bottom: 2px;">Global Sustainability Framework</div>
+              <h2 style="font-size: 20px; font-weight: 850; color: var(--text-main); margin: 0;">
+                Relevant UN Sustainable Development Goals (SDGs)
+              </h2>
+            </div>
+            <span style="background: var(--primary); color: #ffffff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800;">Supported SDGs</span>
+          </div>
+
+          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55; margin-bottom: 18px;">
+            United Nations SDGs directly supported through our preferred campus clubs (CSA & Anvaya):
+          </p>
+
+          <!-- Relevant SDGs Grid at Top of Page -->
+          <div class="all-sdg-grid" id="proof-top-sdg-container">
+            <!-- Dynamically populated from sdg-data.js -->
+          </div>
+        </div>
+
+        <!-- Transparency Guarantee Summary -->
+        <div class="policy-summary-box">
+          <p style="margin-bottom: 8px; font-weight: 700; color: var(--text-main);">
+            We believe in complete transparency. Every contribution pledged for student welfare, poor student aid, and community social engagement will be publicly documented here with verified proof of payment slips.
+          </p>
+          <p style="margin-bottom: 0;">
+            All sensitive personal info (phone numbers, full banking accounts, private addresses) will always be masked and hidden for donor and student privacy.
+          </p>
+        </div>
+
+        <!-- Current Status: No Transactions Yet / Accumulating Funds Notice -->
+        <div class="policy-highlight-card" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(245, 158, 11, 0.15); color: #d97706; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 850; color: #92400e; margin-bottom: 6px;">
+                No Transactions Yet — Funds Currently Accumulating
+              </h3>
+              <p style="font-size: 14px; color: #78350f; line-height: 1.65; margin: 0;">
+                There are currently <strong>no transactions</strong> to display because we do not have enough funds collected yet. Under our policy, donations are disbursed to <strong>CSA (BYC Campus)</strong> and <strong>Anvaya (Central Campus)</strong> only when the pooled donation amount reaches at least <strong>₹1,000 per club</strong>.
+              </p>
+              <div style="margin-top: 10px; font-size: 13.5px; color: #b45309; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <span>As soon as collected funds reach the ₹1,000 threshold and a payment is made, official transaction receipts, bank slips, and acknowledgement proofs will be uploaded right here (updating every 2 to 3 months).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transparency Key Guidelines -->
+        <div class="matrix-grid" style="margin: 28px 0;">
+          <div class="matrix-item">
+            <div class="matrix-val" style="color: #10b981;">₹1,000</div>
+            <div class="matrix-label">Min Club Payout Threshold</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Transfers execute once reaching ₹1,000 per club</p>
+          </div>
+          <div class="matrix-item">
+            <div class="matrix-val" style="color: #6366f1;">Equal Share</div>
+            <div class="matrix-label">Distribution Model</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Split equally between CSA (BYC) & Anvaya (Central)</p>
+          </div>
+          <div class="matrix-item">
+            <div class="matrix-val" style="color: #0284c7;">2 to 3 Months</div>
+            <div class="matrix-label">Update Cadence</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Ledger and receipts updated regularly</p>
+          </div>
+          <div class="matrix-item">
+            <div class="matrix-val" style="color: #ef4444;">100% Redacted</div>
+            <div class="matrix-label">Personal Privacy</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Personal identifiers strictly hidden</p>
+          </div>
+        </div>
+
+        <!-- Supported Preferred Clubs -->
+        <div style="margin: 32px 0 20px;">
+          <div class="section-tagline">Beneficiary Campus Clubs</div>
+          <h2 style="font-size: 20px; font-weight: 850; color: var(--text-main); margin-bottom: 6px;">
+            Preferred Clubs Awaiting Payout Threshold
+          </h2>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+            All charitable contributions are designated for these two verified student initiatives:
+          </p>
+
+          <div class="clubs-grid" id="proof-clubs-container">
+            <!-- Rendered dynamically from sdg-data.js -->
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div class="proof-action-links" style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-light);">
+          <a href="payment" class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">
+            Support Developer & Pledged Causes
+          </a>
+          <a href="donation-policy" class="btn-policy-link">
+            Read Full Donation Policy →
+          </a>
+          <a href="./" class="btn-policy-link">
+            Back to Home →
+          </a>
+        </div>
+
+    </main>
+
+    <!-- Footer dynamically injected via navigation.js -->
+    <footer class="footer"></footer>
+  </div>
+
+  <script src="sdg-data.js?v=4.1.0"></script>
+  <script src="main.js?v=4.1.0"></script>
+  <script>
+    (function initProofPage() {
+      // Render Relevant SDGs at TOP of Proof page with verified PNG Icons
+      const topSdgContainer = document.getElementById('proof-top-sdg-container');
+      if (topSdgContainer && window.SDG_DATA && window.SDG_DATA.goals) {
+        topSdgContainer.innerHTML = window.SDG_DATA.goals.map(sdg => `
+          <div class="sdg-card-17" style="border-left: 4px solid ${sdg.color};">
+            <div class="sdg-card-top">
+              <div class="sdg-img-slot" style="background: ${sdg.color};">
+                <img src="${sdg.image}" alt="SDG ${sdg.number}: ${sdg.name}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.innerText='SDG ${sdg.number}'">
+              </div>
+              <div>
+                <div class="sdg-card-name">${sdg.name}</div>
+                <span class="sdg-affiliation-tag" style="background: ${sdg.bgColor}; color: ${sdg.color};">
+                  ${sdg.clubAffiliation}
+                </span>
+              </div>
+            </div>
+            <p class="sdg-card-desc">${sdg.whyRelevant}</p>
+          </div>
+        `).join('');
+      }
+
+      // Render 2 Clubs
+      const clubsContainer = document.getElementById('proof-clubs-container');
+      if (clubsContainer && window.SDG_DATA && window.SDG_DATA.clubs) {
+        clubsContainer.innerHTML = window.SDG_DATA.clubs.map(club => `
+          <div class="club-card" style="border-top: 4px solid ${club.color};">
+            <div class="club-header">
+              <span class="club-campus-badge" style="background: ${club.badgeBg}; color: ${club.badgeColor};">
+                ${club.badge}
+              </span>
+              <span class="club-sdg-tag" style="color: ${club.color}; background: ${club.lightBg};">
+                ${club.sdgTarget}
+              </span>
+            </div>
+            <h3 class="club-name" style="color: ${club.color};">${club.name}</h3>
+            <div class="club-fullname">${club.fullName}</div>
+            <p class="club-desc">${club.description}</p>
+          </div>
+        `).join('');
+      }
+    })();
+  </script>
+</body>
+</html>
