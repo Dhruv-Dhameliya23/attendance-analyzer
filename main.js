@@ -95,10 +95,30 @@ document.addEventListener('DOMContentLoaded', () => {
   if (conductedInput && attendedInput && pctDisplay) {
     let currentTarget = 75;
     const MAX_TRIES = 20;
-    let remainingTries = MAX_TRIES;
+    const STORAGE_KEY_HOME_TOKENS = 'caa_home_calc_tokens_used';
+
+    const safeHomeTokens = {};
+    const getHomeTokensUsed = () => {
+      try {
+        return parseInt(localStorage.getItem(STORAGE_KEY_HOME_TOKENS) || '0', 10);
+      } catch (e) {
+        return parseInt(safeHomeTokens[STORAGE_KEY_HOME_TOKENS] || '0', 10);
+      }
+    };
+    const setHomeTokensUsed = (val) => {
+      try {
+        localStorage.setItem(STORAGE_KEY_HOME_TOKENS, String(val));
+      } catch (e) {
+        safeHomeTokens[STORAGE_KEY_HOME_TOKENS] = String(val);
+      }
+    };
+
     let isInitialized = false;
 
+    const getRemainingTries = () => Math.max(0, MAX_TRIES - getHomeTokensUsed());
+
     const updateTrialBadge = () => {
+      const remainingTries = getRemainingTries();
       if (trialCountDisplay) {
         if (remainingTries > 0) {
           trialCountDisplay.textContent = `Token Sandbox · ${remainingTries} ${remainingTries === 1 ? 'Token' : 'Tokens'} Left`;
@@ -118,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const unlockCalculator = () => {
-      remainingTries = MAX_TRIES;
+      setHomeTokensUsed(0);
       updateTrialBadge();
       if (lockedOverlay) {
         lockedOverlay.style.display = 'none';
@@ -135,12 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const recordUserAction = () => {
       if (!isInitialized) return;
-      if (remainingTries > 0) {
-        remainingTries--;
+      let used = getHomeTokensUsed();
+      if (used < MAX_TRIES) {
+        used++;
+        setHomeTokensUsed(used);
         updateTrialBadge();
-        if (remainingTries <= 0) {
-          setTimeout(lockCalculator, 350);
+        if (used >= MAX_TRIES) {
+          setTimeout(lockCalculator, 300);
         }
+      } else {
+        lockCalculator();
       }
     };
 

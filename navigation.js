@@ -574,7 +574,7 @@
       initMobileMenuEvents();
       initInstallLinkInterception();
       initServiceWorker();
-      initInstantPageTransitions();
+      beautifyAddressBar();
 
       // Auto-show top notification for mobile / unsupported devices only if not dismissed in last 5 minutes
       const env = getDeviceEnvironment();
@@ -632,301 +632,20 @@
   // =========================================================================
   // Instant 0ms Page Navigation & In-Memory / Cache-Storage Engine
   // =========================================================================
-  const pageCache = new Map();
-  let progressBarEl = null;
-
-  function getProgressBar() {
-    if (!progressBarEl) {
-      progressBarEl = document.getElementById('caa-page-progress-bar');
-      if (!progressBarEl) {
-        progressBarEl = document.createElement('div');
-        progressBarEl.id = 'caa-page-progress-bar';
-        document.body.appendChild(progressBarEl);
-      }
-    }
-    return progressBarEl;
-  }
-
-  function startProgressBar() {
-    const pb = getProgressBar();
-    if (pb) {
-      pb.classList.remove('done');
-      pb.classList.add('loading');
-    }
-  }
-
-  function finishProgressBar() {
-    const pb = getProgressBar();
-    if (pb) {
-      pb.classList.add('done');
-      setTimeout(() => {
-        pb.classList.remove('loading', 'done');
-      }, 400);
-    }
-  }
-
-  function normalizeUrl(urlStr) {
+  // =========================================================================
+  // Clean URL Bar Aesthetic: Beautiful extensionless URLs in address bar
+  // =========================================================================
+  function beautifyAddressBar() {
     try {
-      const parsed = new URL(urlStr, window.location.href);
-      return parsed.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '') || '/';
-    } catch (e) {
-      return urlStr;
-    }
-  }
-
-  function getFetchUrl(urlStr) {
-    try {
-      const targetUrl = new URL(urlStr, window.location.href);
-      let pathname = targetUrl.pathname;
-      if (!pathname.endsWith('.html') && !pathname.endsWith('/') && !pathname.includes('.')) {
-        targetUrl.pathname = pathname + '.html';
-      } else if (pathname.endsWith('/')) {
-        targetUrl.pathname = pathname + 'index.html';
-      }
-      return targetUrl.href;
-    } catch (e) {
-      return urlStr;
-    }
-  }
-
-  function getCleanDisplayPath(urlStr) {
-    try {
-      const urlObj = new URL(urlStr, window.location.href);
-      return urlObj.pathname + urlObj.search + urlObj.hash;
-    } catch (e) {
-      return urlStr;
-    }
-  }
-
-  async function prefetchPage(url) {
-    if (isFileProto) return null;
-    try {
-      const targetUrl = new URL(url, window.location.href);
-      if (targetUrl.origin !== window.location.origin) return null;
-
-      const key = normalizeUrl(targetUrl.href);
-      if (pageCache.has(key)) return pageCache.get(key);
-
-      const fetchUrl = getFetchUrl(targetUrl.href);
-      const response = await fetch(fetchUrl, { cache: 'default' });
-      if (!response.ok) return null;
-      const htmlText = await response.text();
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlText, 'text/html');
-      const mainWrapper = doc.querySelector('.main-wrapper') || doc.querySelector('main') || doc.body;
-      const title = doc.title || document.title;
-
-      const cachedData = {
-        html: htmlText,
-        mainHtml: mainWrapper ? mainWrapper.innerHTML : '',
-        title: title
-      };
-
-      pageCache.set(key, cachedData);
-      return cachedData;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function updateActiveNavLinks() {
-    const currentKey = getCurrentPageKey();
-    document.querySelectorAll('.sidebar-menu a').forEach(a => {
-      const href = a.getAttribute('href') || '';
-      let itemKey = href.split('?')[0].split('#')[0].replace(/\.html$/, '').replace(/^\.\//, 'index');
-      if (itemKey === '') itemKey = 'index';
-      const isActive = (itemKey === currentKey) || (currentKey === 'index' && itemKey === 'index');
-      a.classList.toggle('active', isActive);
-    });
-  }
-
-  function runPageScripts(container) {
-    if (typeof window.initBrowserDirectory === 'function' && document.getElementById('br-grid')) {
-      try { window.initBrowserDirectory(); } catch (e) {}
-    }
-    if (typeof window.initFAQ === 'function' && document.querySelector('.faq-section')) {
-      try { window.initFAQ(); } catch (e) {}
-    }
-    if (typeof window.initSidepanelCalculator === 'function' && document.getElementById('sp-calc-app')) {
-      try { window.initSidepanelCalculator(); } catch (e) {}
-    }
-    if (typeof window.initMain === 'function') {
-      try { window.initMain(); } catch (e) {}
-    }
-
-    if (container) {
-      const scripts = container.querySelectorAll('script');
-      scripts.forEach(oldScript => {
-        if (!oldScript.src) {
-          try {
-            const fn = new Function(oldScript.textContent);
-            fn();
-          } catch (err) {
-            console.debug('[CAA] Page inline script notice:', err);
-          }
+      if (!isFileProto && window.history && window.history.replaceState) {
+        const path = window.location.pathname;
+        if (path.endsWith('.html')) {
+          let clean = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+          if (!clean || clean === '') clean = '/';
+          window.history.replaceState(null, document.title, clean + window.location.search + window.location.hash);
         }
-      });
-    }
-  }
-
-  async function navigateTo(targetUrl, pushState = true) {
-    if (isFileProto) {
-      window.location.href = targetUrl;
-      return;
-    }
-
-    const urlObj = new URL(targetUrl, window.location.href);
-    if (urlObj.origin !== window.location.origin) {
-      window.location.href = targetUrl;
-      return;
-    }
-
-    startProgressBar();
-
-    try {
-      const key = normalizeUrl(urlObj.href);
-      let pageData = pageCache.get(key);
-
-      if (!pageData) {
-        pageData = await prefetchPage(urlObj.href);
       }
-
-      if (!pageData || !pageData.mainHtml) {
-        window.location.href = targetUrl;
-        return;
-      }
-
-      const currentMain = document.querySelector('.main-wrapper');
-      if (currentMain) {
-        currentMain.innerHTML = pageData.mainHtml;
-        currentMain.classList.remove('page-entering');
-        void currentMain.offsetWidth; // reflow trigger
-        currentMain.classList.add('page-entering');
-      }
-
-      if (pageData.title) {
-        document.title = pageData.title;
-      }
-
-      if (pushState) {
-        const cleanUrl = getCleanDisplayPath(urlObj.href);
-        window.history.pushState({ path: cleanUrl }, pageData.title, cleanUrl);
-      }
-
-      updateActiveNavLinks();
-      runPageScripts(currentMain);
-
-      if (urlObj.hash) {
-        const hashEl = document.querySelector(urlObj.hash);
-        if (hashEl) {
-          hashEl.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      }
-
-      finishProgressBar();
-    } catch (err) {
-      finishProgressBar();
-      window.location.href = targetUrl;
-    }
-  }
-
-  function isInternalLink(link) {
-    try {
-      const url = new URL(link.href, window.location.href);
-      if (url.origin !== window.location.origin) return false;
-      const path = url.pathname;
-      if (path.endsWith('.zip') || path.endsWith('.crx') || path.endsWith('.pdf') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.json')) {
-        return false;
-      }
-      if (path.endsWith('payment.html')) {
-        return false;
-      }
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function initInstantPageTransitions() {
-    getProgressBar();
-
-    // Cache initial page shell
-    const currentKey = normalizeUrl(window.location.href);
-    const currentMain = document.querySelector('.main-wrapper');
-    if (currentMain) {
-      pageCache.set(currentKey, {
-        html: document.documentElement.outerHTML,
-        mainHtml: currentMain.innerHTML,
-        title: document.title
-      });
-    }
-
-    // Prefetch all menu pages in background during idle time
-    const prefetchMenuItems = () => {
-      NAV_CONFIG.menuItems.forEach(item => {
-        if (item.href && !item.href.startsWith('http') && !item.href.startsWith('//')) {
-          prefetchPage(item.href);
-        }
-      });
-    };
-
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(prefetchMenuItems, { timeout: 3000 });
-    } else {
-      setTimeout(prefetchMenuItems, 1500);
-    }
-
-    // Hover & touch prefetching on all internal links
-    document.addEventListener('pointerenter', (e) => {
-      const link = e.target.closest('a[href]');
-      if (link && isInternalLink(link)) {
-        prefetchPage(link.href);
-      }
-    }, true);
-
-    document.addEventListener('touchstart', (e) => {
-      const link = e.target.closest('a[href]');
-      if (link && isInternalLink(link)) {
-        prefetchPage(link.href);
-      }
-    }, { passive: true, capture: true });
-
-    // Intercept clicks for 0ms instant transition
-    document.addEventListener('click', (e) => {
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.defaultPrevented) return;
-      if (e.button !== 0) return;
-
-      const link = e.target.closest('a[href]');
-      if (!link) return;
-
-      if (link.target && link.target !== '_self') return;
-      if (link.hasAttribute('download')) return;
-      if (!isInternalLink(link)) return;
-
-      const href = link.getAttribute('href');
-      if (href.startsWith('#')) return;
-
-      const targetUrl = new URL(link.href, window.location.href);
-      if (targetUrl.pathname === window.location.pathname && targetUrl.search === window.location.search) {
-        if (targetUrl.hash) return;
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-      }
-
-      e.preventDefault();
-      navigateTo(link.href, true);
-    });
-
-    // Back / forward browser navigation
-    window.addEventListener('popstate', () => {
-      navigateTo(window.location.href, false);
-    });
+    } catch (e) {}
   }
 
   // Execute immediately to eliminate layout shift
@@ -937,6 +656,6 @@
   window.isChromiumBrowser = isChromiumBrowser;
   window.getDeviceEnvironment = getDeviceEnvironment;
   window.showUnsupportedDeviceNotification = showUnsupportedDeviceNotification;
-  window.navigateTo = navigateTo;
-  window.prefetchPage = prefetchPage;
+  window.beautifyAddressBar = beautifyAddressBar;
 })();
+

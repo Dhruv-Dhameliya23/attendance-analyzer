@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4.1.2">
-  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.2">
+  <link rel="stylesheet" href="styles.css?v=4.1.3">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.3">
   <style>
     /* Header Section */
     .sp-header {
@@ -722,7 +722,7 @@
   <!-- Modular Navigation dynamically injected via navigation.js -->
   <header class="mobile-topbar"></header>
   <aside class="sidebar" id="sidebar"></aside>
-  <script src="navigation.js?v=4.1.2"></script>
+  <script src="navigation.js?v=4.1.3"></script>
 
   <!-- Main Content Wrapper -->
   <div class="main-wrapper">
@@ -1072,11 +1072,34 @@
         document.addEventListener('keydown', handleKeyDown, true);
       } catch (err) {}
 
-      const MAX_TOKENS = 100; // 100 total tokens per season
-      const REMIND_STEP = 20; // Remind to install every 20 uses
+      const MAX_TOKENS = 20; // 20 total tokens per session
+      const REMIND_STEP = 10; // Remind to install at 10 uses
       const LOCK_DURATION_MS = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
       const STORAGE_KEY_TOKENS = 'caa_calc_tokens_used';
       const STORAGE_KEY_LOCK = 'caa_calc_lock_until';
+
+      const inMemoryTokens = {};
+      function safeStorageGet(key) {
+        try {
+          return localStorage.getItem(key);
+        } catch (e) {
+          return inMemoryTokens[key] || null;
+        }
+      }
+      function safeStorageSet(key, value) {
+        try {
+          localStorage.setItem(key, String(value));
+        } catch (e) {
+          inMemoryTokens[key] = String(value);
+        }
+      }
+      function safeStorageRemove(key) {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {
+          delete inMemoryTokens[key];
+        }
+      }
 
       const conductedInput = document.getElementById('inp-conducted');
       const attendedInput = document.getElementById('inp-attended');
@@ -1111,11 +1134,11 @@
       let countdownTimerInterval = null;
 
       function getTokensUsed() {
-        return parseInt(localStorage.getItem(STORAGE_KEY_TOKENS) || '0', 10);
+        return parseInt(safeStorageGet(STORAGE_KEY_TOKENS) || '0', 10);
       }
 
       function getLockUntil() {
-        return parseInt(localStorage.getItem(STORAGE_KEY_LOCK) || '0', 10);
+        return parseInt(safeStorageGet(STORAGE_KEY_LOCK) || '0', 10);
       }
 
       function isLocked() {
@@ -1147,8 +1170,8 @@
           if (remainingMs <= 0) {
             // Lock expired! Auto reset tokens for new season
             clearInterval(countdownTimerInterval);
-            localStorage.removeItem(STORAGE_KEY_TOKENS);
-            localStorage.removeItem(STORAGE_KEY_LOCK);
+            safeStorageRemove(STORAGE_KEY_TOKENS);
+            safeStorageRemove(STORAGE_KEY_LOCK);
             updateUIState();
             return;
           }
@@ -1166,10 +1189,10 @@
         const remaining = Math.max(0, MAX_TOKENS - tokensUsed);
 
         if (isFinalLock) {
-          if (popupBadgeText) popupBadgeText.textContent = `All 100 Season Tokens Used`;
-          if (popupTitleText) popupTitleText.textContent = `Season Limit Reached (100 Uses)`;
+          if (popupBadgeText) popupBadgeText.textContent = `All 20 Sandbox Tokens Used`;
+          if (popupTitleText) popupTitleText.textContent = `Token Limit Reached (20 Uses)`;
           if (popupDescText) {
-            popupDescText.innerHTML = `You have completed all <strong>100 free sandbox calculations</strong> for this 3-day season. For uninterrupted automatic live calculations right on your student portal, install the free Chrome Extension.`;
+            popupDescText.innerHTML = `You have used all <strong>20 free sandbox tokens</strong>. To prevent server overload, web simulation unlocks every 3 days. Install our free Chrome Extension for <strong>unlimited calculations 24/7</strong> directly on your student portal.`;
           }
           if (closePopupBtnText) {
             closePopupBtnText.textContent = `Close & View 3-Day Cooldown Timer →`;
@@ -1195,7 +1218,7 @@
 
         if (lockUntil > now) {
           // Locked for 3 days
-          if (trialCountBadge) trialCountBadge.textContent = '0 / 100 Tokens · Locked';
+          if (trialCountBadge) trialCountBadge.textContent = '0 / 20 Tokens · Locked';
           if (lockOverlay) lockOverlay.style.display = 'flex';
           startCountdown();
           return;
@@ -1207,13 +1230,13 @@
 
         const remaining = Math.max(0, MAX_TOKENS - tokensUsed);
         if (trialCountBadge) {
-          trialCountBadge.textContent = `${remaining} / 100 Tokens Left`;
+          trialCountBadge.textContent = `${remaining} / 20 Tokens Left`;
         }
 
         if (remaining <= 0) {
-          // Used all 100 tokens, initiate lock
+          // Used all 20 tokens, initiate lock
           const newLock = now + LOCK_DURATION_MS;
-          localStorage.setItem(STORAGE_KEY_LOCK, String(newLock));
+          safeStorageSet(STORAGE_KEY_LOCK, String(newLock));
           showReminderModal(MAX_TOKENS, true);
           if (lockOverlay) lockOverlay.style.display = 'flex';
           startCountdown();
@@ -1326,19 +1349,19 @@
 
         let tokensUsed = getTokensUsed();
         tokensUsed++;
-        localStorage.setItem(STORAGE_KEY_TOKENS, String(tokensUsed));
+        safeStorageSet(STORAGE_KEY_TOKENS, String(tokensUsed));
 
         if (tokensUsed >= MAX_TOKENS) {
           // Lock for 3 days and show final limit modal
           const lockUntil = Date.now() + LOCK_DURATION_MS;
-          localStorage.setItem(STORAGE_KEY_LOCK, String(lockUntil));
+          safeStorageSet(STORAGE_KEY_LOCK, String(lockUntil));
           showReminderModal(MAX_TOKENS, true);
           updateUIState();
           return false;
         }
 
-        // Show install reminder modal after each 20 uses (20, 40, 60, 80)
-        if (tokensUsed % REMIND_STEP === 0) {
+        // Show install reminder modal at halfway mark (10 uses)
+        if (tokensUsed % REMIND_STEP === 0 && tokensUsed < MAX_TOKENS) {
           showReminderModal(tokensUsed, false);
         }
 
