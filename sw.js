@@ -3,7 +3,7 @@
    Version: 4.1.0
    ========================================================================== */
 
-const CACHE_NAME = 'caa-web-cache-v4.1.1';
+const CACHE_NAME = 'caa-web-cache-v4.1.2';
 
 // Compute base URL dynamically from Service Worker location (works on root domain, GitHub Pages /repo/, or any CDN)
 const SW_SCOPE = self.registration ? self.registration.scope : self.location.href;
@@ -21,11 +21,11 @@ const RELATIVE_ASSETS = [
   'install.html',
   'donation-policy.html',
   'advertise.html',
-  'styles.css?v=4.1.1',
-  'navigation.js?v=4.1.1',
-  'main.js?v=4.1.1',
-  'sdg-data.js?v=4.1.1',
-  'assets/icon48.png?v=4.1.1',
+  'styles.css?v=4.1.2',
+  'navigation.js?v=4.1.2',
+  'main.js?v=4.1.2',
+  'sdg-data.js?v=4.1.2',
+  'assets/icon48.png?v=4.1.2',
   'version.json'
 ];
 
