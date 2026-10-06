@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4.1.3">
-  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.3">
+  <link rel="stylesheet" href="styles.css?v=4.1.4">
+  <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.4">
   <style>
     /* Header Section */
     .sp-header {
@@ -722,7 +722,7 @@
   <!-- Modular Navigation dynamically injected via navigation.js -->
   <header class="mobile-topbar"></header>
   <aside class="sidebar" id="sidebar"></aside>
-  <script src="navigation.js?v=4.1.3"></script>
+  <script src="navigation.js?v=4.1.4"></script>
 
   <!-- Main Content Wrapper -->
   <div class="main-wrapper">
@@ -762,7 +762,7 @@
           <div>
             <span class="sp-trial-badge" id="trial-count-badge">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <span id="trial-count-text">100 Tokens Left</span>
+              <span id="trial-count-text">50 Tokens Left</span>
             </span>
           </div>
         </div>
@@ -879,7 +879,7 @@
           </div>
           <h2 class="sp-lock-title">Token Limit Reached · 3-Day Cooldown Active</h2>
           <p class="sp-lock-desc">
-            You’ve used all 20 free sandbox tokens. To prevent server overload, web simulation unlocks every 3 days. Install our free Chrome extension for <strong>unlimited calculations 24/7</strong> directly on your student portal.
+            You’ve used all 50 free sandbox tokens. To prevent server overload, web simulation unlocks every 3 days. Install our free Chrome extension for <strong>unlimited calculations 24/7</strong> directly on your student portal.
           </p>
 
           <div class="sp-countdown-card">
@@ -1072,8 +1072,8 @@
         document.addEventListener('keydown', handleKeyDown, true);
       } catch (err) {}
 
-      const MAX_TOKENS = 20; // 20 total tokens per session
-      const REMIND_STEP = 10; // Remind to install at 10 uses
+      const MAX_TOKENS = 50; // 50 total tokens per session
+      const REMIND_STEP = 25; // Remind to install at 25 uses
       const LOCK_DURATION_MS = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
       const STORAGE_KEY_TOKENS = 'caa_calc_tokens_used';
       const STORAGE_KEY_LOCK = 'caa_calc_lock_until';
@@ -1189,10 +1189,10 @@
         const remaining = Math.max(0, MAX_TOKENS - tokensUsed);
 
         if (isFinalLock) {
-          if (popupBadgeText) popupBadgeText.textContent = `All 20 Sandbox Tokens Used`;
-          if (popupTitleText) popupTitleText.textContent = `Token Limit Reached (20 Uses)`;
+          if (popupBadgeText) popupBadgeText.textContent = `All 50 Sandbox Tokens Used`;
+          if (popupTitleText) popupTitleText.textContent = `Token Limit Reached (50 Uses)`;
           if (popupDescText) {
-            popupDescText.innerHTML = `You have used all <strong>20 free sandbox tokens</strong>. To prevent server overload, web simulation unlocks every 3 days. Install our free Chrome Extension for <strong>unlimited calculations 24/7</strong> directly on your student portal.`;
+            popupDescText.innerHTML = `You have used all <strong>50 free sandbox tokens</strong>. To prevent server overload, web simulation unlocks every 3 days. Install our free Chrome Extension for <strong>unlimited calculations 24/7</strong> directly on your student portal.`;
           }
           if (closePopupBtnText) {
             closePopupBtnText.textContent = `Close & View 3-Day Cooldown Timer →`;
@@ -1218,7 +1218,7 @@
 
         if (lockUntil > now) {
           // Locked for 3 days
-          if (trialCountBadge) trialCountBadge.textContent = '0 / 20 Tokens · Locked';
+          if (trialCountBadge) trialCountBadge.textContent = '0 / 50 Tokens · Locked';
           if (lockOverlay) lockOverlay.style.display = 'flex';
           startCountdown();
           return;
@@ -1230,11 +1230,11 @@
 
         const remaining = Math.max(0, MAX_TOKENS - tokensUsed);
         if (trialCountBadge) {
-          trialCountBadge.textContent = `${remaining} / 20 Tokens Left`;
+          trialCountBadge.textContent = `${remaining} / 50 Tokens Left`;
         }
 
         if (remaining <= 0) {
-          // Used all 20 tokens, initiate lock
+          // Used all 50 tokens, initiate lock
           const newLock = now + LOCK_DURATION_MS;
           safeStorageSet(STORAGE_KEY_LOCK, String(newLock));
           showReminderModal(MAX_TOKENS, true);

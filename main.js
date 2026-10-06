@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (conductedInput && attendedInput && pctDisplay) {
     let currentTarget = 75;
-    const MAX_TRIES = 20;
+    const MAX_TRIES = 50;
     const STORAGE_KEY_HOME_TOKENS = 'caa_home_calc_tokens_used';
 
     const safeHomeTokens = {};
