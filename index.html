@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4.1.4">
-    <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.4">
+    <link rel="stylesheet" href="styles.css?v=4.1.5">
+    <link rel="icon" type="image/png" href="assets/icon48.png?v=4.1.5">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <!-- Modular Navigation dynamically injected via navigation.js -->
     <header class="mobile-topbar"></header>
     <aside class="sidebar" id="sidebar"></aside>
-    <script src="navigation.js?v=4.1.4"></script>
+    <script src="navigation.js?v=4.1.5"></script>
 
     <!-- Main Content Wrapper -->
     <div class="main-wrapper">
@@ -74,31 +74,67 @@
 
                     <div class="slider-track" id="slider-track">
                         <div class="slide-item" data-index="0" role="button" tabindex="0" aria-label="Zoom screenshot 1: Attendance Analyzer Official Banner">
-                            <img src="assets/9.png" alt="Attendance Analyzer Official Banner" loading="eager" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/9-low.webp 640w, assets/opt/9-med.webp 1280w, assets/opt/9-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/9-low.png 640w, assets/opt/9-med.png 1280w, assets/opt/9-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/9-med.webp" data-high="assets/opt/9-high.webp" alt="Attendance Analyzer Official Banner" loading="eager" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="1" role="button" tabindex="0" aria-label="Zoom screenshot 2: Main Dashboard Overview">
-                            <img src="assets/1.png" alt="Attendance Analyzer Main Dashboard" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/1-low.webp 640w, assets/opt/1-med.webp 1280w, assets/opt/1-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/1-low.png 640w, assets/opt/1-med.png 1280w, assets/opt/1-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/1-med.webp" data-high="assets/opt/1-high.webp" alt="Attendance Analyzer Main Dashboard" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="2" role="button" tabindex="0" aria-label="Zoom screenshot 3: Safe Leaves Planner">
-                            <img src="assets/2.png" alt="Safe Leaves and Absence Planner" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/2-low.webp 640w, assets/opt/2-med.webp 1280w, assets/opt/2-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/2-low.png 640w, assets/opt/2-med.png 1280w, assets/opt/2-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/2-med.webp" data-high="assets/opt/2-high.webp" alt="Safe Leaves and Absence Planner" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="3" role="button" tabindex="0" aria-label="Zoom screenshot 4: Claim Simulation">
-                            <img src="assets/3.png" alt="Yellow and Blue Claim Simulation" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/3-low.webp 640w, assets/opt/3-med.webp 1280w, assets/opt/3-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/3-low.png 640w, assets/opt/3-med.png 1280w, assets/opt/3-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/3-med.webp" data-high="assets/opt/3-high.webp" alt="Yellow and Blue Claim Simulation" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="4" role="button" tabindex="0" aria-label="Zoom screenshot 5: Target Settings">
-                            <img src="assets/4.png" alt="Subject Recovery and Target Settings" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/4-low.webp 640w, assets/opt/4-med.webp 1280w, assets/opt/4-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/4-low.png 640w, assets/opt/4-med.png 1280w, assets/opt/4-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/4-med.webp" data-high="assets/opt/4-high.webp" alt="Subject Recovery and Target Settings" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="5" role="button" tabindex="0" aria-label="Zoom screenshot 6: Attendance Matrix">
-                            <img src="assets/5.png" alt="Detailed Attendance Matrix" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/5-low.webp 640w, assets/opt/5-med.webp 1280w, assets/opt/5-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/5-low.png 640w, assets/opt/5-med.png 1280w, assets/opt/5-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/5-med.webp" data-high="assets/opt/5-high.webp" alt="Detailed Attendance Matrix" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="6" role="button" tabindex="0" aria-label="Zoom screenshot 7: Concession Modeling">
-                            <img src="assets/6.png" alt="Smart Concession Modeling" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/6-low.webp 640w, assets/opt/6-med.webp 1280w, assets/opt/6-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/6-low.png 640w, assets/opt/6-med.png 1280w, assets/opt/6-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/6-med.webp" data-high="assets/opt/6-high.webp" alt="Smart Concession Modeling" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="7" role="button" tabindex="0" aria-label="Zoom screenshot 8: Real-Time Insights">
-                            <img src="assets/7.png" alt="Real-Time Attendance Insights" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/7-low.webp 640w, assets/opt/7-med.webp 1280w, assets/opt/7-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/7-low.png 640w, assets/opt/7-med.png 1280w, assets/opt/7-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/7-med.webp" data-high="assets/opt/7-high.webp" alt="Real-Time Attendance Insights" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                         <div class="slide-item" data-index="8" role="button" tabindex="0" aria-label="Zoom screenshot 9: Performance Breakdown">
-                            <img src="assets/8.png" alt="Performance and Safe Bunk Breakdown" loading="lazy" title="Click to view full screen">
+                            <picture>
+                                <source type="image/webp" srcset="assets/opt/8-low.webp 640w, assets/opt/8-med.webp 1280w, assets/opt/8-high.webp 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <source type="image/png" srcset="assets/opt/8-low.png 640w, assets/opt/8-med.png 1280w, assets/opt/8-high.png 1920w" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 860px">
+                                <img src="assets/opt/8-med.webp" data-high="assets/opt/8-high.webp" alt="Performance and Safe Bunk Breakdown" loading="lazy" decoding="async" width="1920" height="1080" title="Click to view full screen">
+                            </picture>
                         </div>
                     </div>
 
@@ -313,8 +349,8 @@
         </div>
     </div>
 
-    <script src="sdg-data.js?v=4.1.4"></script>
-    <script src="main.js?v=4.1.4"></script>
+    <script src="sdg-data.js?v=4.1.5"></script>
+    <script src="main.js?v=4.1.5"></script>
 </body>
 
 </html>

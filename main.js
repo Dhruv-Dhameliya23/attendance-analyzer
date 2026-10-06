@@ -274,15 +274,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxViewport = document.getElementById('lightbox-viewport');
 
   const slideData = [
-    { src: 'assets/9.png', title: 'Attendance Analyzer Official Banner', duration: 1800 },
-    { src: 'assets/1.png', title: 'Attendance Analyzer Main Dashboard', duration: 3800 },
-    { src: 'assets/2.png', title: 'Safe Leaves & Absence Planner', duration: 3800 },
-    { src: 'assets/3.png', title: 'Yellow & Blue Claim Simulation', duration: 3800 },
-    { src: 'assets/4.png', title: 'Subject Recovery & Target Settings', duration: 3800 },
-    { src: 'assets/5.png', title: 'Detailed Attendance Matrix & Metrics', duration: 3800 },
-    { src: 'assets/6.png', title: 'Smart Concession & Leave Modeling', duration: 3800 },
-    { src: 'assets/7.png', title: 'Real-Time Insights & Safe Bunk Limits', duration: 3800 },
-    { src: 'assets/8.png', title: 'Comprehensive Performance Breakdown', duration: 3800 }
+    { low: 'assets/opt/9-low.webp', med: 'assets/opt/9-med.webp', high: 'assets/opt/9-high.webp', src: 'assets/opt/9-high.webp', title: 'Attendance Analyzer Official Banner', duration: 1800 },
+    { low: 'assets/opt/1-low.webp', med: 'assets/opt/1-med.webp', high: 'assets/opt/1-high.webp', src: 'assets/opt/1-high.webp', title: 'Attendance Analyzer Main Dashboard', duration: 3800 },
+    { low: 'assets/opt/2-low.webp', med: 'assets/opt/2-med.webp', high: 'assets/opt/2-high.webp', src: 'assets/opt/2-high.webp', title: 'Safe Leaves & Absence Planner', duration: 3800 },
+    { low: 'assets/opt/3-low.webp', med: 'assets/opt/3-med.webp', high: 'assets/opt/3-high.webp', src: 'assets/opt/3-high.webp', title: 'Yellow & Blue Claim Simulation', duration: 3800 },
+    { low: 'assets/opt/4-low.webp', med: 'assets/opt/4-med.webp', high: 'assets/opt/4-high.webp', src: 'assets/opt/4-high.webp', title: 'Subject Recovery & Target Settings', duration: 3800 },
+    { low: 'assets/opt/5-low.webp', med: 'assets/opt/5-med.webp', high: 'assets/opt/5-high.webp', src: 'assets/opt/5-high.webp', title: 'Detailed Attendance Matrix & Metrics', duration: 3800 },
+    { low: 'assets/opt/6-low.webp', med: 'assets/opt/6-med.webp', high: 'assets/opt/6-high.webp', src: 'assets/opt/6-high.webp', title: 'Smart Concession & Leave Modeling', duration: 3800 },
+    { low: 'assets/opt/7-low.webp', med: 'assets/opt/7-med.webp', high: 'assets/opt/7-high.webp', src: 'assets/opt/7-high.webp', title: 'Real-Time Insights & Safe Bunk Limits', duration: 3800 },
+    { low: 'assets/opt/8-low.webp', med: 'assets/opt/8-med.webp', high: 'assets/opt/8-high.webp', src: 'assets/opt/8-high.webp', title: 'Comprehensive Performance Breakdown', duration: 3800 }
   ];
 
   if (sliderTrack && dots.length > 0) {

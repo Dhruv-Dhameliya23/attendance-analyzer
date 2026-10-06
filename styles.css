@@ -956,6 +956,12 @@ footer.footer {
   overflow: hidden;
 }
 
+.slide-item picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .slide-item img {
   width: 100%;
   height: 100%;
@@ -964,7 +970,7 @@ footer.footer {
   display: block;
   border: none;
   border-radius: 13px 13px 0 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   pointer-events: auto;
 }
 
